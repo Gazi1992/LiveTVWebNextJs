@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-livetv-dev-211049-authRole",
+      "UnauthRoleArn": "arn:aws:iam::482172737101:role/amplify-livetv-dev-211049-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::482172737101:role/amplify-livetv-dev-211049-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-livetv-dev-211049-deployment",
+      "UnauthRoleName": "amplify-livetv-dev-211049-unauthRole",
+      "StackName": "amplify-livetv-dev-211049",
+      "StackId": "arn:aws:cloudformation:eu-west-1:482172737101:stack/amplify-livetv-dev-211049/b94af790-8208-11ec-8953-0628253de995",
+      "AmplifyAppId": "d2agaccu2f5d6w"
+    }
+  }
+}
