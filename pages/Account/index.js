@@ -43,15 +43,15 @@ function Account(props) {
   //     setLoading(false);
   //   }
   // };
-  // const signOut = async () => {
-  //   try {
-  //     await Auth.signOut({ global: false });
-  //     history.push("./Home");
-  //     history.go(0);
-  //   } catch (error) {
-  //     console.log("error signing out: ", error);
-  //   }
-  // };
+  const signOut = async () => {
+    try {
+      await Auth.signOut({ global: false });
+      history.push("./Home");
+      history.go(0);
+    } catch (error) {
+      console.log("error signing out: ", error);
+    }
+  };
   return (
     <PlayerHeader>
       <Container>
