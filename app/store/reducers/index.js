@@ -1,16 +1,14 @@
 import { combineReducers } from "redux";
-
-// import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import apiReducers from "./api";
 import liveTVReducer from "./liveTV";
 import moviesReducer from "./movies";
 import otherReducers from "./others";
-import userReducer from "./user";
+import userAWSReducer from "./userAWS";
 
 export const rootReducer = combineReducers({
-  movies: moviesReducer,
-  liveTV: liveTVReducer,
-  user: userReducer,
-  others: otherReducers,
-  ...apiReducers,
-});
+    movies: moviesReducer,
+    liveTV: liveTVReducer,
+    userAWS: userAWSReducer,
+    others: otherReducers,
+    ...apiReducers,
+  })

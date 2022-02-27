@@ -13,31 +13,12 @@ import { wrapper } from "../../app/store";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import _ from "lodash";
-
-import { setChannelPlaying, getChannels } from "../../app/store/actions/liveTV";
-
-// export const getServerSideProps = wrapper.getServerSideProps((store) => () => {
-//   store.dispatch(getChannels());
-// });
-
-const mapStatetoProps = (state) => ({
-  channelsfromJSON: _.get(state, `liveTV.channels`, []),
-  favoriteChannels: _.get(state, `liveTV.favoriteChannels`, []),
-});
-
-const mapDispatchtoProps = (dispatch) => {
-  return {
-    // setChannelPlaying: (data) => dispatch(setChannelPlaying(data)),
-    getChannels: bindActionCreators(getChannels, dispatch),
-  };
-};
+import { channels_get, user_get } from "../../app/store/actions/api";
 
 function Kanalet(props) {
   const [format, setFormat] = React.useState(true);
   const [favorites, setFavorites] = React.useState(false);
-  useEffect(() => {
-    props.getChannels();
-  }, []);
+  console.log(props.channels);
 
   const onChange = (newValue) => {
     setFormat(newValue);
@@ -96,11 +77,11 @@ function Kanalet(props) {
         </SetFormat>
         {format === true ? (
           <>
-            <AllChannels kanalet={props.channelsfromJSON} change={favorites} />
+            <AllChannels change={favorites} />
           </>
         ) : (
           <>
-            <Slider kanalet={props.channelsfromJSON} change={favorites} />
+            <Slider change={favorites} />
           </>
         )}
       </Container>
@@ -108,25 +89,6 @@ function Kanalet(props) {
   );
 }
 
-const ImageContainer = styled.div`
-  width: 70%;
-  height: 100%;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-`;
-
-const FavoritesLabel = styled.div`
-  width: 100px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  span {
-    color: green;
-  }
-`;
 const SetFormat = styled.div`
   height: 100px;
   width: 100%;
@@ -135,10 +97,7 @@ const SetFormat = styled.div`
   align-items: center;
   justify-content: flex-end;
 `;
-const SetFormatSelectorContainer = styled.div`
-  width: 150px;
-  height: 60px;
-`;
+
 const SetFavorites = styled.div`
   height: 100px;
   width: 80%;
@@ -213,4 +172,4 @@ const Container = styled.div`
   justify-content: center;
   background: black;
 `;
-export default connect(mapStatetoProps, mapDispatchtoProps)(Kanalet);
+export default Kanalet;

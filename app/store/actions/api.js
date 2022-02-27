@@ -1,8 +1,10 @@
 import axios from "axios";
+import Auth from "@aws-amplify/auth";
+import { API } from "aws-amplify";
 import _, { snakeCase } from "lodash";
-import { API } from "../../CONSTANTS/API";
+import { APIS } from "../../CONSTANTS/APIS";
 import DATA from "../../CONSTANTS/DATA";
-import myData from "../../../assets/channels/channels.json";
+
 export const FETCH_CACHE_DURATION = 60 * 1000;
 
 // The action creator functions.
@@ -21,228 +23,232 @@ const apiError = (identifier, data) => {
   return { type: `${type}_ERROR`, data: data };
 };
 
-export const createFetchActionforJSON = (
-  identifier = null,
-
-  onSuccess = () => console.log("onSuccess"),
-  onError = () => console.log("onError"),
-  transformData = null
-) => (dispatch, getState) => {
-  const state = getState();
-
-  if (myData) {
-    if (transformData === null) {
-      dispatch(apiSuccess(identifier, { data: myData }));
-    } else {
-      dispatch(
-        apiSuccess(identifier, {
-          data: transformData(myData, state),
-        })
-      );
-    }
-    onSuccess && onSuccess(myData);
-    return myData;
-  } else {
-    console.log({ ERROR: myData });
-    dispatch(apiError(identifier, { error: myData }));
+const callWebAPI = async (method, path, body) => {
+  const apiName = "LiveTV";
+  const iPath = path;
+  const myInit = { body };
+  switch (method.toUpperCase()) {
+    case "GET":
+      return API.get(apiName, iPath, myInit);
+    case "POST":
+      return API.post(apiName, iPath, myInit);
+    default:
+      return API.post(apiName, iPath, myInit);
   }
-  return null;
 };
 
-export const createFetchAction = (
-  url = null,
-  identifier = null,
-  method = "GET",
-  body = null,
-  extraPayload = {},
-  onSuccess = () => console.log("onSuccess"),
-  transformData = null,
-  onError = () => console.log("onError")
-) => (dispatch, getState) => {
-  const state = getState();
-  dispatch(apiBegin(identifier, url));
-
-  axios({
-    url: url,
-    method: method,
-    headers: { Accept: "application/json" },
-    ...extraPayload,
-  })
-    .then((response) => {
-      if (response.status === 200 || response.status === 201) {
-        if (transformData === null) {
-          dispatch(apiSuccess(identifier, { data: response.data }));
-        } else {
-          dispatch(
-            apiSuccess(identifier, {
-              data: transformData(response.data, state),
-            })
-          );
-        }
-        onSuccess && onSuccess(response.data);
-        return response.data;
+export const createFetchAction =
+  (
+    url = null,
+    identifier = null,
+    method = "POST",
+    body = {},
+    extraPayload = {},
+    onSuccess = () => console.log("onSuccess"),
+    transformData = null,
+    onError = () => console.log("onError"),
+    authRequired = true
+  ) =>
+  async (dispatch, getState) => {
+    const state = getState();
+    dispatch(apiBegin(identifier, url));
+    try {
+      const data = await callWebAPI(
+        method,
+        url,
+        authRequired ? { ...body, userId: state.userAWS.id } : body
+      );
+      if (transformData == null) {
+        dispatch(apiSuccess(identifier, { data: data }));
       } else {
-        console.log({ ERROR: response.data });
-        dispatch(apiError(identifier, { error: response.data }));
+        dispatch(apiSuccess(identifier, { data: transformData(data, state) }));
       }
-    })
-    .catch((error) => {
+      onSuccess && onSuccess(data);
+      return data;
+    } catch (error) {
       console.log({ URL: url, ERROR: error });
       onError() && onError(error);
       dispatch(apiError(identifier, { error: error }));
-    });
-  return null;
-};
+    }
 
-// Helpers
+    // axios({
+    //     'url': url,
+    //     'method': method,
+    //     'headers': { 'Accept': 'application/json', },
+    //     ...extraPayload,
+    // }).then(response => {
+    //     if (response.status == 200 || response.status == 201) {
+    //         if (transformData == null) {
+    //             dispatch(apiSuccess(identifier, { data: response.data }));
+    //         } else {
+    //             dispatch(apiSuccess(identifier, { data: transformData(response.data, state) }));
+    //         }
+    //         onSuccess && onSuccess(response.data);
+    //         return response.data;
+    //     } else {
+    //         console.log({ ERROR: response.data })
+    //         dispatch(apiError(identifier, { error: response.data }));
+    //     }
+    // }).catch(error => {
+    //     console.log({ URL: url, ERROR: error })
+    //     onError() && onError(error);
+    //     dispatch(apiError(identifier, { error: error }));
+    // })
 
-const getMuxUrl = (url, id = null) => {
-  if (id === null) {
-    return API.MUX.BASE_URL + url;
-  } else {
-    return API.MUX.BASE_URL + url.replace("{asset_id}", id);
-  }
-};
+    return null;
+  };
 
-/*
- ** LiveTV actions
- */
-
+/************************************* LiveTV actions ****************************************/
 export const liveTV_getChannels = () =>
   createFetchAction(
-    API.IPTV.CHANNELS_JSON,
+    APIS.IPTV.CHANNELS_JSON,
     "liveTV_channels",
     "GET",
     null,
     {},
     () => console.log("onSuccess"),
     (data, state) => {
-      let country = "Albania";
-      let channelsByCountry = new Object();
-      console.log(data);
-      data.forEach((item) => {
-        if (item.name == "T7") {
-          // console.log(item);
-        }
-        if (item && item.country && item.country.name) {
-          country = item.country.name;
-          if (!Object.keys(channelsByCountry).includes(country)) {
-            channelsByCountry[country] = new Array();
-          }
-
-          channelsByCountry[country].push(item);
-        }
-      });
-
-      const filteredChannels = _.pick(
-        channelsByCountry,
-        DATA.LIVE_TV_COUNTRIES
-      );
-
-      return {
-        filteredChannels: filteredChannels,
-      };
-    },
-    () => {
-      console.log("onError");
-    }
-  );
-
-/*
- ** MUX actions
- */
-
-export const getChannelsfromJSON = () =>
-  createFetchActionforJSON(
-    "liveTV_channels",
-    () => console.log("onSuccess"),
-    () => console.log("onError"),
-    (data, state) => {
       let country = "";
       let channelsByCountry = new Object();
-
       data.forEach((item) => {
-        // if (item.group == "Albania") {
-        //   console.log(item.name);
-        // }
-        if (item && item.group) {
-          country = item.group;
+        if (
+          item &&
+          item.countries &&
+          item.countries[0] &&
+          item.countries[0].name
+        ) {
+          country = item.countries[0].name;
           if (!Object.keys(channelsByCountry).includes(country)) {
             channelsByCountry[country] = new Array();
           }
-
           channelsByCountry[country].push(item);
         }
       });
-
       const filteredChannels = _.pick(
         channelsByCountry,
         DATA.LIVE_TV_COUNTRIES
       );
-      console.log(filteredChannels);
+
       return {
         filteredChannels: filteredChannels,
       };
-    }
-  );
-
-export const mux_getAssets = () =>
-  createFetchAction(
-    getMuxUrl(API.MUX.ASSETS.LIST_ASSETS),
-    "mux_assets",
-    "GET",
-    null,
-    {
-      auth: {
-        username: API.MUX.TOKEN_ID,
-        password: API.MUX.TOKEN_SECRET,
-      },
     },
-    () => console.log("onSuccess"),
-    null,
     () => {
       console.log("onError");
     }
   );
 
-export const mux_getLiveStreams = () =>
-  createFetchAction(
-    getMuxUrl(API.MUX.LIVE_STREAMS.LIST_LIVE_STREAMS),
-    "mux_liveStreams",
-    "GET",
-    null,
-    {
-      auth: {
-        username: API.MUX.TOKEN_ID,
-        password: API.MUX.TOKEN_SECRET,
-      },
-    },
-    () => console.log("onSuccess"),
-    null,
-    () => {
-      console.log("onError");
-    }
-  );
+/*************************************** User actions ****************************************/
 
-export const mux_createLiveStream = () =>
+export const user_get = (
+  onSuccess = () => {
+    console.log("user_get success");
+  },
+  onError = () => {
+    console.log("user_get error");
+  }
+) =>
   createFetchAction(
-    getMuxUrl(API.MUX.LIVE_STREAMS.CREATE_LIVE_STREAM),
-    "mux_createLiveStream",
+    "/user/get",
+    "user",
     "POST",
-    null,
-    {
-      data: {
-        playback_policy: "public",
-        new_asset_settings: { playback_policy: "public" },
-      },
-      auth: {
-        username: API.MUX.TOKEN_ID,
-        password: API.MUX.TOKEN_SECRET,
-      },
+    {},
+    {},
+    onSuccess,
+    (data, state) => {
+      var favoriteChannels = [];
+      if (data.content.favoriteChannels != null) {
+        favoriteChannels = data.content.favoriteChannels.split(",").map(Number);
+      }
+      return { ...data.content, favoriteChannels: favoriteChannels };
     },
-    () => console.log("onSuccess"),
+    onError,
+    true
+  );
+
+export const user_update = (
+  body = {},
+  onSuccess = () => {
+    console.log("user_update success");
+  },
+  onError = () => {
+    console.log("user_update error");
+  }
+) =>
+  createFetchAction(
+    "/user/update",
+    "user_update",
+    "POST",
+    body,
+    {},
+    onSuccess,
     null,
-    () => {
-      console.log("onError");
-    }
+    onError,
+    true
+  );
+
+export const user_event = (
+  body = {},
+  onSuccess = () => {
+    console.log("user_event success");
+  },
+  onError = () => {
+    console.log("user_event error");
+  }
+) =>
+  createFetchAction(
+    "/user/event",
+    "user_event",
+    "POST",
+    body,
+    {},
+    onSuccess,
+    null,
+    onError,
+    true
+  );
+
+/*************************************** Channels actions ****************************************/
+
+export const channels_get = (
+  onSuccess = () => {
+    console.log("channels_get success");
+  },
+  onError = () => {
+    console.log("channels_get error");
+  }
+) =>
+  createFetchAction(
+    "/channels/get",
+    "channels",
+    "POST",
+    {},
+    {},
+    onSuccess,
+    (data, state) => {
+      return data.content;
+    },
+    onError,
+    false
+  );
+
+export const channels_toggleFavorite = (
+  channelId = null,
+  onSuccess = () => {
+    console.log("channels_toggleFavorite success");
+  },
+  onError = () => {
+    console.log("channels_toggleFavorite error");
+  }
+) =>
+  createFetchAction(
+    "/channels/toggleFavorite",
+    "channels_toggleFavorite",
+    "POST",
+    { channelId: channelId },
+    {},
+    onSuccess,
+    null,
+    onError,
+    true
   );

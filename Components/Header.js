@@ -115,7 +115,7 @@ const Header = (props) => {
 
       <Login
         onClick={() => {
-          router.push("/LiveTV", undefined, { shallow: true });
+          router.push("/SignIn", undefined, { shallow: true });
         }}
       >
         Login

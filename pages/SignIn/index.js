@@ -1,77 +1,63 @@
 import { TextField } from "@mui/material";
 import React, { useEffect } from "react";
-// import { useHistory } from "react-router-dom";
-// import { connect } from "react-redux";
+
+import { connect } from "react-redux";
 import { IoArrowBack } from "react-icons/io5";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
-// import Auth from "@aws-amplify/auth";
-// import { refreshUser } from "../../app/store/actions/user";
-// import ReactLoading from "react-loading";
+import { setUserAWS } from "../../app/store/actions/userAWS";
+import Auth from "@aws-amplify/auth";
 
-// const mapStatetoProps = (state) => ({});
-// const mapDispatchtoProps = (dispatch) => {
-//   return {
-//     refreshUser: (onSuccess, onError) =>
-//       dispatch(refreshUser(onSuccess, onError)),
-//   };
-// };
+import ReactLoading from "react-loading";
+
+const mapStatetoProps = (state) => ({});
+const mapDispatchtoProps = (dispatch) => {
+  return {
+    setUserAWS: (onSuccess, onError) =>
+      dispatch(setUserAWS(onSuccess, onError)),
+  };
+};
 function SignIn(props) {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
-  //   const history = useHistory();
 
   const logIn = async () => {
     setLoading(true);
     console.log("Log In");
-    // try {
-    //   await Auth.signIn(email, password);
-    //   setError("");
-    //   props.refreshUser(
-    //     () => {
-    //       setLoading(false);
-    //       history.push("./LiveTV");
-    //     },
-    //     () => console.log("Error refreshing user")
-    //   );
-    // } catch (err) {
-    //   console.log("error signing in", err);
-    //   setError(err.message);
-    //   setLoading(false);
-    // }
+    try {
+      const user = await Auth.signIn(email, password);
+      setError("");
+      props.setUserAWS(
+        () => {
+          console.log(user);
+          router.push("/LiveTV", undefined, { shallow: true });
+        },
+        () => {
+          console.log("ERROR GETTING USER AWS");
+        }
+      );
+    } catch (err) {
+      console.log("error signing in", err);
+      setError(err.message);
+      setLoading(false);
+      if (err.name == "UserNotConfirmedException") {
+        console.log("UserNotConfirmedException");
+      }
+    }
   };
 
   const onForgotPassword = () => {
-    // history.push("./ForgotPassword");
+    router.push("/ForgotPassword", undefined, { shallow: true });
   };
 
   useEffect(() => {
     console.log("From Effect" + email);
   }, [email]);
-
-  // useEffect(() => {
-  //   const listener = (event) => {
-  //     console.log(email);
-  //     if (event.code === "Enter" || event.code === "NumpadEnter") {
-  //       console.log(email);
-  //       console.log(event.code);
-  //       event.preventDefault();
-
-  //       logIn();
-
-  //       // callMyFunction();
-  //     }
-  //   };
-  //   document.addEventListener("keydown", listener);
-  //   return () => {
-  //     document.removeEventListener("keydown", listener);
-  //   };
-  // }, []);
 
   const handleSubmit = () => {
     console.log("clicked");
@@ -283,5 +269,5 @@ const ForgotPasswordButton = styled(Button)`
     }
   }
 `;
-export default SignIn;
-// export default connect(mapStatetoProps, mapDispatchtoProps)(SignIn);
+// export default SignIn;
+export default connect(mapStatetoProps, mapDispatchtoProps)(SignIn);

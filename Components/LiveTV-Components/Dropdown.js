@@ -4,9 +4,11 @@ import Link from "next/link";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import { CgProfile } from "react-icons/cg";
+import { useRouter } from "next/router";
 // import { connect } from "react-redux";
 // import _ from "lodash";
-// import Auth from "@aws-amplify/auth";
+import Auth from "@aws-amplify/auth";
+import _ from "lodash";
 
 // const mapStatetoProps = (state) => ({
 //   userAttributes: _.get(state, `user.attributes`, false),
@@ -16,10 +18,12 @@ import { CgProfile } from "react-icons/cg";
 // };
 
 function Dropdown({ isOpen, toggle, ...props }) {
+  const router = useRouter();
   const signOut = async () => {
+    console.log("Sign Out");
     try {
-      // await Auth.signOut({ global: false });
-      // history.push("./Home");
+      await Auth.signOut({ global: false });
+      router.push("/Home", undefined, { shallow: true });
     } catch (error) {
       console.log("error signing out: ", error);
     }
@@ -51,7 +55,7 @@ function Dropdown({ isOpen, toggle, ...props }) {
           </SidebarRoute>
 
           <Link href='/'>
-            <StyledButtonHome>
+            <StyledButtonHome onClick={signOut}>
               <span>Sign Out</span>
             </StyledButtonHome>
           </Link>

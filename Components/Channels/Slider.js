@@ -11,21 +11,10 @@ import { connect } from "react-redux";
 import { wrapper } from "../../app/store";
 import { bindActionCreators } from "redux";
 
-// export const getServerSideProps = wrapper.getServerSideProps((store) => () => {
-//   store.dispatch(getChannels());
-// });
-
 const mapStatetoProps = (state) => ({
-  channelsfromJSON: _.get(state, `liveTV.channels`, []),
-  favoriteChannels: _.get(state, `liveTV.favoriteChannels`, []),
+  favoriteChannels: _.get(state, `favoriteChannels.data`, []),
+  channels: _.get(state, `channels.data`, []),
 });
-
-const mapDispatchtoProps = (dispatch) => {
-  return {
-    setChannelPlaying: (data) => dispatch(setChannelPlaying(data)),
-    getChannels: bindActionCreators(getChannels, dispatch),
-  };
-};
 
 function Slider({ kanalet, change, ...props }) {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -36,8 +25,7 @@ function Slider({ kanalet, change, ...props }) {
     if (change === true) {
       setChannels(props.favoriteChannels);
     } else {
-      // console.log(props.liveTVChannels.Albania);
-      setChannels(kanalet);
+      setChannels(props.channels);
     }
   }, [change]);
 
@@ -51,7 +39,6 @@ function Slider({ kanalet, change, ...props }) {
     var test = Math.ceil(channels.length / 6);
     if (active === test - 1) {
     } else {
-      console.log(channels.length);
       setActiveSlide(active + 1);
       increaseValue(active);
     }
@@ -164,4 +151,4 @@ const ArrowBtn = styled.span`
     border-color: #333;
   }
 `;
-export default connect(mapStatetoProps, mapDispatchtoProps)(Slider);
+export default connect(mapStatetoProps, null)(Slider);

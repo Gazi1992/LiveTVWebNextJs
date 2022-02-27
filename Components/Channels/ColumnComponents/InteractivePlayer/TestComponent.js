@@ -113,8 +113,7 @@ function TestComponent({ className, testURL }) {
     };
     initScreenful();
   }, []);
-  console.log(screenful);
-  console.log(testURL);
+
   const Url =
     "https://abc-iview-mediapackagestreams-2.akamaized.net/out/v1/6e1cc6d25ec0480ea099a5399d73bc4b/index.m3u8";
 

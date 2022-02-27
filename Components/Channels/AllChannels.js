@@ -19,14 +19,9 @@ import {
   getChannels,
 } from "../../app/store/actions/liveTV";
 
-// export const getServerSideProps = wrapper.getServerSideProps((store) => () => {
-//   store.dispatch(getChannels());
-// });
-
 const mapStatetoProps = (state) => ({
-  liveTVChannels: _.get(state, `liveTV.channels`, []),
-  favoriteChannels: _.get(state, `liveTV.favoriteChannels`, []),
-  playing: _.get(state, `liveTV.channelPlaying`, ""),
+  favoriteChannels: _.get(state, `favoriteChannels.data`, []),
+  channels: _.get(state, `channels.data`, []),
 });
 
 const mapDispatchtoProps = (dispatch) => {
@@ -34,7 +29,6 @@ const mapDispatchtoProps = (dispatch) => {
     addFavorite: (channel) => dispatch(addFavoriteChannel(channel)),
     removeFavorite: (channel) => dispatch(removeFavoriteChannel(channel)),
     setChannelPlaying: (channel) => dispatch(setChannelPlaying(channel)),
-    getCh: bindActionCreators(getChannels, dispatch),
   };
 };
 
@@ -52,9 +46,9 @@ function AllChannels({ kanalet, atSidebar, change, ...props }) {
     if (change === true) {
       setChannels(props.favoriteChannels);
     } else {
-      setChannels(props.liveTVChannels);
+      setChannels(props.channels);
     }
-  }, [props.liveTVChannels, change]);
+  }, [change]);
 
   return (
     <Container atSidebar={atSidebar}>
