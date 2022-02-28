@@ -256,19 +256,10 @@ const StyledButton = styled(Button)`
   && {
     margin: 10px;
     border-radius: 30px;
-    background: ${(p) =>
-      p.setcolor === "first"
-        ? "linear-gradient(0deg, rgba(56,246,116,1) 0%, rgba(41,158,233,1) 100%) "
-        : p.setcolor === "second"
-        ? " linear-gradient(0deg,rgba(41,158,233,1) 0%, rgba(23,181,78,1) 100%) "
-        : p.setcolor === "third"
-        ? " linear-gradient(0deg,rgba(23,181,78,1) 0%,  rgba(246,56,56,1) 100%)"
-        : p.setcolor === "fourth"
-        ? "linear-gradient(0deg, rgba(246,56,56,1) 0%,rgba(56,82,246,1) 100%)"
-        : " linear-gradient(0deg, rgba(56,82,246,1) 0%, rgba(181,23,23,1) 100%)"};
+    background: white;
     width: 80%;
     height: 70%;
-    color: white;
+    color: black;
     &:hover {
       background-color: ${(p) =>
         p.isBlack === "first"

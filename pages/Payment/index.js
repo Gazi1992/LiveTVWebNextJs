@@ -9,10 +9,8 @@ import {
 } from "@mui/material";
 import { IoArrowBack } from "react-icons/io5";
 import styled from "styled-components";
-// import Auth from "@aws-amplify/auth";
-// import { refreshUser } from "../../app/store/actions/user";
-// import { connect } from "react-redux";
-// import { useHistory } from "react-router-dom";
+import Auth from "@aws-amplify/auth";
+
 import ReactLoading from "react-loading";
 import { useRouter } from "next/router";
 
@@ -59,67 +57,62 @@ function DataForm(props) {
 
   const confirm = async () => {
     setLoading(true);
-    // try {
-    //   await Auth.confirmSignUp(email, confirmationCode);
-    //   setError("");
-    //   logIn();
-    // } catch (err) {
-    //   console.log("error confirming sign up", err);
-    //   setError(err.message);
-    //   setLoading(false);
-    // }
+    try {
+      await Auth.confirmSignUp(email, confirmationCode);
+      setError("");
+      logIn();
+    } catch (err) {
+      console.log("error confirming sign up", err);
+      setError(err.message);
+      setLoading(false);
+    }
   };
   const logIn = async () => {
     setLoading(true);
-    // try {
-    //   await Auth.signIn(email, password);
-    //   console.log(email);
-    //   setError("");
-    //   props.refreshUser(
-    //     () => {
-    //       setLoading(false);
-    //       history.push("/Payment/OfferSelection");
-    //     },
-    //     () => console.log("Error refreshing user")
-    //   );
-    // } catch (err) {
-    //   console.log("error signing in", err);
-    //   setError(err.message);
-    //   setLoading(false);
-    // }
+    try {
+      await Auth.signIn(email, password);
+      console.log(email);
+      setError("");
+      router.push("/Payment/Offerselection", undefined, { shallow: true });
+
+      setLoading(false);
+    } catch (err) {
+      console.log("error signing in", err);
+      setError(err.message);
+      setLoading(false);
+    }
   };
 
   const resendCode = async () => {
     setLoading(true);
-    // try {
-    //   await Auth.resendSignUp(email);
-    //   console.log("code resent successfully");
-    //   setError("");
-    //   setLoading(false);
-    // } catch (err) {
-    //   console.log("error resending code: ", err);
-    //   setError(err.message);
-    //   setLoading(false);
-    // }
+    try {
+      await Auth.resendSignUp(email);
+      console.log("code resent successfully");
+      setError("");
+      setLoading(false);
+    } catch (err) {
+      console.log("error resending code: ", err);
+      setError(err.message);
+      setLoading(false);
+    }
   };
 
   const signUp = async () => {
     setLoading(true);
-    // try {
-    //   const { user } = await Auth.signUp({
-    //     username: email,
-    //     password: password,
-    //   });
-    //   console.log(user);
-    //   setError("");
-
-    //   setWaitingConfirmation(true);
-    //   setLoading(false);
-    // } catch (err) {
-    //   console.log("error signing up:", err);
-    //   setError(err.message);
-    //   setLoading(false);
-    // }
+    try {
+      const { user } = await Auth.signUp({
+        username: email,
+        password: password,
+      });
+      console.log(user);
+      setError("");
+      setWaitingConfirmation(true);
+      setLoading(false);
+    } catch (err) {
+      console.log("error signing up:", err);
+      setError(err.message);
+      setLoading(false);
+    }
   };
   const SubmitSignUp = (event) => {
     event.preventDefault();
@@ -132,7 +125,7 @@ function DataForm(props) {
   };
   const onSignUp = () => signUp();
   const onConfirm = () => confirm();
-  // const onResendCode = () => resendCode();
+  const onResendCode = () => resendCode();
   return (
     <Container>
       {loading ? (
@@ -204,9 +197,9 @@ function DataForm(props) {
                   <FormButton
                     disabled={!activeSignUpButton}
                     type='submit'
-                    // onClick={() => {
-                    //   onSignUp();
-                    // }}
+                    onClick={() => {
+                      onSignUp();
+                    }}
                   >
                     Sign Up
                   </FormButton>
