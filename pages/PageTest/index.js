@@ -4,8 +4,7 @@ import Card from "./Card";
 import styled from "styled-components";
 import Image from "next/image";
 import { Stream } from "@styled-icons/material/Stream";
-// import { useHistory } from "react-router-dom";
-// import { Link } from "react-router-dom";
+
 import {
   Visa,
   Mastercard,

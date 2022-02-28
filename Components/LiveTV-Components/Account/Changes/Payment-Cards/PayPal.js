@@ -3,7 +3,7 @@ import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import styled from "styled-components";
 import PayPalButton from "./PayPalExtra/PaypalButton";
 import Button from "@material-ui/core/Button";
-import { useHistory } from "react-router";
+
 const PayPal = () => {
   const history = useHistory();
   const initialOptionsSubscription = {

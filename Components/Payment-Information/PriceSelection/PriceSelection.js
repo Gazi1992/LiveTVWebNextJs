@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Features from "./Features";
 import Button from "@material-ui/core/Button";
 import { StylesProvider } from "@material-ui/core";
-// import { Link } from "react-router-dom";
 
 function PriceSelection({
   offer,

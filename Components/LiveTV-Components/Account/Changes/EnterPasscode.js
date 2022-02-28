@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import { TextField } from "@material-ui/core";
 import Auth from "@aws-amplify/auth";
-import { useHistory, useLocation } from "react-router";
 
 function EnterPasscode(props) {
   const location = useLocation();
@@ -63,20 +62,20 @@ function EnterPasscode(props) {
             <h2> Code</h2>
             <StyledTextField
               style={{ marginLeft: "5px" }}
-              variant="outlined"
-              size="large"
-              autoComplete="new-password"
-              color="primary"
+              variant='outlined'
+              size='large'
+              autoComplete='new-password'
+              color='primary'
               required={true}
               onChange={(event) => {
                 setConfirmationCode(event.target.value);
               }}
               inputProps={{ maxLength: 6 }}
-              defaultValue=""
-              helperText=""
-              name="Confirmation Code"
-              placeholder="Confirmation Code"
-              id="Confirmation Code"
+              defaultValue=''
+              helperText=''
+              name='Confirmation Code'
+              placeholder='Confirmation Code'
+              id='Confirmation Code'
             />
             <span
               onClick={() => {

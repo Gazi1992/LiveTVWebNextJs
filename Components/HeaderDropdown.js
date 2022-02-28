@@ -6,8 +6,6 @@ import Button from "@material-ui/core/Button";
 import { CgProfile } from "react-icons/cg";
 // import _ from "lodash";
 // import Auth from "@aws-amplify/auth";
-// import { useHistory } from "react-router";
-// import { Link } from "react-router-dom";
 
 function HeaderDropdown({ isOpen, toggle }) {
   return (

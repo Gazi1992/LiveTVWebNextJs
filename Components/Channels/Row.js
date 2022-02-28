@@ -3,8 +3,6 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import ColumnW from "./Column";
 
-import { Link } from "react-router-dom";
-
 function Row() {
   const [channels, setChannels] = React.useState([]);
 

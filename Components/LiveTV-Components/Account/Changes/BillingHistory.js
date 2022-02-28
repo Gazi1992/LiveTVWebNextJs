@@ -2,7 +2,6 @@ import React from "react";
 
 import styled from "styled-components";
 import { IoArrowBack } from "react-icons/io5";
-import { useHistory } from "react-router";
 
 function BillingHistory() {
   const history = useHistory();

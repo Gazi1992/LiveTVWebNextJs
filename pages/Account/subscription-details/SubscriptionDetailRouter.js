@@ -4,12 +4,7 @@ import SubscriptionDetails from "./SubscriptionDetails";
 import ChangePaymentInfo from "./Change-payment-info/ChangePaymentInfo";
 import Survey from "../../../Components/LiveTV-Components/Account/Changes/Survey";
 import Annual from "./Annual/Annual";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useRouteMatch,
-} from "react-router-dom";
+
 import BillingHistory from "../../../Components/LiveTV-Components/Account/Changes/BillingHistory";
 import Plan from "../../../Components/LiveTV-Components/Account/Changes/Plan";
 

@@ -6,7 +6,6 @@ import PlayerHeader from "../../Components/Layout/PlayerHeader";
 // import Auth from "@aws-amplify/auth";
 // import _ from "lodash";
 // import { connect } from "react-redux";
-// import { useHistory } from "react-router";
 
 // const mapStatetoProps = (state) => ({
 //   userAttributes: _.get(state, `user.attributes`, false),
