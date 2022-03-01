@@ -2,12 +2,11 @@ import React from "react";
 import { FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 import Button from "@material-ui/core/Button";
-import { CgProfile } from "react-icons/cg";
-// import _ from "lodash";
-// import Auth from "@aws-amplify/auth";
 
 function HeaderDropdown({ isOpen, toggle }) {
+  const router = useRouter();
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
       <SidebarWrapper>
@@ -17,22 +16,42 @@ function HeaderDropdown({ isOpen, toggle }) {
           </Icon>
         </IconWrapper>
         <Link onClick={toggle} href='#Kanalet' offset={-80}>
-          <span>Kanalet</span>
+          <SidebarRoute>
+            <span>Kanalet</span>
+          </SidebarRoute>
         </Link>
         <Link onClick={toggle} href='#AddOns' offset={-80}>
-          <span>AddOns</span>
+          <SidebarRoute>
+            <span>AddOns</span>
+          </SidebarRoute>
         </Link>
         <Link onClick={toggle} href='#Ofertat' offset={-80}>
-          <span>Ofertat</span>
+          <SidebarRoute>
+            <span>Ofertat</span>
+          </SidebarRoute>
         </Link>
         <Link onClick={toggle} href='#Pajisjet' offset={-80}>
-          <span>Pajisjet</span>
+          <SidebarRoute>
+            <span>Pajisjet</span>
+          </SidebarRoute>
         </Link>
         <Link onClick={toggle} href='#About' offset={-80}>
-          <span>About</span>
+          <SidebarRoute>
+            <span>About</span>
+          </SidebarRoute>
         </Link>
-        <StyledButtonSignIn>SignIn</StyledButtonSignIn>
-        <StyledButtonPorosit>
+        <StyledButtonSignIn
+          onClick={() => {
+            router.push("/SignIn ", undefined, { shallow: true });
+          }}
+        >
+          SignIn
+        </StyledButtonSignIn>
+        <StyledButtonPorosit
+          onClick={() => {
+            router.push("/Payment", undefined, { shallow: true });
+          }}
+        >
           <span>POROSIT</span>
         </StyledButtonPorosit>
       </SidebarWrapper>
@@ -137,29 +156,29 @@ const StyledButtonSignIn = styled(Button)`
     }
   }
 `;
-// const SidebarRoute = styled(Link)`
-//   height: 40px;
-//   margin: 15px;
-//   margin-left: 20px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: left;
-//   padding-left: 35px;
-//   color: black;
-//   width: 100%;
-//   cursor: pointer;
-//   transition: all 0.2s ease-in-out;
+const SidebarRoute = styled.div`
+  height: 40px;
+  margin: 15px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding-left: 35px;
+  color: black;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
-//   span {
-//     letter-spacing: 0cm;
-//     font-size: 25px;
-//     font-weight: 500;
-//   }
-//   &:hover {
-//     transition: all 0.2s ease-in-out;
-//     color: gray;
-//   }
-// `;
+  span {
+    letter-spacing: 0cm;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    color: gray;
+  }
+`;
 
 export default HeaderDropdown;

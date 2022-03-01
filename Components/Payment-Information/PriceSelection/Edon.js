@@ -7,6 +7,7 @@ import { StylesProvider } from "@material-ui/core";
 function PriceSelection({
   offer,
   price,
+  size,
   isBlackstate,
   nrikanaleve,
   kanaleTotal,
@@ -22,7 +23,6 @@ function PriceSelection({
   Icon,
   style,
   buttonClicked,
-  size,
 }) {
   const BlueSVG = () => (
     <svg width='100%' height='100%' opacity='1'>
@@ -54,15 +54,15 @@ function PriceSelection({
   );
 
   return (
-    <Container isBlack={isBlackstate} setcolor={setcolor} size={size}>
-      <Introduction size={size}>
+    <Container isBlack={isBlackstate} setcolor={setcolor}>
+      <Introduction>
         <HeaderContainer>
           <h2>{offer}</h2>
         </HeaderContainer>
 
         <DiscountWrapper>
           <OldPrice>{oldPrice}</OldPrice>
-          <SavingsContainer size={size}>
+          <SavingsContainer>
             Save {Math.trunc(((oldPrice - price) / oldPrice) * 100)}%
           </SavingsContainer>
         </DiscountWrapper>
@@ -163,10 +163,9 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-
+  color: white;
   /* background-color: #4a8bf8; */
   background: #4a8bf8;
-  background-color: ${(p) => (p.size === "preferred" ? "#4a8bf8" : "white")};
   /* background: #1c3b68; */
 
   &:hover {
@@ -203,12 +202,9 @@ const OldPrice = styled.div`
   text-decoration-line: line-through;
 `;
 const SavingsContainer = styled.div`
-  border: ${(p) =>
-    p.size === "preferred"
-      ? "1px solid rgba(246,56,56,1)"
-      : "1px solid #22c1c3"};
-  background: ${(p) =>
-    p.size === "preferred" ? "rgba(246,56,56,1)" : "#22c1c3"};
+  border: 1px solid rgba(246, 56, 56, 1);
+
+  background: rgba(246, 56, 56, 1);
   border-radius: 20px;
   padding: 5px;
   color: white;
@@ -251,7 +247,7 @@ const Introduction = styled.div`
   width: 100%;
   height: fit-content;
   margin-bottom: 5px;
-  color: ${(p) => (p.size === "preferred" ? "white" : "black")};
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -269,7 +265,7 @@ const Wrap = styled.div`
   flex-direction: column;
   justify-content: space-between;
   background: transparent;
-  color: black;
+  color: white;
   position: relative;
 `;
 

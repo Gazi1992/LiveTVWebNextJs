@@ -122,7 +122,10 @@ const Header = (props) => {
       </Login>
       <PersonalContent>
         <ImageContainer onClick={toggle}>
-          <FiAlignJustify style={{ background: "transparent" }} size='30px' />
+          <FiAlignJustify
+            style={{ background: "transparent", color: "white" }}
+            size='30px'
+          />
         </ImageContainer>
         <HeaderDropdown isOpen={dropDownState} toggle={toggle} />
       </PersonalContent>

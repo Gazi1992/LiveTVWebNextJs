@@ -6,12 +6,14 @@ import { setPackage } from "../../../app/store/actions/others";
 import { useRouter } from "next/router";
 import { BiTv } from "react-icons/bi";
 import PriceSelection from "../../../Components/Payment-Information/PriceSelection/PriceSelection";
+import PriceSelectionBlue from "../../../Components/Payment-Information/PriceSelection/Edon";
 import {
   FcMultipleSmartphones,
   FcTouchscreenSmartphone,
   FcMultipleDevices,
 } from "react-icons/fc";
 
+import Image from "next/image";
 // const mapStateToProps = (state) => ({});
 
 // const mapDispatchToProps = (dispatch) => {
@@ -68,6 +70,7 @@ function OfferSelection(props) {
     // props.setPackage(data);
     // history.push("/Payment/FinalizeOffer");
   };
+
   return (
     <Container>
       <Wrapper>
@@ -82,12 +85,10 @@ function OfferSelection(props) {
           nrikanaleve='150'
           kanaleTotal='2000'
           LiveEventscheck={"cross"}
-          kanaletepreferuara='1'
           netflix={"cross"}
-          isBlackstate='gray'
           pajisjet='1 Smartphone'
           hd={"cross"}
-          size='small'
+          size='notpreferred'
           months={ofertat[0].length + " Muaj"}
           Icon={
             <FcTouchscreenSmartphone style={{ color: "blue" }} size='medium' />
@@ -111,7 +112,7 @@ function OfferSelection(props) {
           isBlackstate='gray'
           pajisjet='3 Smartphone'
           hd={"cross"}
-          size='small'
+          size='notpreferred'
           months={ofertat[1].length + " Muaj"}
           VOD='0'
         ></PriceSelection>
@@ -135,6 +136,7 @@ function OfferSelection(props) {
           hd={"true"}
           months={ofertat[2].length + " Muaj"}
           VOD='100'
+          size='notpreferred'
           Icon={<FcMultipleDevices size='medium' />}
         ></PriceSelection>
         <PriceSelection
@@ -152,7 +154,6 @@ function OfferSelection(props) {
           isBlackstate='purple'
           LiveEventscheck={"true"}
           netflix={"true"}
-          size='big'
           pajisjet='5 screens'
           months={ofertat[3].length + " Muaj"}
           hd={true}
@@ -202,6 +203,7 @@ function OfferSelection(props) {
           months={ofertat[4].length + " Muaj"}
           netflix={true}
           pajisjet='5 screens'
+          size='notpreferred'
           hd={true}
           VOD='100'
           Icon={
@@ -257,14 +259,7 @@ const Container = styled.div`
     rgba(10, 01, 122, 1) 100%
   ); */
 
-  background-image: linear-gradient(
-    to right bottom,
-    #121f3e,
-    #1b2b4c,
-    #24375b,
-    #2c436a,
-    #35507a
-  );
+  background-image: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -287,6 +282,9 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
   }
+  <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+    <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style="stroke: none; fill:red;"></path>
+  </svg>
 `;
 
 const StyledButton = styled(Button)`

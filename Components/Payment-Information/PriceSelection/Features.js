@@ -9,25 +9,24 @@ function Features({ feature, extra, check }) {
           return (
             <BsCheck2Circle
               size='22px'
-              style={{ margin: "0px", color: "green" }}
+              style={{ margin: "0px", color: "darkgreen" }}
             />
           );
         } else if (check === "cross") {
           return (
-            <BsXCircle size='22px' style={{ margin: "0px", color: "red" }} />
+            <BsXCircle
+              size='22px'
+              style={{ margin: "0px", color: "darkred" }}
+            />
           );
         }
       })()}
-      <p style={pStyle}>{feature}</p>
+      <p>{feature}</p>
 
-      <h3>{extra}</h3>
+      <h2 style={{ fontSize: "24px", fontWeight: "700" }}>{extra}</h2>
     </FeatureContainer>
   );
 }
-const pStyle = {
-  fontSize: "22px",
-  color: "#b9b8b8",
-};
 
 const FeatureContainer = styled.div`
   border-color: black;
@@ -41,7 +40,13 @@ const FeatureContainer = styled.div`
     margin: 5px;
   }
   p {
+    font-size: 20px;
+    font-weight: 400;
     margin: 5px;
+    color: white;
+  }
+  h2 {
+    color: white;
   }
 `;
 export default Features;
