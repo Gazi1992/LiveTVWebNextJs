@@ -6,7 +6,7 @@ import styled from "styled-components";
 function ButtonFooter() {
   return (
     <Container>
-      <Link href='/Favorites'>
+      <Link href='/Payment'>
         <StyledButton style={{ borderRadius: "5px" }}>Porosit</StyledButton>
       </Link>
     </Container>
