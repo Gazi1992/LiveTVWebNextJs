@@ -15,10 +15,24 @@ export default function App({ Component, pageProps }) {
   });
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Component {...pageProps} />
-      </PersistGate>
-    </Provider>
+    <>
+      <Script
+        strategy='lazyOnload'
+        src={`https://www.googletagmanager.com/gtag/js?id=G-JNP8C1F7HV`}
+      />
+
+      <Script strategy='lazyOnload'>
+        {`  window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-JNP8C1F7HV');`}
+      </Script>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Component {...pageProps} />
+        </PersistGate>
+      </Provider>
+    </>
   );
 }
