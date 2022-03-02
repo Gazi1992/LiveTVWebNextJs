@@ -23,6 +23,7 @@ import TemplateofAllDevices from "../../Components/TemplateofAllDevices";
 import ButtonFooter from "../../Components/VOD/Components/ButtonFooter";
 import Image from "next/image";
 import { connect } from "react-redux";
+import Link from "next/link";
 import _ from "lodash";
 import {
   addFavoriteChannel,
@@ -81,14 +82,9 @@ function Home(props) {
               type='video/mp4'
             />
           </Video>
-
-          <StyledButtonHome
-            onClick={() => {
-              router.push("/Payment", undefined, { shallow: true });
-            }}
-          >
-            POROSIT
-          </StyledButtonHome>
+          <Link href='/Payment'>
+            <StyledButtonHome>POROSIT</StyledButtonHome>
+          </Link>
         </BannerHome>
         <Kanalet id='Kanalet'>
           <Channels>

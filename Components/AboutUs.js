@@ -6,37 +6,32 @@ function AboutUs() {
   return (
     <Container id='About'>
       <FadeBackground>
+        <Header>Vizioni dhe Misioni</Header>
         <Paragraph>
-          <h1>Cfare eshte Arakne TV</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
             augue metus, porttitor tempor sapien eu, rutrum vestibulum risus.
-            Nullam luctus, libero cursus hendrerit ultricies, nulla dui
-            tincidunt magna, sed pellentesque enim est sed leo. Nulla varius
-            nisl eget massa ullamcorper iaculis. Morbi malesuada mauris mattis
-            massa mollis, at consequat massa aliquam. Vestibulum semper ligula
-            quis lacus ornare, quis porttitor tortor luctus. Aenean id purus sit
-            amet ex venenatis accumsan. Aliquam mattis lorem lorem, eu egestas
-            sem scelerisque quis. Sed pharetra gravida nunc, vel tincidunt
-            turpis semper nec. Nulla in enim elementum, molestie elit non,
-            convallis ipsum. Donec vitae elementum velit. Nunc tempus est vitae
-            purus posuere sagittis.
-          </p>
-          <h1>
-            Më shumë se Live TV. Tek ne mund të gjeni seriale, filma, koncerte
-            virtuale, e shumë të tjera!
-          </h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            augue metus, porttitor tempor sapien eu, rutrum vestibulum risus.
+            Nullam luctus, libero cursus hendrerit ultricies.
           </p>
         </Paragraph>
       </FadeBackground>
-      <ImgContainer
-        src='/images/tvwatching.jpg'
-        layout='fill'
-        objectFit='cover'
-      />
+      <ImageContainer>
+        <ImgDiv>
+          <Image
+            src='/images/Skenderbeu.png'
+            width={400}
+            height={600}
+            objectFit='cover'
+          />
+        </ImgDiv>
+        <ImgDivSmall>
+          <Image
+            objectFit='cover'
+            layout='fill'
+            src='/images/eagle-albania.jpg'
+          />
+        </ImgDivSmall>
+      </ImageContainer>
     </Container>
   );
 }
@@ -47,40 +42,101 @@ const Container = styled.section`
   height: 700px;
   background-color: #fff;
   margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 const FadeBackground = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 30%;
   height: 100%;
   z-index: 2;
   text-align: left;
   background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   @media screen and (max-width: 1500px) {
     width: 100%;
   }
 `;
 
-const Paragraph = styled.p`
+const Header = styled.h1`
   margin-left: 20px;
-  top: 0;
-  position: absolute;
-  font-size: 14px;
+
+  position: relative;
+  font-size: 38px;
   line-height: 1.5;
   background: transparent;
-  color: black;
+  color: #273748;
   width: 80%;
-  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+`;
+const Paragraph = styled.div`
+  margin-left: 20px;
+  border-left: 3px solid #dde4ec;
+  position: relative;
+
+  background: transparent;
+  color: #273748;
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  p {
+    line-height: 1.7;
+    margin-left: 20px;
+    margin-top: 0px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+`;
+const ImageContainer = styled.div`
+  width: 70%;
+
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
-const ImgContainer = styled(Image)`
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  z-index: 1;
+const ImgDivSmall = styled.div`
+  position: relative;
+  border-radius: 14px;
+  height: 400px;
+  width: 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  box-shadow: 0 0 16px rgb(0, 0, 0, 10%);
+
+  overflow: hidden;
+  @media screen and (max-width: 1500px) {
+    display: none;
+  }
+`;
+const ImgDiv = styled.div`
+  border-radius: 14px;
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  box-shadow: 0 0 16px rgb(0, 0, 0, 10%);
+
   overflow: hidden;
   @media screen and (max-width: 1500px) {
     display: none;

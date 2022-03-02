@@ -18,9 +18,9 @@ const Container = styled.div`
   position: relative;
   border: 3px solid rgba(249, 249, 249, 0.1);
   z-index: 2;
-  background: ${(p) => (p.differentiator === "atv" ? "#d8001a" : "white")};
+  background: ${(p) => (p.differentiator === "atv" ? "#d8001a" : "f4f4f4")};
   background-color: ${(p) =>
-    p.differentiator === "atv" ? "#d8001a" : "white"};
+    p.differentiator === "atv" ? "#d8001a" : "f4f4f4"};
 
   @media screen and (max-width: 600px) {
     width: 50px;
