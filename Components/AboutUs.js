@@ -26,9 +26,9 @@ function AboutUs() {
         </ImgDiv>
         <ImgDivSmall>
           <Image
+            src='/images/eagle-albania.jpg'
             objectFit='cover'
             layout='fill'
-            src='/images/eagle-albania.jpg'
           />
         </ImgDivSmall>
       </ImageContainer>
@@ -51,7 +51,7 @@ const Container = styled.section`
 const FadeBackground = styled.div`
   width: 30%;
   height: 100%;
-  z-index: 2;
+
   text-align: left;
   background: #f4f4f4;
   display: flex;
@@ -59,6 +59,10 @@ const FadeBackground = styled.div`
   align-items: flex-start;
   justify-content: center;
   @media screen and (max-width: 1500px) {
+    width: 100%;
+    border: 1px solid green;
+  }
+  @media screen and (max-width: 800px) {
     width: 100%;
   }
 `;
@@ -107,6 +111,9 @@ const ImageContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 
 const ImgDivSmall = styled.div`
@@ -138,7 +145,7 @@ const ImgDiv = styled.div`
   box-shadow: 0 0 16px rgb(0, 0, 0, 10%);
 
   overflow: hidden;
-  @media screen and (max-width: 1500px) {
+  @media screen and (max-width: 800px) {
     display: none;
   }
 `;
