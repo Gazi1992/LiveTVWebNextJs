@@ -4,7 +4,7 @@ import { fadeInUp as fadeInFromLib } from "react-animations";
 import { keyframes } from "styled-components";
 import Image from "next/image";
 function Multitheme() {
-  const [theme, setTheme] = useState("liveevents");
+  const [theme, setTheme] = useState("livesport");
   const [active, setActive] = useState(false);
 
   const acitivisation = (value) => {
