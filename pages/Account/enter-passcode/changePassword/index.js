@@ -21,13 +21,14 @@ function ChangePassword() {
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
 
-      <h4>{result}</h4>;
+      <h4 style={{ color: "green" }}>{result}</h4>;
 
       setError("");
       setLoading(false);
     } catch (err) {
       console.log("error code: ", err);
       setError(err.message);
+      <h4>{err.message}</h4>;
       setLoading(false);
     }
   };
