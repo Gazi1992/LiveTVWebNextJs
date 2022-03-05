@@ -13,26 +13,26 @@ function ChangePassword() {
   const [loading, setLoading] = useState(false);
   const changePassword = async () => {
     setLoading(true);
-    // try {
-    //   let result = await Auth.currentAuthenticatedUser()
-    //     .then((user) => {
-    //       return Auth.changePassword(user, oldPassword, newPassword);
-    //     })
-    //     .then((data) => console.log(data))
-    //     .catch((err) => console.log(err));
-    //   console.log(result); // SUCCESS
-    //   <h4>{result}</h4>;
-    //   history.push("/account");
-    //   history.go(0);
-    //   setError("");
-    //   setLoading(false);
-    // } catch (err) {
-    //   console.log("error code: ", err);
-    //   setError(err.message);
-    //   setLoading(false);
-    // }
+    try {
+      let result = await Auth.currentAuthenticatedUser()
+        .then((user) => {
+          return Auth.changePassword(user, oldPassword, newPassword);
+        })
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+      console.log(result); // SUCCESS
+      <h4>{result}</h4>;
+      history.push("/account");
+      history.go(0);
+      setError("");
+      setLoading(false);
+    } catch (err) {
+      console.log("error code: ", err);
+      setError(err.message);
+      setLoading(false);
+    }
   };
-  // const history = useHistory();
+
   return (
     <PlayerHeader>
       <Container>
@@ -48,7 +48,7 @@ function ChangePassword() {
               type='password'
               required={true}
               onChange={(event) => {
-                // setOldPassword(event.target.value);
+                setOldPassword(event.target.value);
               }}
               defaultValue=''
               helperText=''
@@ -65,7 +65,7 @@ function ChangePassword() {
               type='password'
               required={true}
               onChange={(event) => {
-                // setNewPassword(event.target.value);
+                setNewPassword(event.target.value);
               }}
               defaultValue=''
               helperText=''
@@ -76,7 +76,13 @@ function ChangePassword() {
           </RowContainer>
 
           <ButtonContainer>
-            <SaveButton>SAVE</SaveButton>
+            <SaveButton
+              onClick={() => {
+                changePassword();
+              }}
+            >
+              SAVE
+            </SaveButton>
             <Link href='./'>
               <CancelButton>CANCEL</CancelButton>
             </Link>

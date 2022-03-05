@@ -118,7 +118,6 @@ function Plan(props) {
             kanaletepreferuara={true}
             isBlackstate='purple'
             currentPlan='true'
-            LiveEventscheck={"true"}
             netflix={"true"}
             size='big'
             pajisjet='5 screens'
@@ -141,9 +140,7 @@ function Plan(props) {
             LiveEventscheck={"true"}
             kanaletepreferuara={true}
             isBlackstate='purple'
-            LiveEventscheck={"true"}
             netflix={"true"}
-            size='big'
             pajisjet='5 screens'
             months={ofertat[3].length + " Muaj"}
             hd={true}
@@ -163,7 +160,6 @@ function Plan(props) {
             LiveEventscheck={true}
             kanaletepreferuara={true}
             isBlackstate='purple'
-            LiveEventscheck={true}
             months={ofertat[4].length + " Muaj"}
             netflix={true}
             pajisjet='5 screens'
@@ -178,13 +174,13 @@ function Plan(props) {
 
 const Container = styled.div`
   width: 100%;
-  height: calc(100vh - 100px);
-
+  /* height: calc(100vh - 100px); */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+
   @media screen and (max-width: 1400px) {
     height: 100%;
   }

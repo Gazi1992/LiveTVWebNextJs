@@ -14,22 +14,22 @@ function ChangeEmail() {
   useEffect(() => {
     setConfirmation(false);
   }, []);
-  // const changeEmail = async () => {
-  //   setLoading(true);
-  //   try {
-  //     let user = await Auth.currentAuthenticatedUser();
-  //     let result = await Auth.updateUserAttributes(user, {
-  //       email: email,
-  //     });
-  //     setError("");
-  //     setLoading(false);
-  //     setConfirmation(true);
-  //   } catch (err) {
-  //     console.log("error resending code: ", err);
-  //     setError(err.message);
-  //     setLoading(false);
-  //   }
-  // };
+  const changeEmail = async () => {
+    setLoading(true);
+    try {
+      let user = await Auth.currentAuthenticatedUser();
+      let result = await Auth.updateUserAttributes(user, {
+        email: email,
+      });
+      setError("");
+      setLoading(false);
+      setConfirmation(true);
+    } catch (err) {
+      console.log("error resending code: ", err);
+      setError(err.message);
+      setLoading(false);
+    }
+  };
 
   // const history = useHistory();
   return (
@@ -51,23 +51,20 @@ function ChangeEmail() {
                   fullWidth
                   type='email'
                   id='Email '
-                  required
                   onChange={(event) => {
                     console.log(event.target.value);
-                    // setEmail(event.target.value);
+                    setEmail(event.target.value);
                   }}
                   defaultValue=''
                   name='New Email'
                   placeholder='New Email'
-                  id='New Email'
                 />
               </RowContainer>
 
               <ButtonContainer>
                 <SaveButton
                   onClick={() => {
-                    console.log("change Email");
-                    // changeEmail();
+                    changeEmail();
                   }}
                 >
                   SAVE

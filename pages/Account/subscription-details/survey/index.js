@@ -7,6 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import { IoArrowBack } from "react-icons/io5";
 import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
 import { Button } from "@material-ui/core";
+import Link from "next/link";
 const style = {
   marginLeft: "10px",
   color: "#6c7489",
@@ -15,14 +16,12 @@ function Survey() {
   return (
     <PlayerHeader>
       <Container>
-        <Header
-          onClick={() => {
-            // history.goBack();
-          }}
-        >
-          <IoArrowBack style={{ color: "#67bdff", marginLeft: "5px" }} />
-          <span> Back to Account</span>
-        </Header>
+        <Link href='./'>
+          <Header>
+            <IoArrowBack style={{ color: "#67bdff", marginLeft: "5px" }} />
+            <span> Back</span>
+          </Header>
+        </Link>
 
         <Wrapper>
           <RowContainer style={{ border: "0px" }}>
@@ -120,32 +119,25 @@ function Survey() {
             </RadioGroup>
           </FormControl>
         </Wrapper>
-        <ConfirmButtonHome
-          onClick={() => {
-            // history.goBack();
-          }}
-        >
-          FINALIZE CANCELING!
-        </ConfirmButtonHome>
-        <CancelButtonHome
-          onClick={() => {
-            // history.goBack();
-          }}
-        >
-          CANCEL
-        </CancelButtonHome>
+        <Link href='./'>
+          <ConfirmButtonHome>Finalize Canceling!</ConfirmButtonHome>
+        </Link>
+        <Link href='./'>
+          <CancelButtonHome>CANCEL</CancelButtonHome>
+        </Link>
       </Container>
     </PlayerHeader>
   );
 }
 const Container = styled.div`
   width: 100vw;
-  height: 92vh;
-  margin-top: 80px;
+  height: 100vh;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   @media screen and (max-width: 800px) {
     width: 100%;
   }
@@ -179,7 +171,7 @@ const Wrapper = styled.div`
   }
 `;
 const StyledLabel = styled.span`
-  font-size: 20px;
+  font-size: 16px;
   margin-left: 10px;
   @media screen and (max-width: 800px) {
     font-size: 15px;
@@ -192,7 +184,7 @@ const ConfirmButtonHome = styled(Button)`
     width: 750px;
     height: 50px;
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     &:hover {
       background-color: #dd3226;
@@ -211,7 +203,7 @@ const CancelButtonHome = styled(Button)`
     width: 750px;
     height: 50px;
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     bottom: 0;
 

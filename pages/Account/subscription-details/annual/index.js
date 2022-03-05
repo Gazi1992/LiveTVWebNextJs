@@ -4,27 +4,25 @@ import styled from "styled-components";
 import { BsFillCreditCard2FrontFill } from "react-icons/bs";
 import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
 import { IoArrowBack } from "react-icons/io5";
+import Link from "next/link";
 
 function Annual() {
   const [confirm, setConfirm] = useState(false);
-  // const history = useHistory();
   useEffect(() => {
     setConfirm(false);
   }, []);
   return (
     <PlayerHeader>
       <Container>
-        <BackHeader
-          onClick={() => {
-            // history.goBack();
-          }}
-        >
-          <IoArrowBack style={{ color: "#67bdff", marginLeft: "5px" }} />
-          <span> Back to Account</span>
-        </BackHeader>
+        <Link href='./'>
+          <BackHeader>
+            <IoArrowBack style={{ color: "#67bdff", marginLeft: "5px" }} />
+            <span> Back </span>
+          </BackHeader>
+        </Link>
         <Header>
           <h1>Switch to Annual Subscription</h1>
-          <h4>89.90/year. Cancel anytime</h4>
+          <h4>99.90/year. Cancel anytime</h4>
           <p>
             Your annual subscription starts immediately. The reminder of your
             current subscription will be added to the end of your new annual
@@ -48,13 +46,11 @@ function Annual() {
                   <span style={{ fontSize: "10px" }}>Edon Derguti</span>
                 </LogoAndPrice>
               </CardContainer>
-              <ChangeContainer
-                onClick={() => {
-                  // history.push("./change-payment-info");
-                }}
-              >
-                <span>Change</span>
-              </ChangeContainer>
+              <Link href='./change-payment-info'>
+                <ChangeContainer>
+                  <span>Change</span>
+                </ChangeContainer>
+              </Link>
             </BillingDetailsContainer>
           </RowContainer>
           <RowContainer>
@@ -66,7 +62,7 @@ function Annual() {
                   autoComplete='new-password'
                   required={true}
                   onChange={(event) => {
-                    // setConfirmationCode(event.target.value);
+                    //  setConfirmationCode(event.target.value);
                   }}
                   inputProps={{
                     maxLength: 4,
@@ -92,7 +88,7 @@ function Annual() {
               >
                 <StyledButtonHome
                   onClick={() => {
-                    // setConfirm(true);
+                    setConfirm(true);
                   }}
                 >
                   CONFIRM
@@ -118,7 +114,7 @@ function Annual() {
                 >
                   <StyledButtonHome
                     onClick={() => {
-                      // setConfirm(true);
+                      setConfirm(true);
                     }}
                   >
                     ORDER & PAY
@@ -134,8 +130,13 @@ function Annual() {
 }
 
 const Container = styled.div`
-  width: fit-content;
-  height: fit-content;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Header = styled.div`
@@ -148,10 +149,11 @@ const Header = styled.div`
   align-items: flex-start;
 
   h1 {
+    margin: 0px;
     text-align: left;
   }
   h4 {
-    margin: -20px 0 0 0;
+    margin: 10px 0 0 0;
     text-align: left;
   }
   p {
@@ -171,7 +173,8 @@ const BillingHeader = styled.div`
 `;
 const BackHeader = styled.div`
   width: 400px;
-  height: 50px;
+  height: fit-content;
+  margin-bottom: 10px;
   cursor: pointer;
   display: flex;
   flex-direction: row;

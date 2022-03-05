@@ -2,81 +2,82 @@ import React from "react";
 
 import styled from "styled-components";
 import { IoArrowBack } from "react-icons/io5";
+import Link from "next/link";
+import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
 
 function BillingHistory() {
-  const history = useHistory();
   return (
-    <Container>
-      <Header
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        <IoArrowBack style={{ color: "#67bdff", marginLeft: "5px" }} />
-        <span> Back to Account</span>
-      </Header>
-      <Title>
-        <span> Subscription details</span>
-      </Title>
+    <PlayerHeader>
+      <Container>
+        <Link href='./'>
+          <Header>
+            <IoArrowBack style={{ color: "#67bdff", marginLeft: "5px" }} />
+            <span> Back</span>
+          </Header>
+        </Link>
+        <Title>
+          <span> Subscription details</span>
+        </Title>
 
-      <BlockContainer>
-        <BlockHeaderContainer>
-          <DateContainer>
-            <span>Date</span>
-          </DateContainer>
-          <DescriptionContainer>
-            <span>Descprition</span>
-          </DescriptionContainer>
-          <TotalContainer>
-            <span>Total</span>
-          </TotalContainer>
-        </BlockHeaderContainer>
-        <RowContainer>
-          <DateContainer>
-            <span style={{ color: "#5f98cf" }}>1 Mars 2020</span>
-          </DateContainer>
-          <DescriptionContainer>
-            <span>Disney Plus Monthly</span>
-          </DescriptionContainer>
-          <TotalContainer>
-            <span>E8.99</span>
-          </TotalContainer>
-        </RowContainer>
-        <RowContainer>
-          <DateContainer>
-            <span>1 Mars 2020</span>
-          </DateContainer>
-          <DescriptionContainer>
-            <span>Disney Plus Monthly</span>
-          </DescriptionContainer>
-          <TotalContainer>
-            <span>E8.99</span>
-          </TotalContainer>
-        </RowContainer>
-        <RowContainer>
-          <DateContainer>
-            <span>1 Mars 2020</span>
-          </DateContainer>
-          <DescriptionContainer>
-            <span>Disney Plus Monthly</span>
-          </DescriptionContainer>
-          <TotalContainer>
-            <span>E8.99</span>
-          </TotalContainer>
-        </RowContainer>
-      </BlockContainer>
-    </Container>
+        <BlockContainer>
+          <BlockHeaderContainer>
+            <DateContainer>
+              <span>Date</span>
+            </DateContainer>
+            <DescriptionContainer>
+              <span>Descprition</span>
+            </DescriptionContainer>
+            <TotalContainer>
+              <span>Total</span>
+            </TotalContainer>
+          </BlockHeaderContainer>
+          <RowContainer>
+            <DateContainer>
+              <span style={{ color: "#5f98cf" }}>1 Mars 2020</span>
+            </DateContainer>
+            <DescriptionContainer>
+              <span>Disney Plus Monthly</span>
+            </DescriptionContainer>
+            <TotalContainer>
+              <span>E8.99</span>
+            </TotalContainer>
+          </RowContainer>
+          <RowContainer>
+            <DateContainer>
+              <span>1 Mars 2020</span>
+            </DateContainer>
+            <DescriptionContainer>
+              <span>Disney Plus Monthly</span>
+            </DescriptionContainer>
+            <TotalContainer>
+              <span>E8.99</span>
+            </TotalContainer>
+          </RowContainer>
+          <RowContainer>
+            <DateContainer>
+              <span>1 Mars 2020</span>
+            </DateContainer>
+            <DescriptionContainer>
+              <span>Disney Plus Monthly</span>
+            </DescriptionContainer>
+            <TotalContainer>
+              <span>E8.99</span>
+            </TotalContainer>
+          </RowContainer>
+        </BlockContainer>
+      </Container>
+    </PlayerHeader>
   );
 }
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+  color: white;
 `;
 
 const Header = styled.div`

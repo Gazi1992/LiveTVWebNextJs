@@ -27,7 +27,6 @@ function Account(props) {
 
   const verifyUser = async (select) => {
     try {
-      console.log(email);
       Auth.verifyCurrentUserAttribute("email");
       select === "email"
         ? router.push({
@@ -39,7 +38,6 @@ function Account(props) {
             query: { detail: "password" },
           });
     } catch (err) {
-      console.log("error confirming sign up", err);
       setError(err.message);
       setLoading(false);
     }
@@ -83,7 +81,11 @@ function Account(props) {
                 <MdModeEdit />
               </Icon>
             </DescriptionContainer>
-            <LogOutContainer>
+            <LogOutContainer
+              onClick={() => {
+                signOut();
+              }}
+            >
               <span>Sign Out</span>
             </LogOutContainer>
           </BlockContainer>
@@ -92,39 +94,30 @@ function Account(props) {
               <span>Subscription</span>
             </SubTitleContainer>
             <Link href='/Account/subscription-details'>
-              <DescriptionContainer
-              // onClick={() => {
-              //   history.push("/Account/subscription-details");
-              //   history.go(0);
-              // }}
-              >
+              <DescriptionContainer>
                 <span>ArakneTV (monthly)</span>
                 <Icon>
                   <IoChevronForwardSharp />
                 </Icon>
               </DescriptionContainer>
             </Link>
-            <DescriptionContainer
-            // onClick={() => {
-            //   history.push("/Account/subscription-details/billing-history");
-            // }}
-            >
-              <span>Billing History</span>
+            <Link href='/Account/subscription-details/billing-history'>
+              <DescriptionContainer>
+                <span>Billing History</span>
+                <Icon>
+                  <IoChevronForwardSharp />
+                </Icon>
+              </DescriptionContainer>
+            </Link>
+          </BlockContainer>
+          <Link href='/Account/subscription-details/annual'>
+            <SwitchToAnnualContainer>
+              <span>Switch to Annual and Save</span>
               <Icon>
                 <IoChevronForwardSharp />
               </Icon>
-            </DescriptionContainer>
-          </BlockContainer>
-          <SwitchToAnnualContainer
-          // onClick={() => {
-          //   history.push("/Account/subscription-details/annual");
-          // }}
-          >
-            <span>Switch to Annual and Save</span>
-            <Icon>
-              <IoChevronForwardSharp />
-            </Icon>
-          </SwitchToAnnualContainer>
+            </SwitchToAnnualContainer>
+          </Link>
         </Wrapper>
       </Container>
     </PlayerHeader>
