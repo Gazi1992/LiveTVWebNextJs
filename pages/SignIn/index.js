@@ -28,13 +28,11 @@ function SignIn(props) {
 
   const logIn = async () => {
     setLoading(true);
-    console.log("Log In");
     try {
       const user = await Auth.signIn(email, password);
       setError("");
       props.setUserAWS(
         () => {
-          console.log(user);
           router.push("/LiveTV", undefined, { shallow: true });
         },
         () => {
