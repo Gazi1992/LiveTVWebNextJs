@@ -76,13 +76,13 @@ function Kanalet(props) {
           </SelectorContainer>
         </SetFormat>
         {format === true ? (
-          <>
+          <AllChannelsWrapper>
             <AllChannels change={favorites} />
-          </>
+          </AllChannelsWrapper>
         ) : (
-          <>
+          <SliderWrapper>
             <Slider change={favorites} />
-          </>
+          </SliderWrapper>
         )}
       </Container>
     </PlayerHeader>
@@ -90,6 +90,7 @@ function Kanalet(props) {
 }
 
 const SetFormat = styled.div`
+  margin-top: 80px;
   height: 100px;
   width: 100%;
   display: flex;
@@ -140,6 +141,25 @@ const StyleActiveButton = styled(Button)`
   }
 `;
 
+const AllChannelsWrapper = styled.div`
+  height: calc(100vh - 180px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SliderWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const StylePassiveButton = styled(Button)`
   && {
     width: 40%;
@@ -163,7 +183,6 @@ const StylePassiveButton = styled(Button)`
   }
 `;
 const Container = styled.div`
-  margin-top: 80px;
   width: 100%;
   height: 100%;
   display: flex;

@@ -46,9 +46,7 @@ function LiveTV(props) {
   return (
     <PlayerHeader>
       <Container>
-        {/* {!props.channelsFetching && } */}
-        {/*
-        <Sidebar />*/}
+        <Sidebar />
         <ResponsiveStyledPlayer {...playerProps} />
       </Container>
     </PlayerHeader>

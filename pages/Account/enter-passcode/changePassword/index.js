@@ -20,10 +20,9 @@ function ChangePassword() {
         })
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
-      console.log(result); // SUCCESS
+
       <h4>{result}</h4>;
-      history.push("/account");
-      history.go(0);
+
       setError("");
       setLoading(false);
     } catch (err) {

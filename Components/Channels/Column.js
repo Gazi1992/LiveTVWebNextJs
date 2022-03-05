@@ -40,7 +40,7 @@ function Column({ logo, clickHandler }) {
 const Wrapper = styled.div`
   position: relative;
   margin: 1vw;
-  margin-bottom: 350px;
+  margin-bottom: 100px;
   color: white;
   display: flex;
 
@@ -53,10 +53,10 @@ const Wrapper = styled.div`
 const Container = styled.div`
   position: relative;
   margin: 2vw;
-  margin-bottom: 350px;
+  margin-bottom: 200px;
   color: white;
   display: flex;
-
+  height: 100%;
   width: 10vw;
   cursor: pointer;
   flex-direction: column;

@@ -116,14 +116,14 @@ function AllChannels({ kanalet, atSidebar, change, ...props }) {
 }
 
 const Container = styled.div`
-  margin-top: 0px;
   width: ${(p) => (p.atSidebar === "true" ? "100%" : "90%")};
   height: ${(p) => (p.atSidebar === "true" ? "91vw" : "100%")};
-  /* height: 100%; */
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
   background: ${(p) => (p.atSidebar === "true" ? "transparent" : "black")};
   color: white;
 `;
