@@ -1,4 +1,4 @@
-// import Auth from "@aws-amplify/auth";
+import Auth from "@aws-amplify/auth";
 import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import PlayerHeader from "../../../../Components/Layout/PlayerHeader";

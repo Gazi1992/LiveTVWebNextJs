@@ -1,12 +1,13 @@
-// import Auth from "@aws-amplify/auth";
+import Auth from "@aws-amplify/auth";
 import { Button, TextField } from "@mui/material";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
 import ConfirmPasscode from "../../../../Components/LiveTV-Components/Account/Changes/Change_Confirmation/ConfirmPasscode";
-
+import { useRouter } from "next/router";
 function ChangeEmail() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [confirmation, setConfirmation] = useState(false);
   const [error, setError] = useState("");
@@ -23,6 +24,7 @@ function ChangeEmail() {
       });
       setError("");
       setLoading(false);
+      router.push("/Account ", undefined, { shallow: true });
       setConfirmation(true);
     } catch (err) {
       console.log("error resending code: ", err);
@@ -31,7 +33,6 @@ function ChangeEmail() {
     }
   };
 
-  // const history = useHistory();
   return (
     <PlayerHeader>
       <Container>
