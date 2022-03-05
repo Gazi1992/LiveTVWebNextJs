@@ -4,19 +4,18 @@ import styled from "styled-components";
 import { IoArrowBack } from "react-icons/io5";
 import PlayerHeader from "../../../Components/Layout/PlayerHeader";
 import { Button } from "@material-ui/core";
+import Link from "next/link";
 
 function SubscriptionDetails() {
   return (
     <PlayerHeader>
       <Container>
-        <Header
-        // onClick={() => {
-        //   history.goBack();
-        // }}
-        >
-          <IoArrowBack style={{ color: "#67bdff", marginLeft: "5px" }} />
-          <span> Back to Account</span>
-        </Header>
+        <Link href='./'>
+          <Header>
+            <IoArrowBack style={{ color: "#67bdff", marginLeft: "5px" }} />
+            <span> Back to Account</span>
+          </Header>
+        </Link>
         <Title>
           <span> Subscription details</span>
         </Title>
@@ -29,37 +28,29 @@ function SubscriptionDetails() {
               <span style={{ fontWeight: "bolder" }}>Disney+</span>
               <span>€8.99/month</span>
             </LogoAndPrice>
-            <SwitchtoAnnual
-              onClick={() => {
-                // history.push("./subscription-details/annual");
-              }}
-            >
-              <span> Switch to Annual </span>
-            </SwitchtoAnnual>
+            <Link href='./subscription-details/annual'>
+              <SwitchtoAnnual>
+                <span> Switch to Annual </span>
+              </SwitchtoAnnual>
+            </Link>
           </RowContainer>
         </FirstBlockContainer>
         <BlockContainer>
           <RowContainer>
             <span style={{ marginLeft: "10px" }}>Payment Method</span>
-            <ChangeContainer
-              onClick={() => {
-                // history.push("./subscription-details/change-payment-info");
-              }}
-              style={{ marginRight: "10px" }}
-            >
-              Change
-            </ChangeContainer>
+            <Link href='./subscription-details/change-payment-info'>
+              <ChangeContainer style={{ marginRight: "10px" }}>
+                Change
+              </ChangeContainer>
+            </Link>
           </RowContainer>
           <RowContainer>
             <span style={{ marginLeft: "10px" }}>Current Package</span>
-            <ChangeContainer
-              onClick={() => {
-                // history.push("./subscription-details/plan");
-              }}
-              style={{ marginRight: "10px" }}
-            >
-              Change
-            </ChangeContainer>
+            <Link href='./subscription-details/plan'>
+              <ChangeContainer style={{ marginRight: "10px" }}>
+                Change
+              </ChangeContainer>
+            </Link>
           </RowContainer>
 
           <RowContainer>
@@ -71,13 +62,11 @@ function SubscriptionDetails() {
             <span style={{ marginRight: "10px" }}>November 20, 2021 €8.99</span>
           </RowContainer>
         </BlockContainer>
-        <CancelSubscriptionContainer
-          onClick={() => {
-            // history.push("./subscription-details/survey");
-          }}
-        >
-          Cancel Subscription
-        </CancelSubscriptionContainer>
+        <Link href='./subscription-details/survey'>
+          <CancelSubscriptionContainer>
+            Cancel Subscription
+          </CancelSubscriptionContainer>
+        </Link>
       </Container>
     </PlayerHeader>
   );
@@ -85,12 +74,13 @@ function SubscriptionDetails() {
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+
+  color: white;
 `;
 const Header = styled.div`
   width: 400px;

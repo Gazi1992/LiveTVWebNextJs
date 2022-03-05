@@ -43,16 +43,16 @@ function Dropdown({ isOpen, toggle, ...props }) {
             <CgProfile size='30' style={{ marginLeft: "10px" }} />
             <span>"props.userAttributes.email"</span>
           </ProfileContainer>
-          <SidebarRoute>
-            <Link href='/Account'>
+          <Link href='/Account'>
+            <SidebarRoute>
               <span>Account</span>
-            </Link>
-          </SidebarRoute>
-          <SidebarRoute>
-            <Link href='/'>
+            </SidebarRoute>
+          </Link>
+          <Link href='/'>
+            <SidebarRoute>
               <span>Help Center</span>
-            </Link>
-          </SidebarRoute>
+            </SidebarRoute>
+          </Link>
 
           <Link href='/'>
             <StyledButtonHome onClick={signOut}>

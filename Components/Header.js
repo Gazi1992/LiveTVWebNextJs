@@ -3,21 +3,10 @@ import styled from "styled-components";
 import HeaderDropdown from "./HeaderDropdown";
 import Image from "next/image";
 import Button from "@material-ui/core/Button";
-
 import { BiDevices } from "react-icons/bi";
-// import { connect } from "react-redux";
 import { useRouter } from "next/router";
-// import Auth from "@aws-amplify/auth";
-// import _ from "lodash";
 import { FiAlignJustify } from "react-icons/fi";
 import Link from "next/link";
-
-// const mapStatetoProps = (state) => ({
-//   userAttributes: _.get(state, `user.attributes`, false),
-// });
-// const mapDispatchtoProps = (dispatch) => {
-//   return {};
-// };
 
 const Header = (props) => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -38,14 +27,6 @@ const Header = (props) => {
     };
   }, []);
 
-  const signOut = async () => {
-    try {
-      // await Auth.signOut({ global: false });
-      // history.push("./LiveTV");
-    } catch (error) {
-      console.log("error signing out: ", error);
-    }
-  };
   const [dropDownState, setdropDownState] = useState(false);
   const toggle = () => {
     setdropDownState(!dropDownState);
@@ -104,22 +85,14 @@ const Header = (props) => {
         </Link>
       </NavMenu>
       <ButtonContainer hasScrolled={hasScrolled}>
-        <StyledButton
-          onClick={() => {
-            router.push("/Payment", undefined, { shallow: true });
-          }}
-        >
-          Porosit
-        </StyledButton>
+        <Link href='/Payment'>
+          <StyledButton>Porosit</StyledButton>
+        </Link>
       </ButtonContainer>
 
-      <Login
-        onClick={() => {
-          router.push("/SignIn ", undefined, { shallow: true });
-        }}
-      >
-        Login
-      </Login>
+      <Link href='/SignIn'>
+        <Login>Login</Login>
+      </Link>
       <PersonalContent>
         <ImageContainer onClick={toggle}>
           <FiAlignJustify
@@ -133,8 +106,6 @@ const Header = (props) => {
   );
 };
 
-// export default connect(mapStatetoProps, mapDispatchtoProps)(Header);
-export default Header;
 const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -295,70 +266,6 @@ const NavMenu = styled.div`
   }
 `;
 
-const CenterMenu = styled.div`
-  align-items: center;
-  display: flex;
-  flex-flow: row nowrap;
-  height: 100%;
-  width: fit-content;
-  justify-content: left;
-  margin: 0px;
-  margin-right: 50%;
-  padding: 0px;
-  position: relative;
-  cursor: pointer;
-  margin-left: 25px;
-  background-color: green;
-
-  a {
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    img {
-      height: 20px;
-      min-width: 20px;
-      width: 20px;
-      z-index: auto;
-    }
-    span {
-      color: rgb(249, 249, 249);
-      font-size: 18px;
-      letter-spacing: 1.42px;
-      line-height: 1.08;
-      padding: 2px 0px;
-      white-space: nowrap;
-
-      position: relative;
-      &:before {
-        background-color: rgb(249, 249, 249);
-        border-radius: 0px 0px 4px 4px;
-        bottom: -6px;
-        content: "";
-        height: 2px;
-        left: 0px;
-        opacity: 0;
-        position: absolute;
-        right: 0px;
-        transform-origin: left center;
-        transform: scaleX(0);
-        transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-        visibility: hidden;
-        width: auto;
-      }
-    }
-    &:hover {
-      span:before {
-        transform: scaleX(1);
-        visibility: visible;
-        opacity: 1 !important;
-      }
-    }
-  }
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
 const Login = styled(Button)`
   && {
     height: 48px;
@@ -421,3 +328,4 @@ const SignOut = styled.div`
     }
   }
 `;
+export default Header;

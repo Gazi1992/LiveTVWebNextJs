@@ -64,7 +64,7 @@ function ConfirmPasscode(props) {
       <Wrapper>
         <BlockContainer>
           <ParagraphContainer>
-            <h1>Check your email inbox</h1>
+            <h1>Eyour email inbox</h1>
             <span>
               We need you to verify your email address. We've sent an email to
               edonderguti@gmail.com containing a 6-digit code which expires in
@@ -129,6 +129,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: blue;
 `;
 
 const Wrapper = styled.div`

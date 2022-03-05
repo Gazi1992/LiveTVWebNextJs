@@ -3,6 +3,7 @@ import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
 import styled from "styled-components";
+import Link from "next/link";
 
 function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
@@ -76,13 +77,9 @@ function ChangePassword() {
 
           <ButtonContainer>
             <SaveButton>SAVE</SaveButton>
-            <CancelButton
-              onClick={() => {
-                // history.goBack();
-              }}
-            >
-              CANCEL
-            </CancelButton>
+            <Link href='./'>
+              <CancelButton>CANCEL</CancelButton>
+            </Link>
           </ButtonContainer>
         </Wrapper>
       </Container>
@@ -91,19 +88,19 @@ function ChangePassword() {
 }
 
 const Container = styled.div`
-  margin-top: 80px;
   width: 100vw;
-  height: 50vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
 `;
 
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  height: fit-content;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

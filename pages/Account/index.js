@@ -3,50 +3,51 @@ import React, { useState, useEffect } from "react";
 import { MdModeEdit } from "react-icons/md";
 import { IoChevronForwardSharp } from "react-icons/io5";
 import PlayerHeader from "../../Components/Layout/PlayerHeader";
-// import Auth from "@aws-amplify/auth";
-// import _ from "lodash";
-// import { connect } from "react-redux";
+import Auth from "@aws-amplify/auth";
+import _ from "lodash";
+import { connect } from "react-redux";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-// const mapStatetoProps = (state) => ({
-//   userAttributes: _.get(state, `user.attributes`, false),
-// });
-// const mapDispatchtoProps = (dispatch) => {
-//   return {};
-// };
+const mapStatetoProps = (state) => ({
+  userAttributes: _.get(state, `user.data`, false),
+});
+const mapDispatchtoProps = (dispatch) => {
+  return {};
+};
 
 function Account(props) {
-  // const history = useHistory();
+  const router = useRouter();
   useEffect(() => {
-    // setEmail(props.userAttributes.email);
+    setEmail(props.userAttributes.email);
   }, []);
-  // const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // const verifyUser = async (select) => {
-  //   try {
-  //     // console.log(email);
-  //     // Auth.verifyCurrentUserAttribute("email");
-  //     select === "email"
-  //       // ? history.push({
-  //       //     pathname: "/Account/enter-passcode",
-  //       //     state: { detail: "email" },
-  //       //   })
-  //       : history.push({
-  //           pathname: "/Account/enter-passcode",
-  //           state: { detail: "password" },
-  //         });
-  //   } catch (err) {
-  //     console.log("error confirming sign up", err);
-  //     setError(err.message);
-  //     setLoading(false);
-  //   }
-  // };
+  const verifyUser = async (select) => {
+    try {
+      console.log(email);
+      Auth.verifyCurrentUserAttribute("email");
+      select === "email"
+        ? router.push({
+            pathname: "/Account/enter-passcode",
+            query: { detail: "email" },
+          })
+        : router.push({
+            pathname: "/Account/enter-passcode",
+            query: { detail: "password" },
+          });
+    } catch (err) {
+      console.log("error confirming sign up", err);
+      setError(err.message);
+      setLoading(false);
+    }
+  };
   const signOut = async () => {
     try {
       await Auth.signOut({ global: false });
-      history.push("./Home");
-      history.go(0);
+      router.push("/Home", undefined, { shallow: true });
     } catch (error) {
       console.log("error signing out: ", error);
     }
@@ -67,7 +68,7 @@ function Account(props) {
                 verifyUser("email");
               }}
             >
-              <span>"props.userAttributes.email"</span>
+              <span>{props.userAttributes.email}</span>
               <Icon>
                 <MdModeEdit />
               </Icon>
@@ -90,17 +91,19 @@ function Account(props) {
             <SubTitleContainer>
               <span>Subscription</span>
             </SubTitleContainer>
-            <DescriptionContainer
-            // onClick={() => {
-            //   history.push("/Account/subscription-details");
-            //   history.go(0);
-            // }}
-            >
-              <span>ArakneTV (monthly)</span>
-              <Icon>
-                <IoChevronForwardSharp />
-              </Icon>
-            </DescriptionContainer>
+            <Link href='/Account/subscription-details'>
+              <DescriptionContainer
+              // onClick={() => {
+              //   history.push("/Account/subscription-details");
+              //   history.go(0);
+              // }}
+              >
+                <span>ArakneTV (monthly)</span>
+                <Icon>
+                  <IoChevronForwardSharp />
+                </Icon>
+              </DescriptionContainer>
+            </Link>
             <DescriptionContainer
             // onClick={() => {
             //   history.push("/Account/subscription-details/billing-history");
@@ -129,17 +132,19 @@ function Account(props) {
 }
 
 const Container = styled.div`
-  margin-top: 80px;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #040714;
+  background: #040714;
 `;
 const Wrapper = styled.div`
   width: 100%;
-
+  margin-top: -80px;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -260,5 +265,4 @@ const BlockContainer = styled.div`
   overflow: hidden;
 `;
 
-export default Account;
-// export default connect(mapStatetoProps, mapDispatchtoProps)(Account);
+export default connect(mapStatetoProps, mapDispatchtoProps)(Account);

@@ -1,9 +1,9 @@
 // import Auth from "@aws-amplify/auth";
 import { Button, TextField } from "@mui/material";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
-
-import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
 import styled from "styled-components";
+import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
 import ConfirmPasscode from "../../../../Components/LiveTV-Components/Account/Changes/Change_Confirmation/ConfirmPasscode";
 
 function ChangeEmail() {
@@ -34,7 +34,6 @@ function ChangeEmail() {
   // const history = useHistory();
   return (
     <PlayerHeader>
-      {" "}
       <Container>
         <Wrapper>
           {confirmation === true ? (
@@ -52,7 +51,7 @@ function ChangeEmail() {
                   fullWidth
                   type='email'
                   id='Email '
-                  required={true}
+                  required
                   onChange={(event) => {
                     console.log(event.target.value);
                     // setEmail(event.target.value);
@@ -73,14 +72,9 @@ function ChangeEmail() {
                 >
                   SAVE
                 </SaveButton>
-                <CancelButton
-                  onClick={() => {
-                    console.log("goBack");
-                    // history.goBack();
-                  }}
-                >
-                  CANCEL
-                </CancelButton>
+                <Link href='./'>
+                  <CancelButton>CANCEL</CancelButton>
+                </Link>
               </ButtonContainer>
             </>
           )}
@@ -91,19 +85,19 @@ function ChangeEmail() {
 }
 
 const Container = styled.div`
-  margin-top: 80px;
   width: 100vw;
-  height: 50vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
 `;
 
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  height: fit-content;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

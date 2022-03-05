@@ -60,7 +60,6 @@ const FadeBackground = styled.div`
   justify-content: center;
   @media screen and (max-width: 1500px) {
     width: 100%;
-    border: 1px solid green;
   }
   @media screen and (max-width: 800px) {
     width: 100%;
