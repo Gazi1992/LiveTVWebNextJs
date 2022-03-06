@@ -1,26 +1,13 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
-import { setPackage } from "../../../app/store/actions/others";
 import { useRouter } from "next/router";
-import { BiTv } from "react-icons/bi";
 import PriceSelection from "../../../Components/Payment-Information/PriceSelection/PriceSelection";
-import PriceSelectionBlue from "../../../Components/Payment-Information/PriceSelection/Edon";
 import {
   FcMultipleSmartphones,
   FcTouchscreenSmartphone,
   FcMultipleDevices,
 } from "react-icons/fc";
-
-import Image from "next/image";
-// const mapStateToProps = (state) => ({});
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     setPackage: (data) => dispatch(setPackage(data)),
-//   };
-// };
 
 const ofertat = [
   {
@@ -28,47 +15,44 @@ const ofertat = [
     price: "4.99",
     priceTotal: "4.99",
     length: "1",
+    duration: "muaj",
+    oldPrice: "6.99",
   },
 
-  {
-    name: "MOBIL+",
-    price: "4.99",
-    priceTotal: "60",
-    length: "12",
-  },
   {
     name: "FAMILY",
     price: "12.99",
     priceTotal: "12.99",
     length: "1",
+    duration: "muaj",
+    oldPrice: "18.99",
   },
   {
     name: "FAMILY+",
     price: "9.99",
     priceTotal: "120",
     length: "12",
+    duration: "vit",
+    oldPrice: "14.99",
   },
   {
     name: "FAMILY PREMIUM",
     priceTotal: "160",
     price: "14.99",
     length: "12",
+    duration: "vit",
+    oldPrice: "20.99",
   },
 ];
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: "100px",
-  },
-});
-
 function OfferSelection(props) {
   const router = useRouter();
-  // const history = useHistory();
+
   const finalizeOffer = (data) => {
-    router.push("/Payment/Finalizeoffer");
-    // props.setPackage(data);
-    // history.push("/Payment/FinalizeOffer");
+    router.push({
+      pathname: "/Payment/Finalizeoffer",
+      query: { detail: JSON.stringify(data) },
+    });
   };
 
   return (
@@ -80,8 +64,8 @@ function OfferSelection(props) {
           }}
           setcolor={"first"}
           offer={ofertat[0].name}
-          oldPrice='6.99'
-          price='4.99'
+          oldPrice={ofertat[0].oldPrice}
+          price={ofertat[0].price}
           nrikanaleve='150'
           kanaleTotal='2000'
           LiveEventscheck={"cross"}
@@ -101,8 +85,8 @@ function OfferSelection(props) {
           }}
           setcolor={"second"}
           offer={ofertat[1].name}
-          oldPrice='6.99'
-          price='4.99'
+          oldPrice={ofertat[1].oldPrice}
+          price={ofertat[1].price}
           nrikanaleve='150'
           kanaleTotal='2000'
           LiveEventscheck={"cross"}
@@ -122,21 +106,19 @@ function OfferSelection(props) {
           }}
           setcolor={"third"}
           offer={ofertat[2].name}
-          oldPrice='18.99'
-          price='12.99'
+          oldPrice={ofertat[2].oldPrice}
+          price={ofertat[2].price}
           nrikanaleve='150'
           kanaleTotal='2000'
           LiveEventscheck={"true"}
           kanaletepreferuara={true}
           isBlackstate='purple'
-          LiveEventscheck={"true"}
           netflix={"true"}
-          size='big'
           pajisjet='5 screens'
           hd={"true"}
           months={ofertat[2].length + " Muaj"}
           VOD='100'
-          size='notpreferred'
+          size='preferred'
           Icon={<FcMultipleDevices size='medium' />}
         ></PriceSelection>
         <PriceSelection
@@ -145,19 +127,17 @@ function OfferSelection(props) {
           }}
           setcolor={"fourth"}
           offer={ofertat[3].name}
-          oldPrice='15.99'
-          price='9.99'
+          oldPrice={ofertat[3].oldPrice}
+          price={ofertat[3].price}
           nrikanaleve='25'
           kanaleTotal='2000'
           LiveEventscheck={"true"}
           kanaletepreferuara={true}
           isBlackstate='purple'
-          LiveEventscheck={"true"}
           netflix={"true"}
           pajisjet='5 screens'
           months={ofertat[3].length + " Muaj"}
           hd={true}
-          size='preferred'
           Icon={
             <TwelveMonthsIcon>
               <FcMultipleDevices
@@ -186,62 +166,11 @@ function OfferSelection(props) {
           }
           VOD='100'
         ></PriceSelection>
-        <PriceSelection
-          buttonClicked={() => {
-            finalizeOffer(ofertat[4]);
-          }}
-          setcolor='fifth'
-          offer={ofertat[4].name}
-          oldPrice='19.99'
-          price='14.99'
-          nrikanaleve='25'
-          kanaleTotal='2000'
-          LiveEventscheck={true}
-          kanaletepreferuara={true}
-          isBlackstate='purple'
-          LiveEventscheck={true}
-          months={ofertat[4].length + " Muaj"}
-          netflix={true}
-          pajisjet='5 screens'
-          size='notpreferred'
-          hd={true}
-          VOD='100'
-          Icon={
-            <TwelveMonthsIcon>
-              <FcMultipleDevices
-                size='80px'
-                style={{
-                  position: "absolute",
-                  top: "0px",
-                  left: "0px",
-                  opacity: "15",
-                  zIndex: "2",
-                }}
-              />
-              <FcMultipleDevices
-                size='80px'
-                style={{
-                  position: "absolute",
-                  top: "15px",
-                  left: "15px",
-                  opacity: "15",
-                  zIndex: "2",
-                }}
-              />
-            </TwelveMonthsIcon>
-          }
-        ></PriceSelection>
       </Wrapper>
     </Container>
   );
 }
 
-const SpecialOfferDiv = styled.div`
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  position: relative;
-`;
 const TwelveMonthsIcon = styled.div`
   height: 100px;
   width: 100px;
@@ -253,12 +182,6 @@ const TwelveMonthsIcon = styled.div`
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  /* background: linear-gradient(
-    108deg,
-    rgba(1, 147, 86, 1) 0%,
-    rgba(10, 01, 122, 1) 100%
-  ); */
-
   background-image: white;
   display: flex;
   flex-direction: column;
@@ -281,23 +204,6 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
-    <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z" style="stroke: none; fill:red;"></path>
-  </svg>
-`;
-
-const StyledButton = styled(Button)`
-  && {
-    background-color: #e50e6b;
-    width: 90%;
-    font-weight: 20;
-    color: white;
-    bottom: 0;
-
-    &:hover {
-      background-color: #e50e00;
-    }
   }
 `;
 

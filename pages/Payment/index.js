@@ -59,27 +59,22 @@ function DataForm(props) {
     setLoading(true);
     try {
       await Auth.confirmSignUp(email, confirmationCode);
-      setError("");
       logIn();
+      router.push("/Payment/Offerselection", undefined, { shallow: true });
+      setError("");
     } catch (err) {
       console.log("error confirming sign up", err);
       setError(err.message);
-      setLoading(false);
     }
+    setLoading(false);
   };
   const logIn = async () => {
-    setLoading(true);
     try {
       await Auth.signIn(email, password);
-      console.log(email);
       setError("");
-      router.push("/Payment/Offerselection", undefined, { shallow: true });
-
-      setLoading(false);
     } catch (err) {
       console.log("error signing in", err);
       setError(err.message);
-      setLoading(false);
     }
   };
 

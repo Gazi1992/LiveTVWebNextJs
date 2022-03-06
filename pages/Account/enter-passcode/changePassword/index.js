@@ -22,10 +22,6 @@ function ChangePassword() {
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
 
-      <Alert variant='outlined' severity='success'>
-        This is a {result} alert — check it out!
-      </Alert>;
-
       setError("");
       setLoading(false);
     } catch (err) {
@@ -56,7 +52,6 @@ function ChangePassword() {
                 setOldPassword(event.target.value);
               }}
               defaultValue=''
-              helperText=''
               name='Old Password'
               placeholder='Old Password'
               id='Old Password'
@@ -73,7 +68,11 @@ function ChangePassword() {
                 setNewPassword(event.target.value);
               }}
               defaultValue=''
-              helperText=''
+              helperText={
+                <Alert variant='outlined' severity='success'>
+                  This is a result alert — check it out!
+                </Alert>
+              }
               name='New Password'
               placeholder='New Password'
               id='New Password'
