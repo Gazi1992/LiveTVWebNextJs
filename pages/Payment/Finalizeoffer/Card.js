@@ -23,36 +23,19 @@ const Card = () => {
         <Row>
           <h4>Payment Info: </h4>
           <ButtonContainer>
-            <CreditCardStyled
-              onClick={() => {
-                setPayment("CC");
-              }}
-            >
+            <CreditCardStyled>
               <BsCreditCard2Front
                 color='white'
                 style={{ marginRight: "5px" }}
               />
-              <p style={{ color: "white", fontSize: "15px" }}>Credit Card</p>
+              <p>Credit Card</p>
             </CreditCardStyled>
-            <CreditCardStyled
-              onClick={() => {
-                setPayment("PP");
-              }}
-            >
-              <Image src='/logo/paypal.svg' width='100%' height='100%' />
-            </CreditCardStyled>
+            <PP />
           </ButtonContainer>
         </Row>
-        {payment == "CC" ? (
-          <Body>
-            <CC />{" "}
-          </Body>
-        ) : (
-          <Body>
-            <PP />
-          </Body>
-        )}
-
+        <Body>
+          <CC />
+        </Body>
         <StyledButton>Confirm</StyledButton>
       </PaymentForm>
     </Container>
@@ -76,7 +59,7 @@ const Container = styled.div`
   );
 
   @media screen and (max-width: 1400px) {
-    width: 320px;
+    width: 350px;
   }
 `;
 const Header = styled.div`
@@ -106,6 +89,10 @@ const Row = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media screen and (max-width: 1850px) {
+    width: 90%;
+  }
   h4 {
     color: #ffffff;
     margin: 10px 0px 10px 0px;
@@ -129,38 +116,24 @@ const PaymentForm = styled.div`
   margin-bottom: 20px;
 `;
 
-const Wrapper = styled.div`
-  width: 80%;
-  border-radius: 10px;
-  display: flex;
-  height: fit-content;
-  justify-content: space-around;
-  flex-direction: column;
-  background-image: linear-gradient(
-    to right top,
-    #1b1f2b,
-    #252c3f,
-    #2e3a54,
-    #37496a,
-    #405881
-  );
-
-  @media screen and (max-width: 1400px) {
-    width: 320px;
-    border: 4px dashed green;
-  }
-`;
-
 const CreditCardStyled = styled(Button)`
   && {
-    background-color: transparent;
-    width: 45%;
-    height: 50px;
+    background-color: #3560a6;
+    width: 150px;
+    height: 40px;
     font-weight: 40px;
     font-size: 20px;
-    border: 1px solid #61718a;
+    margin: 5px;
+    border: 1px solid #3560a6;
     bottom: 0;
-
+    p {
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      @media screen and (max-width: 1850px) {
+        font-size: 12px;
+      }
+    }
     &:hover {
       background-color: #475872;
     }

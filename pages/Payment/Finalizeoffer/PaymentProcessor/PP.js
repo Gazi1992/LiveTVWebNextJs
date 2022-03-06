@@ -8,7 +8,11 @@ import styled from "styled-components";
 // This values are the props in the UI
 const amount = "2";
 const currency = "USD";
-const style = { layout: "vertical", width: "500px" };
+const style = {
+  layout: "horizontal",
+  size: "responsive",
+  height: 40,
+};
 
 // Custom component to wrap the PayPalButtons and handle currency changes
 const ButtonWrapper = ({ currency, showSpinner }) => {
@@ -27,13 +31,14 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
   }, [currency, showSpinner]);
 
   return (
+    //
     <Wrapper>
-      {showSpinner && isPending && <div className='spinner' />}
-      <PayPalButtons
+      {/* {showSpinner && isPending && <div className='spinner' />} */}
+      <StyledPaypalButton
         style={style}
         disabled={false}
         forceReRender={[amount, currency, style]}
-        fundingSource={undefined}
+        fundingSource='paypal'
         createOrder={(data, actions) => {
           return actions.order
             .create({
@@ -63,35 +68,24 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
 
 export default function App() {
   return (
-    <Container>
-      <PayPalScriptProvider
-        options={{
-          "client-id": "test",
-          components: "buttons",
-          currency: "USD",
-        }}
-      >
-        <ButtonWrapper currency={currency} showSpinner={false} />
-      </PayPalScriptProvider>
-    </Container>
+    <PayPalScriptProvider
+      options={{
+        "client-id": "test",
+        components: "buttons",
+        currency: "USD",
+      }}
+    >
+      <ButtonWrapper currency={currency} showSpinner={false} />
+    </PayPalScriptProvider>
   );
 }
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  background: #ff512f; /* fallback for old browsers */
-  background-color: transparent;
+const StyledPaypalButton = styled(PayPalButtons)`
+  && {
+    width: 100%;
+  }
 `;
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  max-height: fit-content;
-  background: transparent; /* fallback for old browsers */
+const Wrapper = styled.div`
+  height: 50px;
+  width: 150px;
+  margin: 5px;
 `;
