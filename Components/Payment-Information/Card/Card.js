@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useState } from "react";
-
+import SuccessDialog from "../../../Components/Payment-Information/Dialogs/SuccessDialog";
 import styled from "styled-components";
 import "react-credit-cards/es/styles-compiled.css";
 import Button from "@material-ui/core/Button";
@@ -11,7 +11,7 @@ import PP from "./PaymentProcessor/PP";
 
 const Card = () => {
   const [payment, setPayment] = useState("CC");
-
+  const [open, setOpen] = useState(false);
   return (
     <Container>
       <PaymentForm>
@@ -34,7 +34,14 @@ const Card = () => {
         <Body>
           <CC />
         </Body>
-        <StyledButton>Confirm</StyledButton>
+        <StyledButton
+          onClick={() => {
+            setOpen(true);
+          }}
+        >
+          Confirm
+        </StyledButton>
+        <SuccessDialog handleOpen={open} handleParent={setOpen} />
       </PaymentForm>
     </Container>
   );

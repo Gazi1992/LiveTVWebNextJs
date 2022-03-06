@@ -5,17 +5,17 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import { CgProfile } from "react-icons/cg";
 import { useRouter } from "next/router";
-// import { connect } from "react-redux";
-// import _ from "lodash";
+import { connect } from "react-redux";
+
 import Auth from "@aws-amplify/auth";
 import _ from "lodash";
 
-// const mapStatetoProps = (state) => ({
-//   userAttributes: _.get(state, `user.attributes`, false),
-// });
-// const mapDispatchtoProps = (dispatch) => {
-//   return {};
-// };
+const mapStatetoProps = (state) => ({
+  userAttributes: _.get(state, `user.data`, false),
+});
+const mapDispatchtoProps = (dispatch) => {
+  return {};
+};
 
 function Dropdown({ isOpen, toggle, ...props }) {
   const router = useRouter();
@@ -41,7 +41,7 @@ function Dropdown({ isOpen, toggle, ...props }) {
 
           <ProfileContainer>
             <CgProfile size='30' style={{ marginLeft: "10px" }} />
-            <span>"props.userAttributes.email"</span>
+            <span>{props.userAttributes.email}</span>
           </ProfileContainer>
           <Link href='/Account'>
             <SidebarRoute>
@@ -179,4 +179,4 @@ const SidebarRoute = styled.div`
   }
 `;
 
-export default Dropdown;
+export default connect(mapStatetoProps, mapDispatchtoProps)(Dropdown);

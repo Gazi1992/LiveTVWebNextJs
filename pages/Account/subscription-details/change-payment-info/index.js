@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SucessDialog from "../../../.././Components/Payment-Information/Dialogs/SuccessDialog";
 import FailureDialog from "../../../.././Components/Payment-Information/Dialogs/FailureDialog";
 import CreditCard from "../../../.././Components/Payment-Information/Card/PaymentProcessor/CC";
-// import CreditCard from "../../../.././Components/LiveTV-Components/Account/Changes/Payment-Cards/CreditCard";
+
 import PayPal from "../../../../Components/LiveTV-Components/Account/Changes/Payment-Cards/PayPal";
 import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
 import Link from "next/link";

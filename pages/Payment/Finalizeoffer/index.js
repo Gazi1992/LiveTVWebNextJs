@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Card from "../../../Components/Payment-Information/Card/Card";
+
 import styled from "styled-components";
 import Image from "next/image";
 import { Stream } from "@styled-icons/material/Stream";

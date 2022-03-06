@@ -95,7 +95,7 @@ function Account(props) {
             </SubTitleContainer>
             <Link href='/Account/subscription-details'>
               <DescriptionContainer>
-                <span>ArakneTV (monthly)</span>
+                <span>AirTV (monthly)</span>
                 <Icon>
                   <IoChevronForwardSharp />
                 </Icon>
