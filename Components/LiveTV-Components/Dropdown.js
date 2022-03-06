@@ -48,11 +48,6 @@ function Dropdown({ isOpen, toggle, ...props }) {
               <span>Account</span>
             </SidebarRoute>
           </Link>
-          <Link href='/'>
-            <SidebarRoute>
-              <span>Help Center</span>
-            </SidebarRoute>
-          </Link>
 
           <Link href='/'>
             <StyledButtonHome onClick={signOut}>
@@ -133,7 +128,7 @@ const StyledButtonHome = styled(Button)`
     width: 90%;
     height: 30px;
     margin-bottom: 5px;
-
+    margin-top: 15px;
     color: white;
     &:hover {
       background-color: #b60d86;
@@ -163,7 +158,7 @@ const SidebarRoute = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  padding-left: 15px;
+  padding-left: 0px;
 
   color: white;
   width: 100%;

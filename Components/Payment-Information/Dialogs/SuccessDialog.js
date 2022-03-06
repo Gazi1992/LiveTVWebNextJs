@@ -4,9 +4,10 @@ import Dialog from "@mui/material/Dialog";
 
 import styled from "styled-components";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-export default function AlertDialog({ handleOpen, handleParent }) {
+import { useRouter } from "next/router";
+export default function AlertDialog({ handleOpen, handleParent, ref }) {
   const [open, setOpen] = React.useState(false);
-
+  const router = useRouter();
   React.useEffect(() => {
     const handleClick = () => {
       handleClickOpen(handleOpen);
@@ -26,6 +27,7 @@ export default function AlertDialog({ handleOpen, handleParent }) {
   const handleClose = () => {
     handleParent(false);
     setOpen(false);
+    router.push("/Home", undefined, { shallow: true });
   };
 
   return (
