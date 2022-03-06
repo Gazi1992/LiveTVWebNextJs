@@ -1,21 +1,29 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-
-import CreditCard from "../../../../Components/LiveTV-Components/Account/Changes/Payment-Cards/CreditCard";
+import SucessDialog from "../../../.././Components/Payment-Information/Dialogs/SuccessDialog";
+import FailureDialog from "../../../.././Components/Payment-Information/Dialogs/FailureDialog";
+import CreditCard from "../../../.././Components/Payment-Information/Card/PaymentProcessor/CC";
+// import CreditCard from "../../../.././Components/LiveTV-Components/Account/Changes/Payment-Cards/CreditCard";
 import PayPal from "../../../../Components/LiveTV-Components/Account/Changes/Payment-Cards/PayPal";
+import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
+import Link from "next/link";
 function ChangePaymentInfo() {
   const [confirm, setConfirm] = useState(false);
-  const [selectPayment, setSelectPayment] = useState("");
+  const [open, setOpening] = useState(false);
+  const [selectPayment, setSelectPayment] = useState("CC");
   useEffect(() => {
     setConfirm(false);
+    setOpening(false);
   }, []);
   return (
-    <Container>
-      <Header>
-        <h3>Change Payment Info</h3>
-      </Header>
-      {/* <Header>
+    <PlayerHeader>
+      <Container>
+        <Header>
+          <h3>Change Payment Info</h3>
+        </Header>
+        <Wrapper>
+          {/* <Header>
         <h1>Switch to Annual Subscription</h1>
         <h4>89.90/year. Cancel anytime</h4>
         <p>
@@ -24,42 +32,52 @@ function ChangePaymentInfo() {
           subscription
         </p>
       </Header> */}
-      <SelectCardContainer>
-        <ImageContainer
-          onClick={() => {
-            setSelectPayment("CC");
-          }}
-        >
-          <img src='/images/credit-card-icon.svg' />
-          <span>Credit Card</span>
-        </ImageContainer>
-        <ImageContainer
-          onClick={() => {
-            setSelectPayment("PP");
-          }}
-        >
-          <img src='/images/paypal-icon.svg' />
-          <span>PayPal</span>
-        </ImageContainer>
-        <ImageContainer>
-          {" "}
-          <img
-            src='/images/stripe.svg'
-            onClick={() => {
-              setSelectPayment("ST");
-            }}
-          />
-          <span>Stripe</span>
-        </ImageContainer>
-      </SelectCardContainer>
+          <SelectCardContainer>
+            <ImageContainer
+              onClick={() => {
+                setSelectPayment("CC");
+              }}
+            >
+              <img src='/images/credit-card-icon.svg' />
+              <span>Credit Card</span>
+            </ImageContainer>
+            <ImageContainer
+              onClick={() => {
+                setSelectPayment("PP");
+              }}
+            >
+              <img src='/images/paypal-icon.svg' />
+              <span>PayPal</span>
+            </ImageContainer>
+          </SelectCardContainer>
 
-      <BlockContainer>
-        <BillingHeader>
-          <h5>Confirm your billing details</h5>
-        </BillingHeader>
-        {selectPayment === "CC" ? <CreditCard /> : <PayPal />}
-      </BlockContainer>
-    </Container>
+          <BlockContainer>
+            <BillingHeader>
+              <h5>Confirm your billing details</h5>
+            </BillingHeader>
+            {selectPayment === "CC" ? (
+              <CrediCardWrapper>
+                <CreditCard />
+                <StyledButton
+                  onClick={() => {
+                    setOpening(true);
+                  }}
+                >
+                  Save
+                </StyledButton>
+                <SucessDialog handleOpen={open} handleParent={setOpening} />
+                {/* <FailureDialog handleOpen={open} handleParent={setOpening} /> */}
+                <Link href='./'>
+                  <CancelButton>Cancel</CancelButton>
+                </Link>
+              </CrediCardWrapper>
+            ) : (
+              <PayPal />
+            )}
+          </BlockContainer>
+        </Wrapper>
+      </Container>
+    </PlayerHeader>
   );
 }
 
@@ -67,16 +85,69 @@ const Container = styled.div`
   margin-top: 80px;
   width: 100%;
   height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const Wrapper = styled.div`
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;
+const StyledButton = styled(Button)`
+  && {
+    background-color: #e50e6b;
+    width: 300px;
+    height: 40px;
+    font-weight: 40px;
+    font-size: 20px;
+    color: white;
+    bottom: 0;
+
+    &:hover {
+      background-color: #e50e00;
+    }
+  }
 `;
 
+const CancelButton = styled(Button)`
+  && {
+    margin-top: 10px;
+    background-color: #7a7a7a;
+    width: 300px;
+    height: 40px;
+    font-weight: 40px;
+    font-size: 20px;
+    color: white;
+    bottom: 0;
+
+    &:hover {
+      background-color: #474747;
+    }
+  }
+`;
+const CrediCardWrapper = styled.div`
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 const Header = styled.div`
   width: 400px;
   height: fit-content;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 
   h2 {
     text-align: left;

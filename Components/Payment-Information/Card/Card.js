@@ -1,13 +1,11 @@
 import React from "react";
-import Cards from "react-credit-cards";
+
 import { useState } from "react";
 
 import styled from "styled-components";
 import "react-credit-cards/es/styles-compiled.css";
 import Button from "@material-ui/core/Button";
-import Image from "next/image";
 import { BsCreditCard2Front } from "react-icons/bs";
-import { Input, TextField } from "@material-ui/core";
 import CC from "./PaymentProcessor/CC";
 import PP from "./PaymentProcessor/PP";
 

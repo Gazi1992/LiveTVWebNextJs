@@ -143,7 +143,6 @@ function Home(props) {
               kanaleTotal='2000'
               LiveEventscheck={true}
               kanaletepreferuara={true}
-              LiveEventscheck={true}
               netflix={true}
               isBlackstate='gray'
               pajisjet='5 screens'
@@ -159,7 +158,6 @@ function Home(props) {
               kanaleTotal='2000'
               LiveEventscheck={true}
               kanaletepreferuara='1'
-              LiveEventscheck={true}
               netflix={true}
               isBlackstate='orange'
               pajisjet='5 screens'
@@ -176,7 +174,6 @@ function Home(props) {
               LiveEventscheck={true}
               kanaletepreferuara={true}
               isBlackstate='purple'
-              LiveEventscheck={true}
               netflix={true}
               size='big'
               pajisjet='5 screens'

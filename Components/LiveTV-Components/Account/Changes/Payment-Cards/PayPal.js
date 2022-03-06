@@ -5,7 +5,6 @@ import PayPalButton from "./PayPalExtra/PaypalButton";
 import Button from "@material-ui/core/Button";
 
 const PayPal = () => {
-  const history = useHistory();
   const initialOptionsSubscription = {
     "client-id": "test",
     currency: "USD",
@@ -31,14 +30,8 @@ const PayPal = () => {
           onApprove={onApproveSubscriptionHandler}
         />
       </PayPalScriptProvider>
-      <StyledButton>Save</StyledButton>
-      <CancelButton
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        Cancel
-      </CancelButton>
+      {/* <StyledButton>Save</StyledButton> */}
+      {/* <CancelButton>Cancel</CancelButton> */}
     </Container>
   );
 };
