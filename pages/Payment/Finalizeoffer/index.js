@@ -1,36 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Card from "./Card";
 import styled from "styled-components";
 import Image from "next/image";
 import { Stream } from "@styled-icons/material/Stream";
-
-import {
-  Visa,
-  Mastercard,
-  Maestro,
-  Klarna,
-  PaypalTransparent,
-} from "react-pay-icons";
-
-import {
-  FormControl,
-  FormControlLabel,
-  RadioGroup,
-  Radio,
-  Checkbox,
-} from "@mui/material";
 import { TiPlusOutline, TiMinusOutline } from "react-icons/ti";
-// import { connect } from "react-redux";
-// import _ from "lodash";
-
-// const mapStateToProps = (state) => ({
-//   Oferta: _.get(state, `others.package`, {}),
-// });
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {};
-// };
+import { withRouter } from "next/router";
 
 const StreamStyled = styled(Stream)`
   height: 70%;
@@ -41,9 +16,13 @@ const StreamStyled = styled(Stream)`
   }
 `;
 function FinalizeOffer({ BlejButton, stateChanger, ...props }) {
-  // const history = useHistory();
   const [value, setValue] = React.useState("");
   const [shto, setShto] = React.useState(true);
+  const [pack, setPack] = React.useState({});
+
+  useEffect(() => {
+    setPack(JSON.parse(props.router.query.detail));
+  }, []);
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -65,12 +44,12 @@ function FinalizeOffer({ BlejButton, stateChanger, ...props }) {
       <Wrapper>
         <Description>
           <Header>
-            <h1>Subscribe to AirTV Premium</h1>
+            <h1>Subscribe to AirTV {pack.name}</h1>
           </Header>
           <Offer>
-            <h1>€99.00</h1>
+            <h1>{pack.priceTotal}</h1>
             <MuajContainer>
-              <span> /vit</span>
+              <span> /{pack.duration}</span>
             </MuajContainer>
           </Offer>
         </Description>
@@ -79,7 +58,7 @@ function FinalizeOffer({ BlejButton, stateChanger, ...props }) {
             <StreamStyled />
           </ChromeCastIcon>
           <Chromacastname>AirTV</Chromacastname>
-          <PriceFields>{<h1>39.99€</h1>}</PriceFields>
+          <PriceFields>{<h1>{pack.priceTotal}€</h1>}</PriceFields>
         </AdditionalProducts>
         <AdditionalProducts>
           <ChromeCastIcon>
@@ -116,8 +95,7 @@ function FinalizeOffer({ BlejButton, stateChanger, ...props }) {
             <>
               <TotalDescription>
                 <Headerthree>
-                  <h3>99.00€</h3>
-                  {/* <h3>{parseFloat("props.Oferta.priceTotal", 10)}€</h3> */}
+                  <h3>{parseFloat(pack.priceTotal, 10)}€</h3>
                 </Headerthree>
               </TotalDescription>
             </>
@@ -126,11 +104,10 @@ function FinalizeOffer({ BlejButton, stateChanger, ...props }) {
               <TotalDescription>
                 <Headerthree>
                   <h3>
-                    138.99
-                    {/* {parseFloat(
-                    Math.round("props.Oferta.priceTotal" * 100) / 100 + 39.99,
-                    10
-                  ).toFixed(2)} */}
+                    {parseFloat(
+                      Math.round(pack.priceTotal * 100) / 100 + 39.99,
+                      10
+                    ).toFixed(2)}
                     €
                   </h3>
                 </Headerthree>
@@ -478,5 +455,5 @@ const AddButtonIcon = styled.div`
   }
 `;
 
-export default FinalizeOffer;
+export default withRouter(FinalizeOffer);
 // export default connect(mapStateToProps, mapDispatchToProps)(FinalizeOffer);
