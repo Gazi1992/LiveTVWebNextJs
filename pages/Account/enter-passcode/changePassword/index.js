@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
 import styled from "styled-components";
 import Link from "next/link";
+import Alert from "@mui/material/Alert";
 
 function ChangePassword() {
   const [oldPassword, setOldPassword] = useState("");
@@ -21,14 +22,18 @@ function ChangePassword() {
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
 
-      <h4 style={{ color: "green" }}>{result}</h4>;
+      <Alert variant='outlined' severity='success'>
+        This is a {result} alert — check it out!
+      </Alert>;
 
       setError("");
       setLoading(false);
     } catch (err) {
       console.log("error code: ", err);
       setError(err.message);
-      <h4>{err.message}</h4>;
+      <Alert variant='outlined' severity='error'>
+        This is an error alert — check it out!
+      </Alert>;
       setLoading(false);
     }
   };
