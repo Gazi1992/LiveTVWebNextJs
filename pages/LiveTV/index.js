@@ -55,7 +55,7 @@ function LiveTV(props) {
 
 const Container = styled.div`
   background-color: black;
-  height: 91vh;
+  height: calc(100vh - 80px);
   width: 100vw;
   margin-top: 80px;
 `;

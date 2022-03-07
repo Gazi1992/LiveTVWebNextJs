@@ -79,14 +79,13 @@ const Controls = forwardRef(
             direction='row'
             alignItems='center'
             justify='space-between'
-            style
             style={{ padding: 0 }}
           ></Grid>
 
           <PlayFooter
             style={{
               padding: 0,
-              backgroundColor: " #090b13",
+              // backgroundColor: " #090b13",
               opacity: "1",
             }}
           >
@@ -136,16 +135,17 @@ const Controls = forwardRef(
                     <VolumeDown fontSize='large' />
                   )}
                 </StyledControlIcons>
-
-                <VolumeSlider
-                  min={0}
-                  max={100}
-                  value={muted ? 0 : volume * 100}
-                  onChange={onVolumeChange}
-                  aria-labelledby='input-slider'
-                  onMouseDown={onSeekMouseDown}
-                  onChangeCommitted={onVolumeSeekDown}
-                />
+                <VolumeContainer>
+                  <VolumeSlider
+                    min={0}
+                    max={100}
+                    value={muted ? 0 : volume * 100}
+                    onChange={onVolumeChange}
+                    aria-labelledby='input-slider'
+                    onMouseDown={onSeekMouseDown}
+                    onChangeCommitted={onVolumeSeekDown}
+                  />
+                </VolumeContainer>
 
                 <Button
                   variant='text'
@@ -242,9 +242,27 @@ const FooterButtonsContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+const VolumeContainer = styled.div`
+  height: 20px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 const PlayFooter = styled.div`
   position: relative;
-
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 5%,
+    // These three 'smooth' out the fade.
+    rgba(0, 0, 0, 0.6) 5%,
+    rgba(0, 0, 0, 0.7) 80%,
+    rgba(0, 0, 0, 0.9) 85%,
+    // Solid to match the background.
+    rgba(0, 0, 0, 1) 100%
+  );
   height: 80px;
   display: flex;
   flex-direction: column;
@@ -306,7 +324,6 @@ const StyledSlider = styled(Slider)`
 `;
 const VolumeSlider = styled(Slider)`
   margin-left: 20px;
-  width: 100px;
 `;
 
 const StyledButton = styled(Button)`
