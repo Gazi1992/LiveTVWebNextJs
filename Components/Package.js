@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Features from "../mainComponent/Features";
 import Button from "@material-ui/core/Button";
 import { StylesProvider } from "@material-ui/core";
+import Link from "next/link";
 
 function Package({
   offer,
@@ -41,9 +42,9 @@ function Package({
         </PriceContainer>
       </Introduction>
       <ButtonDiv>
-        <StylesProvider injectFirst>
+        <Link href='/Payment'>
           <StyledButton isBlack={isBlackstate}>Porosit</StyledButton>
-        </StylesProvider>
+        </Link>
       </ButtonDiv>
       <Wrap>
         <FeaturesContainer>
