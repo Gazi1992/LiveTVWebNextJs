@@ -7,6 +7,7 @@ import { BiDevices } from "react-icons/bi";
 import { useRouter } from "next/router";
 import { FiAlignJustify } from "react-icons/fi";
 import Link from "next/link";
+import { Link as ScrollLink } from "react-scroll";
 
 const Header = (props) => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -35,54 +36,74 @@ const Header = (props) => {
     <Nav headerdown={hasScrolled}>
       <Logo></Logo>
       <NavMenu>
-        <Link href='#Kanalet' offset={-80} spy={true}>
-          <a>
-            <Image
-              src={"/images/headerImages/series-icon.svg"}
-              width='20px'
-              height='20px'
-            />
-            <span>KANALET</span>
-          </a>
-        </Link>
-        <Link href='#AddOns' offset={-80}>
-          <a>
-            <Image
-              src='/images/headerImages/watchlist-icon.svg'
-              width='20px'
-              height='20px'
-            />
-            <span>ADD-ONS</span>
-          </a>
-        </Link>
-        <Link href='#Ofertat' offset={-80}>
-          <a>
-            <Image
-              src='/images/headerImages/movie-icon.svg'
-              width='20px'
-              height='20px'
-            />
-            <span>OFERTAT</span>
-          </a>
-        </Link>
-        <Link href='#Pajisjet' offset={-80}>
-          <a>
-            <BiDevices style={{ color: "white" }} />
+        <ScrollLink
+          to='Kanalet'
+          smooth={true}
+          duration={500}
+          offset={-80}
+          spy={true}
+        >
+          <Image
+            src={"/images/headerImages/series-icon.svg"}
+            width='20px'
+            height='20px'
+          />
+          <span>KANALET</span>
+        </ScrollLink>
+        <ScrollLink
+          to='AddOns'
+          smooth={true}
+          duration={500}
+          offset={-80}
+          spy={true}
+        >
+          <Image
+            src='/images/headerImages/watchlist-icon.svg'
+            width='20px'
+            height='20px'
+          />
+          <span>ADD-ONS</span>
+        </ScrollLink>
+        <ScrollLink
+          to='Ofertat'
+          smooth={true}
+          duration={500}
+          offset={-80}
+          spy={true}
+        >
+          <Image
+            src='/images/headerImages/movie-icon.svg'
+            width='20px'
+            height='20px'
+          />
+          <span>OFERTAT</span>
+        </ScrollLink>
+        <ScrollLink
+          to='Pajisjet'
+          smooth={true}
+          duration={500}
+          offset={-80}
+          spy={true}
+        >
+          <BiDevices style={{ color: "white" }} />
 
-            <span>PAJISJET</span>
-          </a>
-        </Link>
+          <span>PAJISJET</span>
+        </ScrollLink>
 
-        <Link href='#About' offset={-80}>
-          <a>
-            <Image
-              src='/images/headerImages/home-icon.svg'
-              width='20px'
-              height='20px'
-            />
-            <span>PËR NE</span>
-          </a>
-        </Link>
+        <ScrollLink
+          to='About'
+          smooth={true}
+          duration={500}
+          offset={-80}
+          spy={true}
+        >
+          <Image
+            src='/images/headerImages/home-icon.svg'
+            width='20px'
+            height='20px'
+          />
+          <span>PËR NE</span>
+        </ScrollLink>
       </NavMenu>
       <ButtonContainer hasScrolled={hasScrolled}>
         <Link href='/Payment'>

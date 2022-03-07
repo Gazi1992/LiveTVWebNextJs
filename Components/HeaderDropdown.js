@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import Button from "@material-ui/core/Button";
-
+import { Link as ScrollLink } from "react-scroll";
 function HeaderDropdown({ isOpen, toggle }) {
   const router = useRouter();
   return (
@@ -15,26 +15,26 @@ function HeaderDropdown({ isOpen, toggle }) {
             <CloseIcon onClick={toggle} />
           </Icon>
         </IconWrapper>
-        <Link onClick={toggle} href='#Kanalet' offset={-80}>
+        <ScrollLink onClick={toggle} to='Kanalet' offset={-80}>
           <SidebarRoute>
             <span>Kanalet</span>
           </SidebarRoute>
-        </Link>
-        <Link onClick={toggle} href='#AddOns' offset={-80}>
+        </ScrollLink>
+        <ScrollLink onClick={toggle} to='AddOns' offset={-80}>
           <SidebarRoute>
             <span>AddOns</span>
           </SidebarRoute>
-        </Link>
-        <Link onClick={toggle} href='#Ofertat' offset={-80}>
+        </ScrollLink>
+        <ScrollLink onClick={toggle} to='Ofertat' offset={-80}>
           <SidebarRoute>
             <span>Ofertat</span>
           </SidebarRoute>
-        </Link>
-        <Link onClick={toggle} href='#Pajisjet' offset={-80}>
+        </ScrollLink>
+        <ScrollLink onClick={toggle} to='Pajisjet' offset={-80}>
           <SidebarRoute>
             <span>Pajisjet</span>
           </SidebarRoute>
-        </Link>
+        </ScrollLink>
         <Link onClick={toggle} href='#About' offset={-80}>
           <SidebarRoute>
             <span>About</span>
