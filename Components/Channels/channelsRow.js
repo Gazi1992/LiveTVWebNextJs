@@ -1,17 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
-// import _ from "lodash";
-// import { connect } from "react-redux";
-
-const mapStatetoProps = (state) => ({
-  liveTVChannels: _.get(state, `liveTV_channels.data.filteredChannels`, []),
-  favoriteChannels: _.get(state, `liveTV.favoriteChannels`, []),
-});
-
-const mapDispatchtoProps = (dispatch) => {
-  return {};
-};
+import Image from "next/image";
+import { AiOutlineStar } from "react-icons/ai";
 
 function ChannelsRow({
   starState,
@@ -25,19 +16,20 @@ function ChannelsRow({
   const [isFavorite, setIsFavorite] = useState(starState);
 
   const imageClick = () => {
+    console.log("clicked");
     setIsFavorite(!isFavorite);
     onStarPress();
   };
-
-  // console.log({ description: description, isFavorite: isFavorite });
 
   return (
     <Container atSidebar={atSidebar}>
       <Star onClick={imageClick}>
         {starState === true ? (
-          <img src='images/filled-star.svg' alt='star' />
+          //
+          <AiOutlineStar size='15px' />
         ) : (
-          <img src='images/star.svg' alt='nostar' />
+          <AiOutlineStar size='25px' />
+          // <Image src='/images/star.svg' alt='nostar' width={25} height={25} />
         )}
       </Star>
       <ChannelContainer
@@ -45,7 +37,7 @@ function ChannelsRow({
           onChannelPress();
         }}
       >
-        <Image src={logo} />
+        <ImageContainer src={logo} />
         <DescriptionContainer>
           <p>{description}</p>
         </DescriptionContainer>
@@ -61,7 +53,7 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  user-select: none;
+
   background: ${(p) => (p.atSidebar === "true" ? "transparent" : "#282632")};
   color: white;
   margin-top: 5px;
@@ -74,7 +66,7 @@ const ChannelContainer = styled.div`
   height: 100%;
   width: ${(p) => (p.atSidebar === "true" ? "85%" : "80%")};
   display: flex;
-
+  user-select: none;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -84,18 +76,17 @@ const Star = styled.div`
   height: 100%;
   width: ${(p) => (p.atSidebar === "true" ? "15%" : "20%")};
   display: flex;
-
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   img {
     height: 25px;
     width: 25px;
-    cursor: pointer;
   }
 `;
 
-const Image = styled.img`
+const ImageContainer = styled.img`
   width: 40px;
   height: 80%;
   position: relative;

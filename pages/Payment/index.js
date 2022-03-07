@@ -21,14 +21,6 @@ const pStyle = {
   justifyContent: "center",
 };
 
-// const mapStatetoProps = (state) => ({});
-// const mapDispatchtoProps = (dispatch) => {
-//   return {
-//     refreshUser: (onSuccess, onError) =>
-//       dispatch(refreshUser(onSuccess, onError)),
-//   };
-// };
-
 function DataForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -60,7 +52,7 @@ function DataForm(props) {
     try {
       await Auth.confirmSignUp(email, confirmationCode);
       logIn();
-      router.push("/Payment/Offerselection", undefined, { shallow: true });
+      router.push("/Payment/Offerselection", undefined, { shallow: false });
       setError("");
     } catch (err) {
       console.log("error confirming sign up", err);
@@ -99,15 +91,13 @@ function DataForm(props) {
         username: email,
         password: password,
       });
-      console.log(user);
       setError("");
       setWaitingConfirmation(true);
-      setLoading(false);
     } catch (err) {
       console.log("error signing up:", err);
       setError(err.message);
-      setLoading(false);
     }
+    setLoading(false);
   };
   const SubmitSignUp = (event) => {
     event.preventDefault();

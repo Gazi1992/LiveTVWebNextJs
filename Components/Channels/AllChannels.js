@@ -3,9 +3,8 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import ChannelsRow from "./channelsRow";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import _ from "lodash";
-import { wrapper } from "../../app/store";
+
 import {
   List,
   AutoSizer,
@@ -68,14 +67,14 @@ function AllChannels({ kanalet, atSidebar, change, ...props }) {
                   const isFavorite = props.favoriteChannels
                     .map((item) => item.url)
                     .includes(channels[index].url);
-                  {
-                    // console.log({
-                    //   change: change,
-                    //   index: index,
-                    //   description: channel.name,
-                    //   isFavorite: isFavorite,
-                    // });
-                  }
+                  // {
+                  //   console.log({
+                  //     change: change,
+                  //     index: index,
+                  //     description: channel.name,
+                  //     isFavorite: isFavorite,
+                  //   });
+                  // }
 
                   return (
                     <CellMeasurer
@@ -95,6 +94,7 @@ function AllChannels({ kanalet, atSidebar, change, ...props }) {
                           starState={isFavorite}
                           description={channel.name}
                           onStarPress={() => {
+                            console.log("StarPress" + isFavorite);
                             if (isFavorite) props.removeFavorite(channel);
                             else props.addFavorite(channel);
                           }}
