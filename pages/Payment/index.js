@@ -49,7 +49,7 @@ function DataForm(props) {
   const stopLoading = () => {
     setTimeout(() => {
       setLoading(false);
-    }, 200);
+    }, 700);
   };
 
   const confirm = async () => {

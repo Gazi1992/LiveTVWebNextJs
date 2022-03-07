@@ -1,4 +1,4 @@
-// import Auth from "@aws-amplify/auth";
+import Auth from "@aws-amplify/auth";
 import React from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
@@ -9,16 +9,15 @@ import { Stream } from "@styled-icons/material/Stream";
 function Splash() {
   const router = useRouter();
   useEffect(() => {
-    router.push("/Home", undefined, { shallow: true });
-    // Auth.currentAuthenticatedUser({
-    //   bypassCache: false,
-    // })
-    //   .then((user) => {
-    //     history.push("/LiveTV");
-    //   })
-    //   .catch((err) => {
-    //     history.push("/Home");
-    //   });
+    Auth.currentAuthenticatedUser({
+      bypassCache: false,
+    })
+      .then((user) => {
+        router.push("/LiveTV", undefined, { shallow: true });
+      })
+      .catch((err) => {
+        router.push("/Home", undefined, { shallow: true });
+      });
   }, []);
 
   return (
