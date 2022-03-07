@@ -205,6 +205,7 @@ function TestComponent({ className, testURL }) {
     setState({ ...state, seeking: false, volume: parseFloat(newValue / 100) });
   };
   const handleVolumeChange = (e, newValue) => {
+    console.log({ newValue });
     setState({
       ...state,
       volume: parseFloat(newValue / 100),
@@ -217,7 +218,6 @@ function TestComponent({ className, testURL }) {
   };
 
   const handleMouseMove = () => {
-    console.log("mousemove");
     controlsRef.current.style.visibility = "visible";
     count = 0;
   };
@@ -285,7 +285,7 @@ function TestComponent({ className, testURL }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={hanldeMouseLeave}
       ref={playerContainerRef}
-      style={{ height: "91vh" }}
+      style={{ height: "100%" }}
     >
       <ReactPlayer
         className={className}
