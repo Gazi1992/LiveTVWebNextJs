@@ -46,19 +46,24 @@ function DataForm(props) {
       setActiveConfirmButton(false);
     }
   }, [confirmationCode]);
+  const stopLoading = () => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 200);
+  };
 
   const confirm = async () => {
     setLoading(true);
     try {
       await Auth.confirmSignUp(email, confirmationCode);
       logIn();
-      router.push("/Payment/Offerselection", undefined, { shallow: false });
+      router.push("/Payment/Offerselection", undefined, { shallow: true });
       setError("");
     } catch (err) {
       console.log("error confirming sign up", err);
       setError(err.message);
     }
-    setLoading(false);
+    stopLoading();
   };
   const logIn = async () => {
     try {
@@ -220,7 +225,7 @@ function DataForm(props) {
                     Already have an account?{" "}
                     <a
                       onClick={() => {
-                        // window.location.href = "/SignIn";
+                        router.push("/SignIn", undefined, { shallow: false });
                       }}
                     >
                       Sign in
