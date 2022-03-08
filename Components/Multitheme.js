@@ -19,7 +19,7 @@ function Multitheme() {
         layout='fill'
         src={
           theme === "livesport"
-            ? "/images/livesports-1.webp"
+            ? "/images/livesports-1.jpg"
             : theme === "breakingnews"
             ? "/images/o-breakingnews.jpg"
             : "/images/o-liveevent.jpg"
