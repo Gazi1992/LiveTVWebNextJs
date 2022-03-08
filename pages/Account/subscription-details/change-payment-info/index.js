@@ -33,22 +33,24 @@ function ChangePaymentInfo() {
         </p>
       </Header> */}
           <SelectCardContainer>
-            <ImageContainer
+            <CCImageContainer
+              selectPayment={selectPayment}
               onClick={() => {
                 setSelectPayment("CC");
               }}
             >
               <img src='/images/credit-card-icon.svg' />
               <span>Credit Card</span>
-            </ImageContainer>
-            <ImageContainer
+            </CCImageContainer>
+            <PPImageContainer
+              selectPayment={selectPayment}
               onClick={() => {
                 setSelectPayment("PP");
               }}
             >
-              <img src='/images/paypal-icon.svg' />
+              <img src='/images/credit_card_paypal_payment_method_icon_134923.svg' />
               <span>PayPal</span>
-            </ImageContainer>
+            </PPImageContainer>
           </SelectCardContainer>
 
           <BlockContainer>
@@ -173,11 +175,31 @@ const SelectCardContainer = styled.div`
   align-items: center;
 `;
 
-const ImageContainer = styled.div`
+const PPImageContainer = styled.div`
   width: 30%;
   height: 100%;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: ${(p) => (p.selectPayment === "PP" ? "1" : "0.6")};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100%;
+    height: 80%;
+  }
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const CCImageContainer = styled.div`
+  width: 30%;
+  height: 100%;
+  cursor: pointer;
+
+  opacity: ${(p) => (p.selectPayment === "CC" ? "1" : "0.6")};
   display: flex;
   flex-direction: column;
   justify-content: center;
