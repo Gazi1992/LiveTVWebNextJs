@@ -13,7 +13,7 @@ export default function AlertDialog({ handleOpen, handleParent, ref }) {
       handleClickOpen(handleOpen);
       setTimeout(() => {
         handleClose();
-      }, 1000);
+      }, 1300);
     };
     if (handleOpen) {
       handleClick();
@@ -32,11 +32,11 @@ export default function AlertDialog({ handleOpen, handleParent, ref }) {
 
   return (
     <div>
-      <Dialog open={open}>
+      <Dialog fullScreen open={open}>
         <Content>
           <h1 style={{ marginBottom: "0px", color: "#6fba63" }}>SUCCESS</h1>
           <IoIosCheckmarkCircleOutline
-            size='small'
+            size='256px'
             style={{ color: "#6fba63" }}
           />
         </Content>
@@ -45,10 +45,19 @@ export default function AlertDialog({ handleOpen, handleParent, ref }) {
   );
 }
 
+const Container = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Content = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #eef7ed;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;

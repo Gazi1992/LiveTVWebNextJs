@@ -29,11 +29,7 @@ export default function AlertDialog({ handleOpen, handleParent }) {
 
   return (
     <div>
-      <Dialog
-        open={open}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
-      >
+      <Dialog open={open} fullScreen>
         <Content>
           <h1 style={{ marginBottom: "0px", color: "#e8625d" }}>Failure</h1>
           <BiErrorCircle size='256px' style={{ color: "#e8625d" }} />
@@ -44,8 +40,8 @@ export default function AlertDialog({ handleOpen, handleParent }) {
 }
 
 const Content = styled.div`
-  width: 400px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
   background-color: #fceded;
   display: flex;
   flex-direction: column;

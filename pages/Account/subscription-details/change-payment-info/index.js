@@ -67,7 +67,7 @@ function ChangePaymentInfo() {
                 >
                   Save
                 </StyledButton>
-                <SucessDialog handleOpen={open} handleParent={setOpening} />
+                <FailureDialog handleOpen={open} handleParent={setOpening} />
                 {/* <FailureDialog handleOpen={open} handleParent={setOpening} /> */}
                 <Link href='./'>
                   <CancelButton>Cancel</CancelButton>

@@ -2,6 +2,7 @@ import React from "react";
 
 import { useState } from "react";
 import SuccessDialog from "../../../Components/Payment-Information/Dialogs/SuccessDialog";
+import FailureDialog from "../../../Components/Payment-Information/Dialogs/FailureDialog";
 import styled from "styled-components";
 import "react-credit-cards/es/styles-compiled.css";
 import Button from "@material-ui/core/Button";
