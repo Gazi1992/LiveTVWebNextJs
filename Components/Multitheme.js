@@ -19,10 +19,10 @@ function Multitheme() {
         layout='fill'
         src={
           theme === "livesport"
-            ? "/images/livesports-1.jpg"
+            ? "/images/livesports-1.webp"
             : theme === "breakingnews"
-            ? "/images/breakingnews.jpg"
-            : "/images/liveevent.jpg"
+            ? "/images/o-breakingnews.jpg"
+            : "/images/o-liveevent.jpg"
         }
       />
       <Gradient theme={theme} />
@@ -195,6 +195,7 @@ const DescriptionContainer = styled.div`
   height: 60%;
   font-weight: bold;
   text-align: left;
+  color: white;
   @media screen and (max-width: 1000px) {
     display: flex;
     flex-direction: column;
@@ -214,6 +215,7 @@ const HeaderDescription = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   margin-left: 50px;
+
   /* @media s  @media screen and (max-width: 1000px) {
     display: flex;
     flex-direction: column;

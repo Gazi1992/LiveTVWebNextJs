@@ -32,11 +32,7 @@ export default function AlertDialog({ handleOpen, handleParent, ref }) {
 
   return (
     <div>
-      <Dialog
-        open={open}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
-      >
+      <Dialog open={open}>
         <Content>
           <h1 style={{ marginBottom: "0px", color: "#6fba63" }}>SUCCESS</h1>
           <IoIosCheckmarkCircleOutline
@@ -50,8 +46,8 @@ export default function AlertDialog({ handleOpen, handleParent, ref }) {
 }
 
 const Content = styled.div`
-  width: 400px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
   background-color: #eef7ed;
   display: flex;
   flex-direction: column;
