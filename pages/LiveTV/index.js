@@ -8,6 +8,8 @@ import ResponsiveStyledPlayer from "../../Components/Channels/ColumnComponents/I
 import _ from "lodash";
 import { getChannels } from "../../app/store/actions/liveTV";
 import { channels_get, user_get } from "../../app/store/actions/api";
+import { isMobile } from "react-device-detect";
+import MobileLiveTV from "../..//Components/MobileLiveTV";
 
 const mapStatetoProps = (state) => ({
   LiveTVCHannels: _.get(state, `liveTV_channels.data.filteredChannels`, []),
@@ -44,15 +46,27 @@ function LiveTV(props) {
   const playerProps = { playing: false, height: "90%" };
 
   return (
-    <PlayerHeader>
-      <Container>
-        <Sidebar />
-        <ResponsiveStyledPlayer {...playerProps} />
-      </Container>
-    </PlayerHeader>
+    <>
+      {isMobile ? (
+        <MobileLiveTV />
+      ) : (
+        <PlayerHeader>
+          <Container>
+            <Sidebar />
+            <ResponsiveStyledPlayer {...playerProps} />
+          </Container>
+        </PlayerHeader>
+      )}
+    </>
   );
 }
-
+const MobileContainer = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 10;
+`;
 const Container = styled.div`
   background-color: black;
   height: calc(100vh - 80px);

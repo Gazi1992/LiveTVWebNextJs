@@ -1,21 +1,39 @@
 import { Button } from "@material-ui/core";
 import React from "react";
 import styled from "styled-components";
+import { Stream } from "@styled-icons/material/Stream";
+import Image from "next/image";
 
 function MobileLiveTV() {
   return (
     <Container>
       <HeaderIcon>
-        <h2>SPLASH TV</h2>
+        <StreamStyled />
+        <h2>AIR TV</h2>
       </HeaderIcon>
       <Header>
-        <img src="/images/media_smart_TV_concept.jpg" />
+        <img src='/images/media_smart_TV_concept.jpg' />
       </Header>
       <Body>
-        <h2>The best series, movies and more. All in one place.</h2>
-        <h3>Watch Splash TV on your phone or tablet</h3>
         <ButtonContainer>
-          <StyledButtonHome>Get the free app</StyledButtonHome>
+          <StyledButtonHome>
+            <Image
+              src='/images/play-store.png'
+              alt='google play'
+              width={120}
+              height={100}
+              layout='fill'
+            />
+          </StyledButtonHome>
+          <StyledButtonHome>
+            <Image
+              src='/images/app-store.png'
+              alt='google play'
+              width={120}
+              height={100}
+              layout='fill'
+            />
+          </StyledButtonHome>
         </ButtonContainer>
       </Body>
     </Container>
@@ -30,6 +48,13 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
 `;
+
+const StreamStyled = styled(Stream)`
+  height: 60%;
+  margin-right: 10px;
+  color: white;
+`;
+
 const HeaderIcon = styled.div`
   height: 8vh;
   width: 100vw;
@@ -42,9 +67,10 @@ const HeaderIcon = styled.div`
   justify-content: center;
   align-items: center;
   h2 {
-    color: #00c1f3;
+    color: white;
   }
 `;
+
 const Header = styled.div`
   position: relative;
   top: 0;
@@ -96,17 +122,20 @@ const ButtonContainer = styled.div`
   width: 100%;
   height: 100%;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 const StyledButtonHome = styled(Button)`
   && {
-    background-color: #00c1f3;
-    width: 80%;
-    height: 55px;
+    margin: 5px;
+    border-radius: 15px;
+    background-color: black;
+    width: 320px;
+    height: 94px;
     color: black;
     cursor: pointer;
-    &:hover {
-      background-color: #00a1f3;
-    }
   }
 `;
 
