@@ -243,7 +243,7 @@ const BannerHome = styled.div`
   overflow: hidden;
   position: relative;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 800px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -570,16 +570,15 @@ const Video = styled.div`
     height: auto;
 
     opacity: 0.6;
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 1000px) {
       height: 100%;
       width: auto;
     }
   }
-  /* @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1000px) {
     height: 100%;
     width: auto;
-    border: 5px solid green;
-  } */
+  }
 `;
 
 const StyledButtonHome = styled(Button)`
