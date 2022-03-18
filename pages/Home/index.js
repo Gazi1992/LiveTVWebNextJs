@@ -527,7 +527,8 @@ const Intro = styled.div`
     font-size: 55px;
     line-height: 1.5;
     letter-spacing: 1.5px;
-    @media screen and (max-width: 1000px) {
+
+    @media screen and (max-width: 1250px), screen and (max-height: 600px) {
       font-size: 30px;
       line-height: 1.5;
       width: 100%;
@@ -543,7 +544,7 @@ const Intro = styled.div`
     font-size: 20px;
     line-height: 1.5;
     letter-spacing: 1.5px;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 1000px), screen and (max-height: 600px) {
       font-size: 10px;
       line-height: 1.5;
 
@@ -569,15 +570,16 @@ const Video = styled.div`
     height: auto;
 
     opacity: 0.6;
-    @media screen and (max-width: 1400px) {
+    @media screen and (max-width: 1200px) {
       height: 100%;
       width: auto;
     }
   }
-  @media screen and (max-width: 1400px) {
+  /* @media screen and (max-width: 1200px) {
     height: 100%;
     width: auto;
-  }
+    border: 5px solid green;
+  } */
 `;
 
 const StyledButtonHome = styled(Button)`

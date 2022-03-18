@@ -10,6 +10,7 @@ import { getChannels } from "../../app/store/actions/liveTV";
 import { channels_get, user_get } from "../../app/store/actions/api";
 import { isMobile } from "react-device-detect";
 import MobileLiveTV from "../..//Components/MobileLiveTV";
+import { useRouter } from "next/router";
 
 const mapStatetoProps = (state) => ({
   LiveTVCHannels: _.get(state, `liveTV_channels.data.filteredChannels`, []),
@@ -34,11 +35,20 @@ const mapDispatchtoProps = (dispatch) => {
 };
 
 function LiveTV(props) {
+  const router = useRouter();
   useEffect(() => {
     props.getChannels();
     props.getUser();
   }, []);
 
+  useEffect(() => {
+    if (props.getUser()) {
+      router.push("/SignIn ", undefined, { shallow: true });
+      console.log("User is" + props.getUser());
+    } else {
+      console.log("Not Exists !");
+    }
+  }, []);
   // console.log(props.channels);
   // console.log(props.user);
   // console.log("USER AWS ", props.userAWS);
