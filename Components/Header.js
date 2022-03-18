@@ -11,7 +11,7 @@ import { Link as ScrollLink } from "react-scroll";
 
 const Header = (props) => {
   const [hasScrolled, setHasScrolled] = useState(false);
-  // const history = useHistory();
+
   const router = useRouter();
   const onScroll = () => {
     if (window.scrollY > 200) {
