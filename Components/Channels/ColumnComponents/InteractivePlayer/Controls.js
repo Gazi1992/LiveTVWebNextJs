@@ -256,12 +256,10 @@ const PlayFooter = styled.div`
   background-image: linear-gradient(
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0) 5%,
-    // These three 'smooth' out the fade.
-    rgba(0, 0, 0, 0.6) 5%,
+    /*  These three 'smooth' out the fade. */ rgba(0, 0, 0, 0.6) 5%,
     rgba(0, 0, 0, 0.7) 80%,
     rgba(0, 0, 0, 0.9) 85%,
-    // Solid to match the background.
-    rgba(0, 0, 0, 1) 100%
+    /* Solid to match the background. */ rgba(0, 0, 0, 1) 100%
   );
   height: 80px;
   display: flex;

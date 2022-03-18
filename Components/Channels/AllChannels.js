@@ -117,7 +117,7 @@ function AllChannels({ kanalet, atSidebar, change, ...props }) {
 
 const Container = styled.div`
   width: ${(p) => (p.atSidebar === "true" ? "100%" : "90%")};
-  height: ${(p) => (p.atSidebar === "true" ? "91vw" : "100%")};
+  height: ${(p) => (p.atSidebar === "true" ? "100%" : "100%")};
 
   display: flex;
   flex-direction: column;
