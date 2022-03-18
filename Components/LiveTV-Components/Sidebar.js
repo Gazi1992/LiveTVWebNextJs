@@ -11,7 +11,7 @@ import { CgFormatSlash } from "react-icons/cg";
 import { Button } from "@mui/material";
 
 function Sidebar() {
-  const [favorites, setFavorites] = useState("false");
+  const [favorites, setFavorites] = useState(false);
 
   const options = [
     {
@@ -186,7 +186,7 @@ const Container = styled.div`
   background-image: linear-gradient(
     90deg,
     #000000 0%,
-    #000000a6 70%,
+    #000000a6 60%,
     #0000ff00 90%,
     transparent 100%
   );
