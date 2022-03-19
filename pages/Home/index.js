@@ -64,11 +64,11 @@ function Home(props) {
       <Container>
         <BannerHome id='Banner'>
           <Intro>
-            <a>The best premium live TV streaming service</a>
+            <a>Platforma më kualitative shqiptare në botë!</a>
             <p>
-              85+ top channels of entertainment, news, live sports, & more.
-              Recording without storage limits and 6 accounts included. No cable
-              box, contracts, or hidden fees.
+              250+ kanale shqiptare, me përmbajtje të lajmeve, sportit,
+              historise dhe shumë të tjera. Mbi 1000 kanale të huaja. Deri në 6
+              pajisje njëkohësisht.
             </p>
           </Intro>
           <Video>
@@ -83,7 +83,7 @@ function Home(props) {
             />
           </Video>
           <Link href='/Payment'>
-            <StyledButtonHome>POROSIT</StyledButtonHome>
+            <StyledButtonHome>ABONOHU TANI</StyledButtonHome>
           </Link>
         </BannerHome>
         <Kanalet id='Kanalet'>
@@ -122,11 +122,9 @@ function Home(props) {
             <Logo logosrc='logo/rtsh.png'></Logo>
           </Channels>
           <TemplateofAllChannels trigger={allChannelsPopup} />
-          <h1>Watch live TV from 85+ channels</h1>
+          <h1>Kudo në botë, qasje në të gjitha kanalet shqiptare </h1>
           <h2>
-            Available in the U.S. nationwide. This lineup offers a sample of
-            channels we offer. Please enter your home ZIP code below to see your
-            area's lineup. Subject to availability.
+            Pa proces të instalimit. Thjesht abonohu the shijoje eksperiencën.
           </h2>
         </Kanalet>
         <AddOns id='AddOns'>
@@ -304,7 +302,8 @@ const Kanalet = styled.div`
   h2 {
     margin: 0 200px 100px;
     color: black;
-    font-size: 30px;
+    font-size: 25px;
+    font-weight: 500;
     @media screen and (max-width: 600px) {
       font-size: 10px;
       margin: 0 40px 40px 40px;
@@ -586,6 +585,8 @@ const StyledButtonHome = styled(Button)`
     margin: 30px;
     margin-top: 20px;
     background-color: white;
+    font-size: 20px;
+    font-weight: 500;
     width: 300px;
     height: 50px;
     color: black;
