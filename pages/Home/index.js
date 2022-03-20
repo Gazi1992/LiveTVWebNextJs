@@ -67,7 +67,7 @@ function Home(props) {
             <a>Platforma më kualitative shqiptare në botë!</a>
             <p>
               250+ kanale shqiptare, me përmbajtje të lajmeve, sportit,
-              historise dhe shumë të tjera. Mbi 1000 kanale të huaja. Deri në 6
+              historise dhe shumë të tjera. Mbi 1000 kanale të huaja. Deri në 5
               pajisje njëkohësisht.
             </p>
           </Intro>
@@ -142,7 +142,7 @@ function Home(props) {
               LiveEventscheck={false}
               kanaletepreferuara={false}
               isBlackstate='gray'
-              pajisjet='1 screens'
+              pajisjet='1 Smartphone'
               hd={false}
               size='small'
               VOD='0'
@@ -157,7 +157,7 @@ function Home(props) {
               kanaletepreferuara='1'
               netflix={true}
               isBlackstate='orange'
-              pajisjet='3 screens'
+              pajisjet='3 Pajisje'
               hd={true}
               size='medium'
               VOD='100'
@@ -173,7 +173,7 @@ function Home(props) {
               isBlackstate='purple'
               netflix={true}
               size='big'
-              pajisjet='5 screens'
+              pajisjet='5 Pajisje'
               hd={true}
               VOD='100'
             ></Package>
