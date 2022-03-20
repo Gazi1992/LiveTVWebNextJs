@@ -83,7 +83,7 @@ function SignIn(props) {
                 marginLeft: "5px",
               }}
             />
-            <span> Back </span>
+            <span> Mbrapa </span>
           </Header>
           <Form
             onSubmit={(e) => {
@@ -91,7 +91,7 @@ function SignIn(props) {
               handleSubmit(e);
             }}
           >
-            <FormH1>Sign it your account</FormH1>
+            <FormH1>Kyçu për të vazhduar tutje</FormH1>
 
             <TextField
               style={{ marginTop: "8px", marginBottom: "8px" }}
@@ -128,14 +128,14 @@ function SignIn(props) {
               variant='contained'
               color='primary'
             >
-              Regjistrohu
+              Vazhdo
             </FormButton>
             <ForgotPasswordButton
               onClick={() => {
                 onForgotPassword();
               }}
             >
-              Forgot Password
+              Kam harruar fjalëkalimin
             </ForgotPasswordButton>
           </Form>
         </Wrapper>

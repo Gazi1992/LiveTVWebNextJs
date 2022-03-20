@@ -12,23 +12,23 @@ function BillingHistory() {
         <Link href='./'>
           <Header>
             <IoArrowBack style={{ color: "#67bdff", marginLeft: "5px" }} />
-            <span> Back</span>
+            <span> Mbrapa</span>
           </Header>
         </Link>
         <Title>
-          <span> Subscription details</span>
+          <span> Detajet e abonimit</span>
         </Title>
 
         <BlockContainer>
           <BlockHeaderContainer>
             <DateContainer>
-              <span>Date</span>
+              <span>Data</span>
             </DateContainer>
             <DescriptionContainer>
-              <span>Descprition</span>
+              <span>Përshkrimi</span>
             </DescriptionContainer>
             <TotalContainer>
-              <span>Total</span>
+              <span>Totali</span>
             </TotalContainer>
           </BlockHeaderContainer>
           <RowContainer>
@@ -36,10 +36,10 @@ function BillingHistory() {
               <span style={{ color: "#5f98cf" }}>1 Mars 2020</span>
             </DateContainer>
             <DescriptionContainer>
-              <span>Disney Plus Monthly</span>
+              <span>AirTV Family+</span>
             </DescriptionContainer>
             <TotalContainer>
-              <span>E8.99</span>
+              <span>€ x.xx</span>
             </TotalContainer>
           </RowContainer>
           <RowContainer>
@@ -47,10 +47,10 @@ function BillingHistory() {
               <span>1 Mars 2020</span>
             </DateContainer>
             <DescriptionContainer>
-              <span>Disney Plus Monthly</span>
+              <span>AirTV Family+</span>
             </DescriptionContainer>
             <TotalContainer>
-              <span>E8.99</span>
+              <span>€ x.xx</span>
             </TotalContainer>
           </RowContainer>
           <RowContainer>
@@ -58,10 +58,10 @@ function BillingHistory() {
               <span>1 Mars 2020</span>
             </DateContainer>
             <DescriptionContainer>
-              <span>Disney Plus Monthly</span>
+              <span>AirTV Family+</span>
             </DescriptionContainer>
             <TotalContainer>
-              <span>E8.99</span>
+              <span>€ x.xx</span>
             </TotalContainer>
           </RowContainer>
         </BlockContainer>

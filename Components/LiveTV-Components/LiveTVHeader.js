@@ -20,7 +20,7 @@ const Header = (props) => {
       <NavMenu>
         <a href='/LiveTV'>
           <Airplay style={{ color: "white" }} />
-          <span>LIVETV</span>
+          <span>AirTV</span>
         </a>
 
         <a href='/Kanalet'>

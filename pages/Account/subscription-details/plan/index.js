@@ -18,35 +18,37 @@ import ConfirmDialog from "../../../../Components/LiveTV-Components/Account/Chan
 
 const ofertat = [
   {
-    name: "Mobil",
+    name: "MOBIL",
     price: "4.99",
     priceTotal: "4.99",
     length: "1",
+    duration: "muaj",
+    oldPrice: "6.99",
   },
 
   {
-    name: "Mobil+",
-    price: "4.99",
-    priceTotal: "60",
-    length: "12",
-  },
-  {
-    name: "Family",
+    name: "FAMILY",
     price: "12.99",
     priceTotal: "12.99",
     length: "1",
+    duration: "muaj",
+    oldPrice: "18.99",
   },
   {
-    name: "Family+",
+    name: "FAMILY+",
     price: "9.99",
     priceTotal: "120",
     length: "12",
+    duration: "vit",
+    oldPrice: "14.99",
   },
   {
-    name: "Family Premium",
+    name: "FAMILY PREMIUM",
     priceTotal: "160",
     price: "14.99",
     length: "12",
+    duration: "vit",
+    oldPrice: "20.99",
   },
 ];
 
@@ -65,9 +67,9 @@ function Plan(props) {
             }}
             setcolor={"first"}
             offer={ofertat[0].name}
-            oldPrice='6.99'
-            price='4.99'
-            nrikanaleve='150'
+            oldPrice={ofertat[0].oldPrice}
+            price={ofertat[0].price}
+            nrikanaleve='250'
             kanaleTotal='2000'
             currentPlan='false'
             LiveEventscheck={"cross"}
@@ -87,17 +89,17 @@ function Plan(props) {
             }}
             setcolor={"second"}
             offer={ofertat[1].name}
-            oldPrice='6.99'
-            price='4.99'
+            oldPrice={ofertat[1].oldPrice}
+            price={ofertat[1].price}
             currentPlan='false'
             setBackground={"yellow"}
-            nrikanaleve='150'
+            nrikanaleve='250'
             kanaleTotal='2000'
             LiveEventscheck={"cross"}
             kanaletepreferuara='1'
             netflix={"cross"}
             isBlackstate='gray'
-            pajisjet='3 Smartphone'
+            pajisjet='3 Pajisje'
             hd={"cross"}
             size='small'
             months={ofertat[1].length + " Muaj"}
@@ -109,9 +111,9 @@ function Plan(props) {
             }}
             setcolor={"third"}
             offer={ofertat[2].name}
-            oldPrice='18.99'
-            price='12.99'
-            nrikanaleve='150'
+            oldPrice={ofertat[2].oldPrice}
+            price={ofertat[2].price}
+            nrikanaleve='250'
             setBackground={"green"}
             kanaleTotal='2000'
             LiveEventscheck={"true"}
@@ -120,7 +122,7 @@ function Plan(props) {
             currentPlan='true'
             netflix={"true"}
             size='big'
-            pajisjet='5 screens'
+            pajisjet='3 Pajisje'
             hd={"true"}
             months={ofertat[2].length + " Muaj"}
             VOD='100'
@@ -131,40 +133,20 @@ function Plan(props) {
             }}
             setcolor={"fourth"}
             offer={ofertat[3].name}
-            oldPrice='15.99'
-            price='9.99'
+            oldPrice={ofertat[3].oldPrice}
+            price={ofertat[3].price}
             currentPlan='false'
-            nrikanaleve='25'
+            nrikanaleve='250'
             setBackground={"blue"}
             kanaleTotal='2000'
             LiveEventscheck={"true"}
             kanaletepreferuara={true}
             isBlackstate='purple'
             netflix={"true"}
-            pajisjet='5 screens'
+            pajisjet='5 Pajisje'
             months={ofertat[3].length + " Muaj"}
             hd={true}
             size='preferred'
-          />
-          <CardForPackage
-            buttonClicked={() => {
-              finalizeOffer(ofertat[4]);
-            }}
-            setcolor='fifth'
-            offer={ofertat[4].name}
-            oldPrice='19.99'
-            price='14.99'
-            currentPlan='false'
-            nrikanaleve='25'
-            kanaleTotal='2000'
-            LiveEventscheck={true}
-            kanaletepreferuara={true}
-            isBlackstate='purple'
-            months={ofertat[4].length + " Muaj"}
-            netflix={true}
-            pajisjet='5 screens'
-            hd={true}
-            VOD='100'
           />
         </CardContainer>
       </Container>

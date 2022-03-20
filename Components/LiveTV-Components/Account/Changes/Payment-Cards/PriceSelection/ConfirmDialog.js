@@ -23,16 +23,16 @@ function ConfirmDialog({ invoke, setInvoke }) {
       <Dialog
         open={invoke}
         onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'
       >
-        <DialogTitle id="alert-dialog-title">
+        <DialogTitle id='alert-dialog-title'>
           <Header>
-            <h2>Change Streaming Plan</h2>
+            <h2>Ndrysho pakon</h2>
           </Header>
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText id='alert-dialog-description'>
             <Row>
               <h3 style={{ color: "#878787" }}>Plani aktual: Family</h3>
               <p style={{ color: "#878787" }}>
@@ -41,7 +41,7 @@ function ConfirmDialog({ invoke, setInvoke }) {
               </p>
             </Row>
           </DialogContentText>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText id='alert-dialog-description'>
             <Row style={{ borderTop: "0px solid transparent" }}>
               <h3>Plani i ri: Family Premium</h3>
               <p>
@@ -50,7 +50,7 @@ function ConfirmDialog({ invoke, setInvoke }) {
               </p>
             </Row>
           </DialogContentText>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText id='alert-dialog-description'>
             <p style={{ color: "black" }}>
               Plani i ri fillon me:
               <span style={{ fontWeight: "700" }}> 22.02.2022</span>
@@ -63,11 +63,11 @@ function ConfirmDialog({ invoke, setInvoke }) {
               setInvoke(false);
             }}
           >
-            Cancel
+            Anulo
           </Button>
           <AgreeStyledButton
-            color="primary"
-            variant="contained"
+            color='primary'
+            variant='contained'
             onClick={() => {
               setInvoke(false);
             }}

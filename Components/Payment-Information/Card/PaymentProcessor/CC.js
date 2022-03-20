@@ -41,19 +41,19 @@ const Card = () => {
         <InputStyled
           type='text'
           name='name'
-          placeholder='Your Name'
+          placeholder='Emri juaj'
           onChange={handleInputChange}
         />
         <InputStyled
           name='number'
           inputComponent={CardNumberMask}
-          placeholder='Card Number'
+          placeholder='Numri i kartelës'
           onChange={handleInputChange}
         />
         <InputStyled
           name='expiry'
           inputComponent={CardExpireMask}
-          placeholder='Expire Date'
+          placeholder='Data e skadimit'
           onChange={handleInputChange}
         />
 
@@ -61,7 +61,6 @@ const Card = () => {
           type='password'
           name='cvc'
           inputComponent={CardCVCMask}
-          placeholder='CVC'
           placeholder='CVC'
           inputProps={{ pattern: "d{3,4}" }}
           onChange={handleInputChange}

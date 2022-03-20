@@ -107,12 +107,12 @@ const Header = (props) => {
       </NavMenu>
       <ButtonContainer hasScrolled={hasScrolled}>
         <Link href='/Payment'>
-          <StyledButton>Porosit</StyledButton>
+          <StyledButton>Abonohu Tani</StyledButton>
         </Link>
       </ButtonContainer>
 
       <Link href='/SignIn'>
-        <Login>Login</Login>
+        <Login>Kyçu</Login>
       </Link>
       <PersonalContent>
         <ImageContainer onClick={toggle}>

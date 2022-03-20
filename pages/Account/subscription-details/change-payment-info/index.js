@@ -20,7 +20,7 @@ function ChangePaymentInfo() {
     <PlayerHeader>
       <Container>
         <Header>
-          <h3>Change Payment Info</h3>
+          <h3>Ndrysho mënyrën e pagesës</h3>
         </Header>
         <Wrapper>
           {/* <Header>
@@ -55,7 +55,7 @@ function ChangePaymentInfo() {
 
           <BlockContainer>
             <BillingHeader>
-              <h5>Confirm your billing details</h5>
+              <h5>Konfirmo detajet që percaktojnë mënyren e pagesës</h5>
             </BillingHeader>
             {selectPayment === "CC" ? (
               <CrediCardWrapper>
@@ -65,12 +65,12 @@ function ChangePaymentInfo() {
                     setOpening(true);
                   }}
                 >
-                  Save
+                  Ruaj
                 </StyledButton>
                 <FailureDialog handleOpen={open} handleParent={setOpening} />
                 {/* <FailureDialog handleOpen={open} handleParent={setOpening} /> */}
                 <Link href='./'>
-                  <CancelButton>Cancel</CancelButton>
+                  <CancelButton>Anulo</CancelButton>
                 </Link>
               </CrediCardWrapper>
             ) : (

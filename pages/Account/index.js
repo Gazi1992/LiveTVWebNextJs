@@ -55,11 +55,11 @@ function Account(props) {
       <Container>
         <Wrapper>
           <TitleContainer>
-            <h1>Account</h1>
+            <h1>Llogaria</h1>
           </TitleContainer>
           <BlockContainer>
             <SubTitleContainer>
-              <span>Account Details</span>
+              <span>Detajet e llogarisë</span>
             </SubTitleContainer>
             <DescriptionContainer
               onClick={() => {
@@ -86,16 +86,16 @@ function Account(props) {
                 signOut();
               }}
             >
-              <span>Sign Out</span>
+              <span>Dil</span>
             </LogOutContainer>
           </BlockContainer>
           <BlockContainer>
             <SubTitleContainer>
-              <span>Subscription</span>
+              <span>Abonimi</span>
             </SubTitleContainer>
             <Link href='/Account/subscription-details'>
               <DescriptionContainer>
-                <span>AirTV (monthly)</span>
+                <span>AirTV (për muaj)</span>
                 <Icon>
                   <IoChevronForwardSharp />
                 </Icon>
@@ -103,7 +103,7 @@ function Account(props) {
             </Link>
             <Link href='/Account/subscription-details/billing-history'>
               <DescriptionContainer>
-                <span>Billing History</span>
+                <span>Pagesat</span>
                 <Icon>
                   <IoChevronForwardSharp />
                 </Icon>
@@ -112,7 +112,7 @@ function Account(props) {
           </BlockContainer>
           <Link href='/Account/subscription-details/annual'>
             <SwitchToAnnualContainer>
-              <span>Switch to Annual and Save</span>
+              <span>Kalo ne abonim vjetorë</span>
               <Icon>
                 <IoChevronForwardSharp />
               </Icon>

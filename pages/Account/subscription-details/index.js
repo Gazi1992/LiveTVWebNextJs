@@ -13,11 +13,11 @@ function SubscriptionDetails() {
         <Link href='./'>
           <Header>
             <IoArrowBack style={{ color: "#67bdff", marginLeft: "5px" }} />
-            <span> Back to Account</span>
+            <span> Mbrapa</span>
           </Header>
         </Link>
         <Title>
-          <span> Subscription details</span>
+          <span> Detajet e abonimit</span>
         </Title>
         <FirstBlockContainer>
           <ImageContainer>
@@ -25,46 +25,46 @@ function SubscriptionDetails() {
           </ImageContainer>
           <RowContainer>
             <LogoAndPrice>
-              <span style={{ fontWeight: "bolder" }}>Disney+</span>
-              <span>€8.99/month</span>
+              <span style={{ fontWeight: "bolder" }}>AirTV Family+</span>
+              <span>€x.xx/muaj</span>
             </LogoAndPrice>
             <Link href='./subscription-details/annual'>
               <SwitchtoAnnual>
-                <span> Switch to Annual </span>
+                <span> Kalo në abonim vjetorë </span>
               </SwitchtoAnnual>
             </Link>
           </RowContainer>
         </FirstBlockContainer>
         <BlockContainer>
           <RowContainer>
-            <span style={{ marginLeft: "10px" }}>Payment Method</span>
+            <span style={{ marginLeft: "10px" }}>Mënyra e pagesës</span>
             <Link href='./subscription-details/change-payment-info'>
               <ChangeContainer style={{ marginRight: "10px" }}>
-                Change
+                Ndrysho
               </ChangeContainer>
             </Link>
           </RowContainer>
           <RowContainer>
-            <span style={{ marginLeft: "10px" }}>Current Package</span>
+            <span style={{ marginLeft: "10px" }}>Pakoja aktuale</span>
             <Link href='./subscription-details/plan'>
               <ChangeContainer style={{ marginRight: "10px" }}>
-                Change
+                Ndrysho
               </ChangeContainer>
             </Link>
           </RowContainer>
 
           <RowContainer>
-            <span style={{ marginLeft: "10px" }}>New Billing Date</span>
-            <span style={{ marginRight: "10px" }}>December 20, 2021</span>
+            <span style={{ marginLeft: "10px" }}>Data e re e pagesës</span>
+            <span style={{ marginRight: "10px" }}>20 Dhjetor, 2022</span>
           </RowContainer>
           <RowContainer>
-            <span style={{ marginLeft: "10px" }}>Last Payment</span>
-            <span style={{ marginRight: "10px" }}>November 20, 2021 €8.99</span>
+            <span style={{ marginLeft: "10px" }}>Pagesa e fundit</span>
+            <span style={{ marginRight: "10px" }}> 20 Nëntor, 2021 €x.xx</span>
           </RowContainer>
         </BlockContainer>
         <Link href='./subscription-details/survey'>
           <CancelSubscriptionContainer>
-            Cancel Subscription
+            Ndalo abonimin
           </CancelSubscriptionContainer>
         </Link>
       </Container>

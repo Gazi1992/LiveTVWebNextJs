@@ -25,7 +25,7 @@ function Survey() {
 
         <Wrapper>
           <RowContainer style={{ border: "0px" }}>
-            <h2>Why do you want to cancel?</h2>
+            <h2>Arsyeja pse deshironi të anuloni abonimin?</h2>
           </RowContainer>
           <FormControl component='fieldset'>
             <RadioGroup
@@ -40,7 +40,8 @@ function Survey() {
                     control={<Radio sx={style} />}
                     label={
                       <StyledLabel>
-                        Too expensive/can no longer afford it!
+                        Shumë shtrenjtë, momentalisht nuk mund ta përballojë
+                        financiarisht.
                       </StyledLabel>
                     }
                   />
@@ -49,7 +50,7 @@ function Survey() {
                   <FormControlLabel
                     value='2'
                     control={<Radio sx={style} />}
-                    label={<StyledLabel>Technical issues</StyledLabel>}
+                    label={<StyledLabel>Nuk funksionon si duhet.</StyledLabel>}
                   />
                 </RowContainer>
                 <RowContainer>
@@ -57,9 +58,7 @@ function Survey() {
                     value='3'
                     control={<Radio sx={style} />}
                     label={
-                      <StyledLabel>
-                        Too much buffering or poor video quality
-                      </StyledLabel>
+                      <StyledLabel>Videoja bllokohet dhe ndalet.</StyledLabel>
                     }
                   />
                 </RowContainer>
@@ -69,7 +68,7 @@ function Survey() {
                     control={<Radio sx={style} />}
                     label={
                       <StyledLabel>
-                        Didn't find the movies or the content I was looking for
+                        Nuk e gjeta emisionin, filmin, apo kontentin që kerkova.
                       </StyledLabel>
                     }
                   />
@@ -78,14 +77,14 @@ function Survey() {
                   <FormControlLabel
                     value='5'
                     control={<Radio sx={style} />}
-                    label={<StyledLabel>Difficulty navigating</StyledLabel>}
+                    label={<StyledLabel>Vështirësi në navigim.</StyledLabel>}
                   />
                 </RowContainer>
                 <RowContainer>
                   <FormControlLabel
                     value='6'
                     control={<Radio sx={style} />}
-                    label={<StyledLabel>Billing Issues</StyledLabel>}
+                    label={<StyledLabel>Probleme me pagesën.</StyledLabel>}
                   />
                 </RowContainer>
 
@@ -95,7 +94,7 @@ function Survey() {
                     control={<Radio sx={style} />}
                     label={
                       <StyledLabel>
-                        I agree to Splash TV terms and conditions
+                        Më pëlqen dhe do ta perdorë nje platformë tjetër.
                       </StyledLabel>
                     }
                   />
@@ -103,16 +102,9 @@ function Survey() {
 
                 <RowContainer>
                   <FormControlLabel
-                    value='8'
-                    control={<Radio sx={style} />}
-                    label={<StyledLabel>Will use another platform</StyledLabel>}
-                  />
-                </RowContainer>
-                <RowContainer>
-                  <FormControlLabel
                     value='9'
                     control={<Radio sx={style} />}
-                    label={<StyledLabel>Other</StyledLabel>}
+                    label={<StyledLabel>Arsyje tjetër</StyledLabel>}
                   />
                 </RowContainer>
               </Wrapper>
@@ -120,10 +112,10 @@ function Survey() {
           </FormControl>
         </Wrapper>
         <Link href='./'>
-          <ConfirmButtonHome>Finalize Canceling!</ConfirmButtonHome>
+          <ConfirmButtonHome>Konfirmo anulimin.</ConfirmButtonHome>
         </Link>
         <Link href='./'>
-          <CancelButtonHome>CANCEL</CancelButtonHome>
+          <CancelButtonHome>Dil</CancelButtonHome>
         </Link>
       </Container>
     </PlayerHeader>

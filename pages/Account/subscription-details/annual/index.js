@@ -21,17 +21,16 @@ function Annual() {
           </BackHeader>
         </Link>
         <Header>
-          <h1>Switch to Annual Subscription</h1>
-          <h4>99.90/year. Cancel anytime</h4>
+          <h1>Kalo në abonim vjetorë</h1>
+          <h4>99.90/vit. Ndalo abonimin kur të duash</h4>
           <p>
-            Your annual subscription starts immediately. The reminder of your
-            current subscription will be added to the end of your new annual
-            subscription
+            Abonimi vjetore do të fillojë menjëherë. Abonimi aktual do të
+            shtohet në fund të abonimit vjetorë.
           </p>
         </Header>
         <BlockContainer>
           <BillingHeader>
-            <h5>Confirm your billing details</h5>
+            <h5>Konfirmo mënyrën e pagesës</h5>
           </BillingHeader>
           <RowContainer>
             <BillingDetailsContainer>
@@ -48,14 +47,14 @@ function Annual() {
               </CardContainer>
               <Link href='./change-payment-info'>
                 <ChangeContainer>
-                  <span>Change</span>
+                  <span>Ndrysho</span>
                 </ChangeContainer>
               </Link>
             </BillingDetailsContainer>
           </RowContainer>
           <RowContainer>
             <SecurityContainer>
-              <h5>Security Code</h5>
+              <h5>Kodi</h5>
               <FieldContainer>
                 <StyledTextField
                   variant='outlined'
@@ -91,7 +90,7 @@ function Annual() {
                     setConfirm(true);
                   }}
                 >
-                  CONFIRM
+                  KONFIRMO
                 </StyledButtonHome>
               </RowContainer>
             </>
@@ -99,15 +98,15 @@ function Annual() {
             <>
               <BlockContainer>
                 <p>
-                  By clicking "Order & Pay," you will immediately be billed for
-                  the first contractual period. If you don't cancel before the
-                  end of the first contractual period, your subscription will
-                  automatically renew for another contractual period and we will
-                  charge 89.99 to your stored payment method on a recurring
-                  basis. You can cancel at any time, effectice at the end of
-                  your contractual period. By clicking "Agree & Continue," you
-                  agree to the Right of Withdrawal as stipulated in the
-                  Subscriber Agreement.
+                  Duke klikuar "Porosit & Paguaj", do të faturoheni menjëherë
+                  për periudhën e parë kontraktuale. Nëse nuk e anuloni përpara
+                  përfundimit të periudhës së parë kontraktuale, abonimi juaj do
+                  të rinovohet automatikisht për një periudhë tjetër
+                  kontraktuale dhe ne do të tarifojmë 99,90 në mënyrën tuaj të
+                  ruajtur të pagesës në mënyrë periodike. Ju mund të anuloni në
+                  çdo kohë, veprim i cili futet në fuqi në fund të periudhës
+                  suaj kontraktuale. Duke klikuar "Pajtohem & Vazhdo", ju
+                  pranoni kushtet e marrëveshjes.
                 </p>
                 <RowContainer
                   style={{ alignItems: "center", justifyContent: "center" }}
@@ -117,7 +116,7 @@ function Annual() {
                       setConfirm(true);
                     }}
                   >
-                    ORDER & PAY
+                    Pajtohem & Vazhdo
                   </StyledButtonHome>
                 </RowContainer>
               </BlockContainer>

@@ -43,13 +43,13 @@ function Dropdown({ isOpen, toggle, ...props }) {
           </ProfileContainer>
           <Link href='/Account'>
             <SidebarRoute>
-              <span>Account</span>
+              <span>Llogaria</span>
             </SidebarRoute>
           </Link>
 
           <Link href='/'>
             <StyledButtonHome onClick={signOut}>
-              <span>Sign Out</span>
+              <span>Dil</span>
             </StyledButtonHome>
           </Link>
         </SidebarWrapper>
