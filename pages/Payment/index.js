@@ -137,14 +137,14 @@ function DataForm(props) {
                 marginLeft: "5px",
               }}
             />
-            <span> Back </span>
+            <span> Mbrapa </span>
           </Header>
           <CssBaseline />
           <Paper>
             <Wrap>
               <Avatar style={pStyle}></Avatar>
               <Typography component='h1' variant='h5'>
-                Sign up
+                Regjistrohu
               </Typography>
             </Wrap>
             <FWrapper>
@@ -159,7 +159,7 @@ function DataForm(props) {
                       setEmail(event.target.value);
                     }}
                     id='email'
-                    label='Email Address'
+                    label='Email '
                     name='email'
                     inputProps={{
                       autocomplete: "off",
@@ -172,7 +172,7 @@ function DataForm(props) {
                     required={true}
                     fullWidth
                     name='Password'
-                    label='Set new password'
+                    label='Vendos passwordin e ri'
                     type='password'
                     id='password'
                     onChange={(event) => {
@@ -191,7 +191,7 @@ function DataForm(props) {
                       onSignUp();
                     }}
                   >
-                    Sign Up
+                    Regjistrohu
                   </FormButton>
                 </form>
               ) : (
@@ -208,13 +208,13 @@ function DataForm(props) {
                       setConfirmationCode(event.target.value);
                     }}
                     placeholder='Confirmation Code'
-                    label='Confirmation Code'
+                    label='Kodi i konfirmimit'
                     id='Confirmation Code'
                   />
 
                   <span style={{ color: "red" }}> {error}</span>
                   <FormButton type='submit' disabled={!activeSignUpButton}>
-                    Confirm
+                    Konfirmo
                   </FormButton>
                 </form>
               )}
@@ -222,13 +222,13 @@ function DataForm(props) {
               <Grid container justify='flex-end'>
                 <Grid item>
                   <StyledSpan>
-                    Already have an account?{" "}
+                    Tashmë kam një llogari?
                     <a
                       onClick={() => {
                         router.push("/SignIn", undefined, { shallow: false });
                       }}
                     >
-                      Sign in
+                      Kyçu
                     </a>
                   </StyledSpan>
                 </Grid>

@@ -66,7 +66,7 @@ function OfferSelection(props) {
           offer={ofertat[0].name}
           oldPrice={ofertat[0].oldPrice}
           price={ofertat[0].price}
-          nrikanaleve='150'
+          nrikanaleve='250'
           kanaleTotal='2000'
           LiveEventscheck={"cross"}
           netflix={"cross"}
@@ -87,14 +87,14 @@ function OfferSelection(props) {
           offer={ofertat[1].name}
           oldPrice={ofertat[1].oldPrice}
           price={ofertat[1].price}
-          nrikanaleve='150'
+          nrikanaleve='250'
           kanaleTotal='2000'
           LiveEventscheck={"cross"}
           kanaletepreferuara='1'
           netflix={"cross"}
           Icon={<FcMultipleSmartphones size='medium' />}
           isBlackstate='gray'
-          pajisjet='3 Smartphone'
+          pajisjet='3 Pajisje'
           hd={"cross"}
           size='notpreferred'
           months={ofertat[1].length + " Muaj"}
@@ -108,13 +108,13 @@ function OfferSelection(props) {
           offer={ofertat[2].name}
           oldPrice={ofertat[2].oldPrice}
           price={ofertat[2].price}
-          nrikanaleve='150'
+          nrikanaleve='250'
           kanaleTotal='2000'
           LiveEventscheck={"true"}
           kanaletepreferuara={true}
           isBlackstate='purple'
           netflix={"true"}
-          pajisjet='5 screens'
+          pajisjet='3 Pajisje'
           hd={"true"}
           months={ofertat[2].length + " Muaj"}
           VOD='100'
@@ -129,15 +129,15 @@ function OfferSelection(props) {
           offer={ofertat[3].name}
           oldPrice={ofertat[3].oldPrice}
           price={ofertat[3].price}
-          nrikanaleve='25'
+          nrikanaleve='250'
           kanaleTotal='2000'
           LiveEventscheck={"true"}
           kanaletepreferuara={true}
           isBlackstate='purple'
           netflix={"true"}
-          pajisjet='5 screens'
+          hd={"true"}
+          pajisjet='5 Pajisje'
           months={ofertat[3].length + " Muaj"}
-          hd={true}
           Icon={
             <TwelveMonthsIcon>
               <FcMultipleDevices

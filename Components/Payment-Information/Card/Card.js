@@ -17,10 +17,10 @@ const Card = () => {
     <Container>
       <PaymentForm>
         <Header>
-          <h1>Header</h1>
+          <h1>AirTV</h1>
         </Header>
         <Row>
-          <h4>Payment Info: </h4>
+          <h4>Mënyra e pagesës </h4>
           <ButtonContainer>
             <CreditCardStyled>
               <BsCreditCard2Front
@@ -40,7 +40,7 @@ const Card = () => {
             setOpen(true);
           }}
         >
-          Confirm
+          Konfirmo
         </StyledButton>
         <SuccessDialog handleOpen={open} handleParent={setOpen} />
       </PaymentForm>

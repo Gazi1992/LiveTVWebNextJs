@@ -45,7 +45,7 @@ function FinalizeOffer({ BlejButton, stateChanger, ...props }) {
       <Wrapper>
         <Description>
           <Header>
-            <h1>Subscribe to AirTV {pack.name}</h1>
+            <h1>Abononhu në AirTV {pack.name}</h1>
           </Header>
           <Offer>
             <h1>{pack.priceTotal}</h1>

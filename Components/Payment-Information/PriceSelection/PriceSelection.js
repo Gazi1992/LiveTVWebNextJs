@@ -109,7 +109,7 @@ function PriceSelection({
                 setcolor={setcolor}
                 onClick={buttonClicked}
               >
-                Porosit
+                Abonohu
               </StyledButton>
             </StylesProvider>
           </ButtonDiv>
