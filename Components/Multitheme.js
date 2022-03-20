@@ -121,7 +121,7 @@ function Multitheme() {
                 </NewsImageWrapper>
                 <NewsImageWrapper>
                   <Image
-                    src='/logo/klank.png'
+                    src='/logo/klanK.png'
                     width={38}
                     height={38}
                     objectFit='contain'
