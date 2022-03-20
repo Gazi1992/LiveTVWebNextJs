@@ -22,7 +22,7 @@ function Package({
 }) {
   return (
     <Container isBlack={isBlackstate} size={size}>
-      <RecommendedHeader size={size}>MOST POPULAR</RecommendedHeader>
+      <RecommendedHeader size={size}>REKOMANDOHET</RecommendedHeader>
       <Introduction>
         <HeaderContainer>
           <h2>{offer}</h2>
@@ -30,7 +30,7 @@ function Package({
         <DiscountWrapper>
           <OldPrice>{oldPrice}</OldPrice>
           <SavingsContainer size={size}>
-            Save {Math.trunc(((oldPrice - price) / oldPrice) * 100)}%
+            Kurse {Math.trunc(((oldPrice - price) / oldPrice) * 100)}%
           </SavingsContainer>
         </DiscountWrapper>
         <PriceContainer>
@@ -43,15 +43,15 @@ function Package({
       </Introduction>
       <ButtonDiv>
         <Link href='/Payment'>
-          <StyledButton isBlack={isBlackstate}>Porosit</StyledButton>
+          <StyledButton isBlack={isBlackstate}>ABONOHU</StyledButton>
         </Link>
       </ButtonDiv>
       <Wrap>
         <FeaturesContainer>
           <Features feature='Kanale Shqip' extra={nrikanaleve}></Features>
           <Features feature='Kanale Total' extra={kanaleTotal}></Features>
-          <Features feature='LiveEvents' check={LiveEventscheck}></Features>
-          <Features feature='Netflix' check={netflix}></Features>
+          <Features feature='Evente Live' check={LiveEventscheck}></Features>
+          {/* <Features feature='Netflix' check={netflix}></Features> */}
           <Features feature='Kualitet HD' check={hd}></Features>
           <Features feature='Pajisje ' extra={pajisjet}></Features>
           <Features feature='VOD' extra={VOD}></Features>

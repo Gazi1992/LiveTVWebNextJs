@@ -1,13 +1,26 @@
 import styled from "styled-components";
-import { IoIosCheckmarkCircleOutline } from "react-icons/io";
+
+import { BsCheck2Circle, BsXCircle } from "react-icons/bs";
 
 function Features({ feature, extra, check }) {
   return (
     <FeatureContainer>
       <p style={pStyle}>{feature}</p>
       {(() => {
-        if (check) {
-          return <IoIosCheckmarkCircleOutline color='green' size='32px' />;
+        if (check === true) {
+          return (
+            <BsCheck2Circle
+              size='28px'
+              style={{ margin: "0px", color: "darkgreen" }}
+            />
+          );
+        } else if (check === false) {
+          return (
+            <BsXCircle
+              size='25px'
+              style={{ margin: "0px", color: "darkred" }}
+            />
+          );
         }
       })()}
 

@@ -89,7 +89,7 @@ function Home(props) {
         <Kanalet id='Kanalet'>
           <Channels>
             <Logo logosrc='logo/dukagjini.png'></Logo>
-            <Logo logosrc='logo/kanal10.jpg'></Logo>
+            <Logo logosrc='logo/kanal10.png'></Logo>
             <Logo logosrc='logo/klan.png'></Logo>
             <Logo logosrc='logo/klanK.png'></Logo>
             <Logo logosrc='logo/Ktv.png'></Logo>
@@ -105,7 +105,7 @@ function Home(props) {
             <Logo logosrc='logo/alsatm.png'></Logo>
             <Logo logosrc='logo/rtsh.png'></Logo>
             <Logo logosrc='logo/dukagjini.png'></Logo>
-            <Logo logosrc='logo/kanal10.jpg'></Logo>
+            <Logo logosrc='logo/kanal10.png'></Logo>
             <Logo logosrc='logo/klan.png'></Logo>
             <Logo logosrc='logo/klanK.png'></Logo>
             <Logo logosrc='logo/Ktv.png'></Logo>
@@ -134,40 +134,39 @@ function Home(props) {
           <p>Ofertat tona! </p>
           <PackageContainer>
             <Package
-              offer='COMFORT'
+              offer='MOBILE'
               oldPrice='6.99'
               price='4.99'
-              nrikanaleve='25'
+              nrikanaleve='250'
               kanaleTotal='2000'
-              LiveEventscheck={true}
-              kanaletepreferuara={true}
-              netflix={true}
+              LiveEventscheck={false}
+              kanaletepreferuara={false}
               isBlackstate='gray'
-              pajisjet='5 screens'
-              hd={true}
+              pajisjet='1 screens'
+              hd={false}
               size='small'
-              VOD='100'
+              VOD='0'
             ></Package>
             <Package
-              offer='PERFECT'
-              oldPrice='15.99'
+              offer='FAMILY+'
+              oldPrice='14.99'
               price='9.99'
-              nrikanaleve='25'
+              nrikanaleve='250'
               kanaleTotal='2000'
               LiveEventscheck={true}
               kanaletepreferuara='1'
               netflix={true}
               isBlackstate='orange'
-              pajisjet='5 screens'
+              pajisjet='3 screens'
               hd={true}
               size='medium'
               VOD='100'
             ></Package>
             <Package
-              offer='PERFECT +'
-              oldPrice='18.99'
-              price='12.99'
-              nrikanaleve='25'
+              offer='FAMILY PREMIUM'
+              oldPrice='20.99'
+              price='14.99'
+              nrikanaleve='250'
               kanaleTotal='2000'
               LiveEventscheck={true}
               kanaletepreferuara={true}
@@ -182,13 +181,11 @@ function Home(props) {
         </Ofertat>{" "}
         <Pajisjet id='Pajisjet'>
           <FourthActDescription>
-            <h1>Simple. Good value. Multiscreen.</h1>
+            <h1>AirTV në të gjitha pajisjet.</h1>
             <p>
-              This is how smart television works today. With TV streaming from
-              Zattoo, you can watch your TV programs over the internet, both
-              live or time shifted. No contract, no tangled cables, always
-              available. All you need is an internet connection and an
-              internet-enabled device such as a Smart TV, laptop or smartphone.
+              AirTV në të gjitha dhomat. Qoftë në dhomën e ndenjes, dhomën e
+              gjumit, kuzhinën apo banjën, funksionon kudo! Argëtimi më i mirë
+              për të gjithë familjen.
             </p>
             <ButtonDiv>
               <StylesProvider injectFirst>

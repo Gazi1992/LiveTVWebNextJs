@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ReactCountryFlag from "react-country-flag";
 
 import {
   FaFacebook,
@@ -13,51 +14,87 @@ function Footer() {
   return (
     <Footercontainer>
       <FooterWrap>
-        <FooterLinksContainer>
-          <FooterLinkWrapper>
-            <FooterLinkItems>
-              <FooterLinkTitle>Watch</FooterLinkTitle>
-              {/* <FooterLink to="/signin">Watch on TV</FooterLink>
-              <FooterLink to="/signin">IOS App</FooterLink>
-              <FooterLink to="/signin">Android App</FooterLink> */}
-            </FooterLinkItems>
+        <FooterLinkItems>
+          <FooterLinkTitle>Contact </FooterLinkTitle>
+          <RowContainer>
+            <ColumnContainer>
+              <RowContainer>
+                <ReactCountryFlag
+                  countryCode='AL'
+                  svg
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                  }}
+                  title='ALB'
+                />
+                <h2>Albania</h2>
+              </RowContainer>
+              <h2>+355123123123</h2>
+            </ColumnContainer>
+            <ColumnContainer>
+              <RowContainer>
+                <ReactCountryFlag
+                  countryCode='XK'
+                  svg
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                  }}
+                  title='KS'
+                />
+                <h2>Kosova</h2>
+              </RowContainer>
+              <h2>+38344334956</h2>
+            </ColumnContainer>
+            <ColumnContainer>
+              <RowContainer>
+                <ReactCountryFlag
+                  countryCode='DE'
+                  svg
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                  }}
+                  title='DE'
+                />
+                <h2>Germany</h2>
+              </RowContainer>
+              <h2>+491734608496</h2>
+            </ColumnContainer>
+            <ColumnContainer>
+              <RowContainer>
+                <ReactCountryFlag
+                  countryCode='CH'
+                  svg
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                  }}
+                  title='CH'
+                />
+                <h2>Switzerland</h2>
+              </RowContainer>
+              <h2>+41xxxxxxxxx</h2>
+            </ColumnContainer>
+            <ColumnContainer>
+              <RowContainer>
+                <ReactCountryFlag
+                  countryCode='US'
+                  svg
+                  style={{
+                    width: "2em",
+                    height: "2em",
+                  }}
+                  title='US'
+                />
+                <h2>USA</h2>
+              </RowContainer>
+              <h2>+1212xxxxxxxxx</h2>
+            </ColumnContainer>
+          </RowContainer>
+        </FooterLinkItems>
 
-            <FooterLinkItems>
-              <FooterLinkTitle>Top Genres</FooterLinkTitle>
-              {/* <FooterLink to="/signin">Live Sports</FooterLink>
-              <FooterLink to="/signin">News</FooterLink>
-              <FooterLink to="/signin">Reality & Game Shows</FooterLink> */}
-            </FooterLinkItems>
-
-            <FooterLinkItems>
-              <FooterLinkTitle>About Us</FooterLinkTitle>
-              {/* <FooterLink to="/signin">How it works</FooterLink>
-              <FooterLink to="/signin">Testimonials</FooterLink>
-              <FooterLink to="/signin">Careers</FooterLink>
-              <FooterLink to="/signin">Investors</FooterLink>
-              <FooterLink to="/signin">Terms of Service</FooterLink> */}
-            </FooterLinkItems>
-
-            {/* <FooterLinkItems>
-              <FooterLinkTitle>Country </FooterLinkTitle>
-              <FooterLink to="/signin">
-                <Country countryShort="AL" size="md" /> Albania
-              </FooterLink>
-              <FooterLink to="/signin">
-                <Country countryShort="XK" size="md" /> Kosova
-              </FooterLink>
-              <FooterLink to="/signin">
-                <Country countryShort="DE" size="md" /> Germany
-              </FooterLink>
-              <FooterLink to="/signin">
-                <Country countryShort="CH" size="md" /> Switzerland
-              </FooterLink>
-              <FooterLink to="/signin">
-                <Country countryShort="US" size="md" /> USA
-              </FooterLink> 
-            </FooterLinkItems>*/}
-          </FooterLinkWrapper>
-        </FooterLinksContainer>
         <SocialMedia>
           <SocialMediaWrap>
             <WebsiteRights>
@@ -108,7 +145,7 @@ function Footer() {
 }
 
 const Footercontainer = styled.div`
-  background-color: #282828;
+  background-color: #1a1a1a;
   width: 100%;
   height: fit-content;
 `;
@@ -121,8 +158,39 @@ const FooterWrap = styled.div`
   align-items: center;
 
   margin: 0 auto;
+`;
+
+const ColumnContainer = styled.div`
+  height: auto;
+  width: auto;
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h2 {
+    margin: 0px;
+    font-size: 15px;
+  }
+`;
+const RowContainer = styled.div`
+  width: fit-content;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   @media screen and (max-width: 820px) {
-    flex-direction: row;
+    flex-direction: column;
+  }
+
+  h2 {
+    margin: 0px;
+    margin-left: 5px;
+    font-size: 15px;
+    @media screen and (max-width: 820px) {
+      font-size: 10px;
+    }
   }
 `;
 
@@ -144,13 +212,14 @@ const FooterLinkWrapper = styled.div`
 
 const FooterLinkItems = styled.div`
   display: flex;
+  height: fit-content;
   flex-direction: column;
-  align-items: flex-start;
-  margin: 16px;
-  text-align: left;
-  width: 160px;
+  align-items: center;
+
+  width: 100%;
   box-sizing: border-box;
   color: #fff;
+
   @media screen and (max-width: 420px) {
     margin: 0;
     padding: 10px;

@@ -97,9 +97,9 @@ function Multitheme() {
                 </ImageWrapper>
                 <ImageWrapper>
                   <Image
-                    src='/images/multitheme/sports/UFC.webp'
-                    width={68}
-                    height={58}
+                    src='/images/multitheme/sports/UFC.jpg'
+                    width={118}
+                    height={68}
                   />
                 </ImageWrapper>
               </SecondImageContainer>
@@ -177,7 +177,7 @@ function Multitheme() {
                 </NewsImageWrapper>
                 <NewsImageWrapper>
                   <Image
-                    src='/logo/kanal10.jpg'
+                    src='/logo/kanal10.png'
                     width={43}
                     height={45}
                     objectFit='contain'
@@ -369,6 +369,9 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const NewsImageWrapper = styled.div`
