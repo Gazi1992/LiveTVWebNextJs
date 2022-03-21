@@ -130,11 +130,13 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1400px) {
     width: 100%;
   }
   @media screen and (max-height: 800px) {
     height: 100%;
+    margin-top: 120px;
+    margin-bottom: 80px;
   }
 `;
 

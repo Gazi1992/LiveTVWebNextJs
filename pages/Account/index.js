@@ -134,15 +134,24 @@ const Container = styled.div`
   color: white;
   background-color: #040714;
   background: #040714;
+  @media screen and (max-width: 1400px), screen and (max-height: 600px) {
+    width: 100%;
+  }
+  @media screen and (max-height: 600px) {
+    height: 100%;
+  }
 `;
 const Wrapper = styled.div`
   width: 100%;
-  margin-top: -80px;
+
   height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media screen and (max-height: 800px) {
+    margin-top: 120px;
+  }
 `;
 const TitleContainer = styled.div`
   width: 400px;
@@ -150,6 +159,9 @@ const TitleContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   h1 {
+    @media screen and (max-width: 1400px) {
+      font-size: 22px;
+    }
   }
 `;
 const SubTitleContainer = styled.div`

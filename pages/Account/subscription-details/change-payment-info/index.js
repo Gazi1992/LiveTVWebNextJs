@@ -86,20 +86,29 @@ function ChangePaymentInfo() {
 const Container = styled.div`
   margin-top: 80px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 1400px) {
+    width: 100%;
+  }
+  @media screen and (max-height: 880px) {
+    height: 100%;
+  }
 `;
 const Wrapper = styled.div`
   width: 50vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  @media screen and (max-height: 880px) {
+    margin-top: 100px;
+  }
 `;
 const StyledButton = styled(Button)`
   && {

@@ -81,6 +81,14 @@ const Container = styled.div`
   align-items: center;
 
   color: white;
+  @media screen and (max-width: 1400px), screen and (max-height: 600px) {
+    width: 100%;
+  }
+  @media screen and (max-height: 880px) {
+    height: 100%;
+    margin-top: 120px;
+    margin-bottom: 80px;
+  }
 `;
 const Header = styled.div`
   width: 400px;
