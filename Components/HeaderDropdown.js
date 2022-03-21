@@ -37,7 +37,7 @@ function HeaderDropdown({ isOpen, toggle }) {
         </ScrollLink>
         <Link onClick={toggle} href='#About' offset={-80}>
           <SidebarRoute>
-            <span>About</span>
+            <span>Për ne</span>
           </SidebarRoute>
         </Link>
         <StyledButtonSignIn
@@ -45,14 +45,14 @@ function HeaderDropdown({ isOpen, toggle }) {
             router.push("/SignIn ", undefined, { shallow: true });
           }}
         >
-          SignIn
+          Kyçu
         </StyledButtonSignIn>
         <StyledButtonPorosit
           onClick={() => {
             router.push("/Payment", undefined, { shallow: true });
           }}
         >
-          <span>POROSIT</span>
+          <span>Abonohu</span>
         </StyledButtonPorosit>
       </SidebarWrapper>
     </SidebarContainer>
