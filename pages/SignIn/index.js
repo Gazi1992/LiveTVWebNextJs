@@ -9,6 +9,7 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import { setUserAWS } from "../../app/store/actions/userAWS";
 import Auth from "@aws-amplify/auth";
+import { FaKey } from "react-icons/fa";
 
 import ReactLoading from "react-loading";
 
@@ -91,52 +92,58 @@ function SignIn(props) {
               handleSubmit(e);
             }}
           >
-            <FormH1>Kyçu për të vazhduar tutje</FormH1>
+            <FormHeader>
+              <IconHeader>
+                <FaKey size={35} />
+              </IconHeader>
+              <FormH1>Kyçu për të vazhduar tutje</FormH1>
+            </FormHeader>
+            <BodyHeader>
+              <TextField
+                style={{ marginTop: "8px", marginBottom: "8px" }}
+                variant='outlined'
+                required
+                fullWidth
+                id='email'
+                label='Email'
+                name='email'
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                }}
+              />
+              <TextField
+                variant='outlined'
+                required
+                fullWidth
+                name='password'
+                label='Password'
+                type='password'
+                id='password'
+                value={password}
+                autoComplete='current-password'
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+              />
+              <span style={{ color: "red" }}> {error}</span>
 
-            <TextField
-              style={{ marginTop: "8px", marginBottom: "8px" }}
-              variant='outlined'
-              required
-              fullWidth
-              id='email'
-              label='Email'
-              name='email'
-              value={email}
-              onChange={(event) => {
-                setEmail(event.target.value);
-              }}
-            />
-            <TextField
-              variant='outlined'
-              required
-              fullWidth
-              name='password'
-              label='Password'
-              type='password'
-              id='password'
-              value={password}
-              autoComplete='current-password'
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
-            />
-            <span style={{ color: "red" }}> {error}</span>
-
-            <FormButton
-              type='submit'
-              fullWidth
-              variant='contained'
-              color='primary'
-            >
-              Vazhdo
-            </FormButton>
-            <ForgotPasswordButton
-              onClick={() => {
-                onForgotPassword();
-              }}
-            >
-              Kam harruar fjalëkalimin
-            </ForgotPasswordButton>
+              <FormButton
+                type='submit'
+                fullWidth
+                variant='contained'
+                color='primary'
+              >
+                Vazhdo
+              </FormButton>
+              <ForgotPasswordButton
+                onClick={() => {
+                  onForgotPassword();
+                }}
+              >
+                Kam harruar fjalëkalimin
+              </ForgotPasswordButton>
+            </BodyHeader>
           </Form>
         </Wrapper>
       )}
@@ -149,7 +156,7 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
 
   align-items: center;
   background-image: linear-gradient(
@@ -169,7 +176,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: -80px;
 `;
 const LoadingWrapper = styled.div`
   margin-top: 80px;
@@ -203,43 +209,92 @@ const Header = styled.div`
 
 const Form = styled.form`
   background: white;
-
-  height: 500px;
+  height: 400px;
   width: 20%;
   z-index: 1;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
   margin: 0 auto;
-  padding: 80px 32px;
+  overflow: hidden;
+  padding: 0px 32px;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
   max-width: 400px;
+
+  position: relative;
   @media screen and (max-width: 1400px) {
     width: 80%;
   }
 `;
 
+const FormHeader = styled.div`
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+  position: absolute;
+  top: 0px;
+  background-color: #64adf1;
+`;
+const IconHeader = styled.div`
+  width: 100px;
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+`;
+const BodyHeader = styled.div`
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
 const FormH1 = styled.h1`
-  margin-bottom: 40px;
-  color: #000;
+  width: 80%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 0px;
+  color: white;
+
   font-size: 20px;
-  font-weight: 400;
-  text-align: center;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  text-align: left;
+  @media screen and (max-width: 400px) {
+    width: 60%;
+  }
 `;
 
 const FormButton = styled(Button)`
   && {
-    height: 50px;
-    margin-top: 8px;
-    background-color: #01bf71;
-    padding: 16px 0;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 15px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #3f9cf3;
+    color: white;
     cursor: pointer;
+
     &:hover {
-      background-color: green;
+      background-color: #388ddb;
     }
+  }
     @media screen and (max-width: 400px) {
       font-size: 12px;
     }
@@ -247,20 +302,17 @@ const FormButton = styled(Button)`
 `;
 
 const ForgotPasswordButton = styled(Button)`
-  && {
-    height: 50px;
-    margin-top: 8px;
+ && {
+    width: 100%;
+    margin-bottom: 20px;
     background-color: transparent;
-    padding: 16px 0;
-    border: none;
-    border-radius: 4px;
-    color: #000;
-    font-size: 15px;
+    color: black;
     cursor: pointer;
 
     &:hover {
-      color: gray;
+      background-color: gray;
     }
+  }
 
     @media screen and (max-width: 400px) {
       font-size: 12px;
