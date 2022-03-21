@@ -288,7 +288,7 @@ const Header = styled.div`
     width: 80%;
   }
 `;
-const Form = styled.form`
+const Form = styled.div`
   background: white;
 
   height: 400px;
