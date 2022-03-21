@@ -29,6 +29,7 @@ function SignIn(props) {
 
   const logIn = async () => {
     setLoading(true);
+
     try {
       const user = await Auth.signIn(email, password);
       setError("");

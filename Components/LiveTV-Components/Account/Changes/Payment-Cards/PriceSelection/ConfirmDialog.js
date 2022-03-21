@@ -36,7 +36,7 @@ function ConfirmDialog({ invoke, setInvoke }) {
             <Row>
               <h3 style={{ color: "#878787" }}>Plani aktual: Family</h3>
               <p style={{ color: "#878787" }}>
-                150 Kanale Shqip. Shfaqet ne 5 pajisje njekohesisht. Kanale
+                250 Kanale Shqip. Shfaqet ne 5 pajisje njekohesisht. Kanale
                 totale 20000.
               </p>
             </Row>
@@ -45,7 +45,7 @@ function ConfirmDialog({ invoke, setInvoke }) {
             <Row style={{ borderTop: "0px solid transparent" }}>
               <h3>Plani i ri: Family Premium</h3>
               <p>
-                150 Kanale Shqip. Shfaqet ne 5 pajisje njekohesisht. Kanale
+                250 Kanale Shqip. Shfaqet ne 5 pajisje njekohesisht. Kanale
                 totale 20000.
               </p>
             </Row>
