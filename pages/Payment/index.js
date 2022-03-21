@@ -292,7 +292,7 @@ const Form = styled.form`
   background: white;
 
   height: 400px;
-  width: 20%;
+  width: 100%;
   z-index: 1;
   display: grid;
   margin: 0 auto;
@@ -301,7 +301,7 @@ const Form = styled.form`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
   max-width: 400px;
 
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 600px) {
     width: 80%;
   }
 `;

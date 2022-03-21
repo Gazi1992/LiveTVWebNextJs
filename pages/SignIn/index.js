@@ -210,7 +210,7 @@ const Header = styled.div`
 const Form = styled.form`
   background: white;
   height: 400px;
-  width: 20%;
+  width: 100%;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -224,7 +224,7 @@ const Form = styled.form`
   max-width: 400px;
 
   position: relative;
-  @media screen and (max-width: 1400px) {
+  @media screen and (max-width: 600px) {
     width: 80%;
   }
 `;
