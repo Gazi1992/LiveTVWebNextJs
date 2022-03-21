@@ -138,7 +138,7 @@ const ImageContainer = styled.div`
 
 const StyledButton = styled(Button)`
   && {
-    background-color: #0063e5;
+    background-color: #3f9cf3;
     width: 200px;
     height: 48px;
     color: white;

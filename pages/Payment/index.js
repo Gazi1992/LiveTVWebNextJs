@@ -368,7 +368,10 @@ const FormButton = styled(Button)`
     background-color: black;
     color: white;
     cursor: pointer;
-
+    &.Mui-disabled {
+      background-color: #878a8c;
+      color: white;
+    }
     &:hover {
       background-color: #282c30;
     }
