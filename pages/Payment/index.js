@@ -139,105 +139,103 @@ function DataForm(props) {
             />
             <span> Mbrapa </span>
           </Header>
-          <CssBaseline />
-          <Paper>
+
+          {/* <Paper style={{ border: "1px solid green" }}>
             <Wrap>
               <Avatar style={pStyle}></Avatar>
               <Typography component='h1' variant='h5'>
                 Regjistrohu
               </Typography>
-            </Wrap>
-            <FWrapper>
-              {waitingConfirmation === false ? (
-                <form onSubmit={SubmitSignUp}>
-                  <TextField
-                    variant='outlined'
-                    required={true}
-                    fullWidth
-                    autoFocus
-                    onChange={(event) => {
-                      setEmail(event.target.value);
-                    }}
-                    id='email'
-                    label='Email '
-                    name='email'
-                    inputProps={{
-                      autocomplete: "off",
-                    }}
-                  />
+            </Wrap> */}
+          <Form>
+            <FormH1>Krijo llogarinë tuaj</FormH1>
+            {waitingConfirmation === false ? (
+              <form onSubmit={SubmitSignUp}>
+                <TextField
+                  variant='outlined'
+                  required={true}
+                  fullWidth
+                  autoFocus
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
+                  id='email'
+                  label='Email'
+                  name='email'
+                  inputProps={{
+                    autocomplete: "off",
+                  }}
+                />
 
-                  <TextField
-                    variant='outlined'
-                    style={{ marginTop: "10px" }}
-                    required={true}
-                    fullWidth
-                    name='Password'
-                    label='Vendos passwordin e ri'
-                    type='password'
-                    id='password'
-                    onChange={(event) => {
-                      setPassword(event.target.value);
-                    }}
-                    inputProps={{
-                      autocomplete: "new-password",
-                    }}
-                  />
+                <TextField
+                  variant='outlined'
+                  style={{ marginTop: "10px" }}
+                  required={true}
+                  fullWidth
+                  name='Password'
+                  label='Vendos passwordin e ri'
+                  type='password'
+                  id='password'
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
+                  inputProps={{
+                    autocomplete: "new-password",
+                  }}
+                />
 
-                  <span style={{ color: "red" }}> {error}</span>
-                  <FormButton
-                    disabled={!activeSignUpButton}
-                    type='submit'
+                <span style={{ color: "red" }}> {error}</span>
+                <FormButton
+                  disabled={!activeSignUpButton}
+                  type='submit'
+                  onClick={() => {
+                    onSignUp();
+                  }}
+                >
+                  Regjistrohu
+                </FormButton>
+              </form>
+            ) : (
+              <form onSubmit={SubmitConfirm}>
+                <TextField
+                  variant='outlined'
+                  required={true}
+                  fullWidth
+                  value={confirmationCode}
+                  inputProps={{
+                    autocomplete: "off",
+                  }}
+                  onChange={(event) => {
+                    setConfirmationCode(event.target.value);
+                  }}
+                  placeholder='Confirmation Code'
+                  label='Kodi i konfirmimit'
+                  id='Confirmation Code'
+                />
+
+                <span style={{ color: "red" }}> {error}</span>
+                <FormButton type='submit' disabled={!activeSignUpButton}>
+                  Konfirmo
+                </FormButton>
+              </form>
+            )}
+
+            <Grid container justify='flex-end'>
+              <Grid item>
+                <StyledSpan>
+                  Tashmë kam një llogari?
+                  <a
                     onClick={() => {
-                      onSignUp();
+                      router.push("/SignIn", undefined, { shallow: false });
                     }}
                   >
-                    Regjistrohu
-                  </FormButton>
-                </form>
-              ) : (
-                <form onSubmit={SubmitConfirm}>
-                  <TextField
-                    variant='outlined'
-                    required={true}
-                    fullWidth
-                    value={confirmationCode}
-                    inputProps={{
-                      autocomplete: "off",
-                    }}
-                    onChange={(event) => {
-                      setConfirmationCode(event.target.value);
-                    }}
-                    placeholder='Confirmation Code'
-                    label='Kodi i konfirmimit'
-                    id='Confirmation Code'
-                  />
-
-                  <span style={{ color: "red" }}> {error}</span>
-                  <FormButton type='submit' disabled={!activeSignUpButton}>
-                    Konfirmo
-                  </FormButton>
-                </form>
-              )}
-
-              <Grid container justify='flex-end'>
-                <Grid item>
-                  <StyledSpan>
-                    Tashmë kam një llogari?
-                    <a
-                      onClick={() => {
-                        router.push("/SignIn", undefined, { shallow: false });
-                      }}
-                    >
-                      Kyçu
-                    </a>
-                  </StyledSpan>
-                </Grid>
+                    Kyçu
+                  </a>
+                </StyledSpan>
               </Grid>
-            </FWrapper>
-            {/* <Box mt={5}>
-          <Copyright />
-        </Box> */}
-          </Paper>
+            </Grid>
+          </Form>
+          {/* </Paper> */}
         </>
       )}
     </Container>
@@ -245,9 +243,13 @@ function DataForm(props) {
 }
 
 const Container = styled.div`
-  background-color: #040714;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  align-items: center;
   background-image: linear-gradient(
     to right bottom,
     #121f3e,
@@ -256,10 +258,15 @@ const Container = styled.div`
     #2c436a,
     #35507a
   );
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+`;
+
+const FormH1 = styled.h1`
+  margin: 0px;
+  margin-bottom: 20px;
+  color: #000;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
 `;
 const Header = styled.div`
   width: 100%;
@@ -281,6 +288,23 @@ const Header = styled.div`
     width: 80%;
   }
 `;
+const Form = styled.form`
+  background: white;
+
+  height: 400px;
+  width: 20%;
+  z-index: 1;
+  display: grid;
+  margin: 0 auto;
+  padding: 80px 32px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  max-width: 400px;
+
+  @media screen and (max-width: 1400px) {
+    width: 80%;
+  }
+`;
 const LoadingWrapper = styled.div`
   margin-top: 80px;
   display: flex;
@@ -295,6 +319,7 @@ const Paper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 20%;
+  height: 400px;
   background: white;
   border-radius: 4px;
   max-width: 400px;
@@ -323,7 +348,7 @@ const FWrapper = styled.div`
   background: white;
 
   height: fit-content;
-  width: 80%;
+  width: 90%;
   z-index: 1;
   display: grid;
   margin: 0 auto;
@@ -340,12 +365,12 @@ const FormButton = styled(Button)`
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #0063e5;
+    background-color: black;
     color: white;
     cursor: pointer;
 
     &:hover {
-      background-color: #0483ee;
+      background-color: #282c30;
     }
   }
 `;
