@@ -97,6 +97,8 @@ const Container = styled.div`
   }
   @media screen and (max-height: 880px) {
     height: 100%;
+    margin-top: 120px;
+    margin-bottom: 80px;
   }
 `;
 const Wrapper = styled.div`
@@ -106,9 +108,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  @media screen and (max-height: 880px) {
-    margin-top: 100px;
-  }
 `;
 const StyledButton = styled(Button)`
   && {
