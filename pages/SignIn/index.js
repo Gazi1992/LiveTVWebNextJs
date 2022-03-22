@@ -226,7 +226,7 @@ const Form = styled.form`
 
   position: relative;
   @media screen and (max-width: 600px) {
-    width: 80%;
+    width: 90%;
   }
 `;
 
@@ -279,7 +279,7 @@ const FormH1 = styled.h1`
 
   text-align: left;
   @media screen and (max-width: 400px) {
-    width: 60%;
+    width: 70%;
   }
 `;
 
