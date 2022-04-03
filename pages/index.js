@@ -13,7 +13,7 @@ function Splash() {
       bypassCache: false,
     })
       .then((user) => {
-        router.push("/Home", undefined, { shallow: true });
+        router.push("/LiveTV", undefined, { shallow: true });
       })
       .catch((err) => {
         router.push("/Home", undefined, { shallow: true });
