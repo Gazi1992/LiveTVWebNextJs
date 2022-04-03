@@ -8,6 +8,7 @@ import _ from "lodash";
 import { connect } from "react-redux";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import ReactLoading from "react-loading";
 
 const mapStatetoProps = (state) => ({
   userAttributes: _.get(state, `user.data`, false),
@@ -18,13 +19,32 @@ const mapDispatchtoProps = (dispatch) => {
 
 function Account(props) {
   const router = useRouter();
-  useEffect(() => {
-    setEmail(props.userAttributes.email);
-  }, []);
+  const [isloggedIn, setIsloggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (!isloggedIn) {
+      router.push("/Home", undefined, { shallow: true });
+    }
+  }, [isloggedIn]);
+
+  useEffect(() => {
+    Auth.currentAuthenticatedUser({
+      bypassCache: false,
+    })
+      .then((user) => {
+        setIsloggedIn(true);
+      })
+      .catch((err) => {
+        setIsloggedIn(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    setEmail(props.userAttributes.email);
+  }, []);
   const verifyUser = async (select) => {
     try {
       Auth.verifyCurrentUserAttribute("email");
@@ -52,74 +72,80 @@ function Account(props) {
   };
   return (
     <PlayerHeader>
-      <Container>
-        <Wrapper>
-          <TitleContainer>
-            <h1>Llogaria</h1>
-          </TitleContainer>
-          <BlockContainer>
-            <SubTitleContainer>
-              <span>Detajet e llogarisë</span>
-            </SubTitleContainer>
-            <DescriptionContainer
-              onClick={() => {
-                verifyUser("email");
-              }}
-            >
-              <span>{props.userAttributes.email}</span>
-              <Icon>
-                <MdModeEdit />
-              </Icon>
-            </DescriptionContainer>
-            <DescriptionContainer
-              onClick={() => {
-                verifyUser("password");
-              }}
-            >
-              <span>Password:********</span>
-              <Icon>
-                <MdModeEdit />
-              </Icon>
-            </DescriptionContainer>
-            <LogOutContainer
-              onClick={() => {
-                signOut();
-              }}
-            >
-              <span>Dil</span>
-            </LogOutContainer>
-          </BlockContainer>
-          <BlockContainer>
-            <SubTitleContainer>
-              <span>Abonimi</span>
-            </SubTitleContainer>
-            <Link href='/Account/subscription-details'>
-              <DescriptionContainer>
-                <span>AirTV (për muaj)</span>
+      {!isloggedIn ? (
+        <LoadingWrapper>
+          <ReactLoading type='bars' color='white' height={267} width={175} />
+        </LoadingWrapper>
+      ) : (
+        <Container>
+          <Wrapper>
+            <TitleContainer>
+              <h1>Llogaria</h1>
+            </TitleContainer>
+            <BlockContainer>
+              <SubTitleContainer>
+                <span>Detajet e llogarisë</span>
+              </SubTitleContainer>
+              <DescriptionContainer
+                onClick={() => {
+                  verifyUser("email");
+                }}
+              >
+                <span>{props.userAttributes.email}</span>
+                <Icon>
+                  <MdModeEdit />
+                </Icon>
+              </DescriptionContainer>
+              <DescriptionContainer
+                onClick={() => {
+                  verifyUser("password");
+                }}
+              >
+                <span>Password:********</span>
+                <Icon>
+                  <MdModeEdit />
+                </Icon>
+              </DescriptionContainer>
+              <LogOutContainer
+                onClick={() => {
+                  signOut();
+                }}
+              >
+                <span>Dil</span>
+              </LogOutContainer>
+            </BlockContainer>
+            <BlockContainer>
+              <SubTitleContainer>
+                <span>Abonimi</span>
+              </SubTitleContainer>
+              <Link href='/Account/subscription-details'>
+                <DescriptionContainer>
+                  <span>AirTV (për muaj)</span>
+                  <Icon>
+                    <IoChevronForwardSharp />
+                  </Icon>
+                </DescriptionContainer>
+              </Link>
+              <Link href='/Account/subscription-details/billing-history'>
+                <DescriptionContainer>
+                  <span>Pagesat</span>
+                  <Icon>
+                    <IoChevronForwardSharp />
+                  </Icon>
+                </DescriptionContainer>
+              </Link>
+            </BlockContainer>
+            <Link href='/Account/subscription-details/annual'>
+              <SwitchToAnnualContainer>
+                <span>Kalo ne abonim vjetorë</span>
                 <Icon>
                   <IoChevronForwardSharp />
                 </Icon>
-              </DescriptionContainer>
+              </SwitchToAnnualContainer>
             </Link>
-            <Link href='/Account/subscription-details/billing-history'>
-              <DescriptionContainer>
-                <span>Pagesat</span>
-                <Icon>
-                  <IoChevronForwardSharp />
-                </Icon>
-              </DescriptionContainer>
-            </Link>
-          </BlockContainer>
-          <Link href='/Account/subscription-details/annual'>
-            <SwitchToAnnualContainer>
-              <span>Kalo ne abonim vjetorë</span>
-              <Icon>
-                <IoChevronForwardSharp />
-              </Icon>
-            </SwitchToAnnualContainer>
-          </Link>
-        </Wrapper>
-      </Container>
+          </Wrapper>
+        </Container>
+      )}
     </PlayerHeader>
   );
 }
@@ -140,6 +166,16 @@ const Container = styled.div`
   @media screen and (max-height: 600px) {
     height: 100%;
   }
+`;
+
+const LoadingWrapper = styled.div`
+  margin-top: 80px;
+  display: flex;
+  width: 100vh;
+  height: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 const Wrapper = styled.div`
   width: 100%;

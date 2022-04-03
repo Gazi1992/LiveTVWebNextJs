@@ -316,14 +316,13 @@ const Gradient = styled.div`
   bottom: 0;
   height: 100%;
   width: 100%;
-  background: ${(props) =>
-    props.theme === "livesport"
-      ? "  linear-gradient(180deg, transparent 10%, rgba(114,217,53,1) 100%);"
-      : props.theme === "breakingnews"
-      ? " linear-gradient(180deg, rgba(9,9,121,1) 10%, rgba(118,162,181,1) 100%)"
-      : "linear-gradient(red 0%, blue 25%, rgba(166,13,195,1) 50%)"};
-  /* background: linear-gradient(rgba(250, 0, 0, 0.5), transparent); */
-  // background-color: orange; /*this your primary color*/
+  background: transparent;
+
+  // props.theme === "livesport"
+  //   ? "  linear-gradient(180deg, transparent 10%, rgba(114,217,53,1) 100%);"
+  //   : props.theme === "breakingnews"
+  //   ? " linear-gradient(180deg, rgba(9,9,121,1) 10%, rgba(118,162,181,1) 100%)"
+  //   : "linear-gradient(red 0%, blue 25%, rgba(166,13,195,1) 50%)"};
 `;
 
 const DescriptionContainer = styled.div`

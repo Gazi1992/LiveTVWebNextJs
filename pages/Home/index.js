@@ -25,51 +25,50 @@ import Image from "next/image";
 import { connect } from "react-redux";
 import Link from "next/link";
 import _ from "lodash";
-import {
-  addFavoriteChannel,
-  removeFavoriteChannel,
-  setChannelPlaying,
-  getChannels,
-} from "../../app/store/actions/liveTV";
+import Lottie from "lottie-react-web";
+import World from "../../channels/world.json";
+import Devices from "../../channels/devices.json";
 
-const mapStatetoProps = (state) => ({
-  // channelsfromJSON: _.get(state, `liveTV.channels`, []),
-});
-
-const mapDispatchtoProps = (dispatch) => {
-  return {
-    // getCh: () => dispatch(getChannels()),
-  };
-};
 function Home(props) {
-  const [channels, setChannels] = useState([]);
-
-  function setLogandChanels(chann) {
-    console.log(chann);
-    // setChannels(chann);
-  }
-
-  useEffect(() => {
-    // props.getCh();
-  }, []);
-
-  useEffect(() => {
-    // setLogandChanels(props.channelsfromJSON);
-  }, []);
-
   const [allChannelsPopup, setAllChannelsPopup] = useState(false);
   const router = useRouter();
   return (
     <HomeHeader>
       <Container>
         <BannerHome id='Banner'>
+          <AnimationContainer>
+            <Lottie
+              width='450px'
+              height='250px'
+              speed='1'
+              options={{
+                animationData: World,
+                loop: true,
+              }}
+            />
+            <h1> Kudo në botë</h1>
+          </AnimationContainer>
+
+          {/* <DeviceAnimationContainer>
+            <Lottie
+              width='500px'
+              height='300px'
+              speed='1'
+              options={{
+                animationData: Devices,
+                loop: true,
+              }}
+            />
+          </DeviceAnimationContainer> */}
+
           <Intro>
-            <a>Platforma më kualitative shqiptare në botë!</a>
-            <p>
+            <a>Platforma më cilësore shqiptare në botë!</a>
+
+            {/* <p>
               250+ kanale shqiptare, me përmbajtje të lajmeve, sportit,
               historise dhe shumë të tjera. Mbi 1000 kanale të huaja. Deri në 5
               pajisje njëkohësisht.
-            </p>
+            </p> */}
           </Intro>
           <Video>
             <video
@@ -598,6 +597,53 @@ const StyledButtonHome = styled(Button)`
   }
 `;
 
+const AnimationDiv = styled.div`
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  border: 1px solid green;
+`;
+const DeviceAnimationContainer = styled.div`
+  position: relative;
+  border: 1px solid yellow;
+  float: right;
+  width: 500px;
+  height: 800px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background-color: transparent;
+  background: transparent;
+  margin: 10px;
+`;
+const AnimationContainer = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  float: right;
+  width: 30%;
+  height: 100%;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  background-color: transparent;
+  background: transparent;
+  margin: 10px;
+  color: white;
+`;
 const Works = styled.div`
   margin: 20px;
   width: 80%;
@@ -618,5 +664,4 @@ const Works = styled.div`
   }
 `;
 
-export default connect(mapStatetoProps, mapDispatchtoProps)(Home);
-// export default Home;
+export default Home;

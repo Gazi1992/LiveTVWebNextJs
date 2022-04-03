@@ -12,6 +12,7 @@ import { isMobile } from "react-device-detect";
 import MobileLiveTV from "../..//Components/MobileLiveTV";
 import { useRouter } from "next/router";
 import ReactLoading from "react-loading";
+import { Auth } from "aws-amplify";
 
 const mapStatetoProps = (state) => ({
   LiveTVCHannels: _.get(state, `liveTV_channels.data.filteredChannels`, []),
@@ -37,7 +38,27 @@ const mapDispatchtoProps = (dispatch) => {
 
 function LiveTV(props) {
   const [loading, setLoading] = useState(true);
+  const [isloggedIn, setIsloggedIn] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    Auth.currentAuthenticatedUser({
+      bypassCache: false,
+    })
+      .then((user) => {
+        setIsloggedIn(true);
+      })
+      .catch((err) => {
+        setIsloggedIn(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (!isloggedIn) {
+      router.push("/Home", undefined, { shallow: true });
+      setLoading(false);
+    }
+  }, [isloggedIn]);
 
   useEffect(() => {
     props.getChannels();
@@ -45,12 +66,12 @@ function LiveTV(props) {
   }, []);
 
   useEffect(() => {
-    if (props.user != null && props.channels.length > 0) {
+    if (props.user != null && props.channels.length > 0 && isloggedIn) {
       setLoading(false);
     } else {
       setLoading(true);
     }
-  }, [props.user, props.channels]);
+  }, [props.user, props.channels, isloggedIn]);
 
   const playerProps = { playing: false, height: "90%" };
 

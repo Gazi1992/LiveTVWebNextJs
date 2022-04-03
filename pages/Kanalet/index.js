@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import AllChannels from "../../Components/Channels/AllChannels";
-import Switch from "react-switch";
 import PlayerHeader from "../../Components/Layout/PlayerHeader";
 import Slider from "../../Components/Channels/Slider";
 import { HiViewList } from "react-icons/hi";
@@ -9,11 +8,7 @@ import { MdViewColumn } from "react-icons/md";
 import { AiOutlineStar } from "react-icons/ai";
 import { CgFormatSlash } from "react-icons/cg";
 import { Button } from "@mui/material";
-import { wrapper } from "../../app/store";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
 import _ from "lodash";
-import { channels_get, user_get } from "../../app/store/actions/api";
 
 function Kanalet(props) {
   const [format, setFormat] = React.useState(true);

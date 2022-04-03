@@ -6,12 +6,33 @@ import styled from "styled-components";
 import PlayerHeader from "../../../../Components/Layout/PlayerHeader";
 import ConfirmPasscode from "../../../../Components/LiveTV-Components/Account/Changes/Change_Confirmation/ConfirmPasscode";
 import { useRouter } from "next/router";
+import ReactLoading from "react-loading";
 function ChangeEmail() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [confirmation, setConfirmation] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isloggedIn, setIsloggedIn] = useState(false);
+
+  useEffect(() => {
+    if (!isloggedIn) {
+      router.push("/Home", undefined, { shallow: true });
+    }
+  }, [isloggedIn]);
+
+  useEffect(() => {
+    Auth.currentAuthenticatedUser({
+      bypassCache: false,
+    })
+      .then((user) => {
+        setIsloggedIn(true);
+      })
+      .catch((err) => {
+        setIsloggedIn(false);
+      });
+  }, []);
+
   useEffect(() => {
     setConfirmation(false);
   }, []);
@@ -35,49 +56,55 @@ function ChangeEmail() {
 
   return (
     <PlayerHeader>
-      <Container>
-        <Wrapper>
-          {confirmation === true ? (
-            <ConfirmPasscode />
-          ) : (
-            <>
-              <RowContainer>
-                <h1>Change email</h1>
-              </RowContainer>
-              <RowContainer>
-                <StyledTextField
-                  variant='outlined'
-                  color='primary'
-                  required={true}
-                  fullWidth
-                  type='email'
-                  id='Email '
-                  onChange={(event) => {
-                    console.log(event.target.value);
-                    setEmail(event.target.value);
-                  }}
-                  defaultValue=''
-                  name='New Email'
-                  placeholder='New Email'
-                />
-              </RowContainer>
+      {!isloggedIn ? (
+        <LoadingWrapper>
+          <ReactLoading type='bars' color='white' height={267} width={175} />
+        </LoadingWrapper>
+      ) : (
+        <Container>
+          <Wrapper>
+            {confirmation === true ? (
+              <ConfirmPasscode />
+            ) : (
+              <>
+                <RowContainer>
+                  <h1>Change email</h1>
+                </RowContainer>
+                <RowContainer>
+                  <StyledTextField
+                    variant='outlined'
+                    color='primary'
+                    required={true}
+                    fullWidth
+                    type='email'
+                    id='Email '
+                    onChange={(event) => {
+                      console.log(event.target.value);
+                      setEmail(event.target.value);
+                    }}
+                    defaultValue=''
+                    name='New Email'
+                    placeholder='New Email'
+                  />
+                </RowContainer>
 
-              <ButtonContainer>
-                <SaveButton
-                  onClick={() => {
-                    changeEmail();
-                  }}
-                >
-                  SAVE
-                </SaveButton>
-                <Link href='./'>
-                  <CancelButton>CANCEL</CancelButton>
-                </Link>
-              </ButtonContainer>
-            </>
-          )}
-        </Wrapper>
-      </Container>
+                <ButtonContainer>
+                  <SaveButton
+                    onClick={() => {
+                      changeEmail();
+                    }}
+                  >
+                    SAVE
+                  </SaveButton>
+                  <Link href='./'>
+                    <CancelButton>CANCEL</CancelButton>
+                  </Link>
+                </ButtonContainer>
+              </>
+            )}
+          </Wrapper>
+        </Container>
+      )}
     </PlayerHeader>
   );
 }
@@ -97,6 +124,16 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LoadingWrapper = styled.div`
+  margin-top: 80px;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import { TextField } from "@material-ui/core";
@@ -7,12 +7,32 @@ import Auth from "@aws-amplify/auth";
 import { useRouter, withRouter } from "next/router";
 import PlayerHeader from "../../../Components/Layout/PlayerHeader";
 import Link from "next/link";
+import ReactLoading from "react-loading";
 
 function EnterPasscode(props) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [confirmationCode, setConfirmationCode] = useState("");
+  const [isloggedIn, setIsloggedIn] = useState(false);
+
+  useEffect(() => {
+    if (!isloggedIn) {
+      router.push("/Home", undefined, { shallow: true });
+    }
+  }, [isloggedIn]);
+
+  useEffect(() => {
+    Auth.currentAuthenticatedUser({
+      bypassCache: false,
+    })
+      .then((user) => {
+        setIsloggedIn(true);
+      })
+      .catch((err) => {
+        setIsloggedIn(false);
+      });
+  }, []);
 
   const resendCode = async () => {
     setLoading(true);
@@ -53,61 +73,68 @@ function EnterPasscode(props) {
 
   return (
     <PlayerHeader>
-      <Container>
-        <Wrapper>
-          <BlockContainer>
-            <ParagraphContainer>
-              <h1>Edon your email inbox</h1>
-              <span>
-                We need you to verify your email address. We've sent an email to
-                edonderguti@gmail.com containing a 6-digit code which expires in
-                15 minutes. Please enter it below.
-              </span>
-            </ParagraphContainer>
-          </BlockContainer>
-          <BlockContainer>
-            <PassCodeContainer>
-              <h2> Code</h2>
-              <StyledTextField
-                style={{ marginLeft: "5px" }}
-                variant='outlined'
-                size='large'
-                autoComplete='new-password'
-                color='primary'
-                required={true}
-                onChange={(event) => {
-                  setConfirmationCode(event.target.value);
-                }}
-                inputProps={{ maxLength: 6 }}
-                defaultValue=''
-                helperText=''
-                name='Confirmation Code'
-                placeholder='Confirmation Code'
-                id='Confirmation Code'
-              />
-              <span
+      {" "}
+      {!isloggedIn ? (
+        <LoadingWrapper>
+          <ReactLoading type='bars' color='white' height={267} width={175} />
+        </LoadingWrapper>
+      ) : (
+        <Container>
+          <Wrapper>
+            <BlockContainer>
+              <ParagraphContainer>
+                <h1>Edon your email inbox</h1>
+                <span>
+                  We need you to verify your email address. We've sent an email
+                  to edonderguti@gmail.com containing a 6-digit code which
+                  expires in 15 minutes. Please enter it below.
+                </span>
+              </ParagraphContainer>
+            </BlockContainer>
+            <BlockContainer>
+              <PassCodeContainer>
+                <h2> Code</h2>
+                <StyledTextField
+                  style={{ marginLeft: "5px" }}
+                  variant='outlined'
+                  size='large'
+                  autoComplete='new-password'
+                  color='primary'
+                  required={true}
+                  onChange={(event) => {
+                    setConfirmationCode(event.target.value);
+                  }}
+                  inputProps={{ maxLength: 6 }}
+                  defaultValue=''
+                  helperText=''
+                  name='Confirmation Code'
+                  placeholder='Confirmation Code'
+                  id='Confirmation Code'
+                />
+                <span
+                  onClick={() => {
+                    onResendCode();
+                  }}
+                >
+                  RESEND
+                </span>
+              </PassCodeContainer>
+            </BlockContainer>
+            <BlockContainer>
+              <StyledButtonHome
                 onClick={() => {
-                  onResendCode();
+                  onConfirm();
                 }}
               >
-                RESEND
-              </span>
-            </PassCodeContainer>
-          </BlockContainer>
-          <BlockContainer>
-            <StyledButtonHome
-              onClick={() => {
-                onConfirm();
-              }}
-            >
-              CONTINUE
-            </StyledButtonHome>
-            <Link href='./'>
-              <CancelButtonHome>CANCEL</CancelButtonHome>
-            </Link>
-          </BlockContainer>
-        </Wrapper>
-      </Container>
+                CONTINUE
+              </StyledButtonHome>
+              <Link href='./'>
+                <CancelButtonHome>CANCEL</CancelButtonHome>
+              </Link>
+            </BlockContainer>
+          </Wrapper>
+        </Container>
+      )}
     </PlayerHeader>
   );
 }
@@ -131,7 +158,15 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
+const LoadingWrapper = styled.div`
+  margin-top: 80px;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 const BlockContainer = styled.div`
   width: 400px;
   height: 120px;
