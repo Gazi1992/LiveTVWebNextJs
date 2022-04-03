@@ -3,15 +3,28 @@ import styled from "styled-components";
 import { useState } from "react";
 import Image from "next/image";
 import { AiOutlineStar } from "react-icons/ai";
+import { connect } from "react-redux";
+import { channels_toggleFavorite, user_get } from "../../app/store/actions/api";
+
+const mapStatetoProps = (state) => ({});
+
+const mapDispatchtoProps = (dispatch) => {
+  return {
+    getUser: () => dispatch(user_get()),
+    toggleFavoriteChannel: (channelId, onSuccess) =>
+      dispatch(channels_toggleFavorite(channelId, onSuccess)),
+  };
+};
 
 function ChannelsRow({
+  id,
   starState,
   logo,
   description,
   url,
   atSidebar,
-  onStarPress = () => {},
   onChannelPress = () => {},
+  ...props
 }) {
   const [isFavorite, setIsFavorite] = useState(starState);
 
@@ -21,10 +34,14 @@ function ChannelsRow({
     onStarPress();
   };
 
+  const onStarPress = () => {
+    props.toggleFavoriteChannel(id, () => props.getUser());
+    setIsFavorite(!isFavorite);
+  };
   return (
     <Container atSidebar={atSidebar}>
       <Star onClick={imageClick}>
-        {starState === true ? (
+        {isFavorite === true ? (
           //
           <AiOutlineStar size='15px' />
         ) : (
@@ -107,5 +124,5 @@ const DescriptionContainer = styled.div`
     font-size: 15px;
   }
 `;
-export default ChannelsRow;
-// export default connect(mapStatetoProps, mapDispatchtoProps)(ChannelsRow);
+// export default ChannelsRow;
+export default connect(mapStatetoProps, mapDispatchtoProps)(ChannelsRow);

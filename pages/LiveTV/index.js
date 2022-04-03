@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
 import Sidebar from "../../Components/LiveTV-Components/Sidebar";
@@ -11,14 +11,15 @@ import { channels_get, user_get } from "../../app/store/actions/api";
 import { isMobile } from "react-device-detect";
 import MobileLiveTV from "../..//Components/MobileLiveTV";
 import { useRouter } from "next/router";
+import ReactLoading from "react-loading";
 
 const mapStatetoProps = (state) => ({
   LiveTVCHannels: _.get(state, `liveTV_channels.data.filteredChannels`, []),
   channelsFetching: _.get(state, `liveTV.channels`, []),
   playing: _.get(state, `liveTV.channelPlaying`, ""),
   channels: _.get(state, `channels.data`, []),
-  user: _.get(state, `user.data`, []),
-  userAWS: _.get(state, `userAWS`, []),
+  user: _.get(state, `user.data`, null),
+  userAWS: _.get(state, `userAWS`, null),
 });
 const mapDispatchtoProps = (dispatch) => {
   return {
@@ -35,37 +36,43 @@ const mapDispatchtoProps = (dispatch) => {
 };
 
 function LiveTV(props) {
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
+
   useEffect(() => {
     props.getChannels();
     props.getUser();
   }, []);
 
   useEffect(() => {
-    if (props.getUser()) {
-      router.push("/SignIn ", undefined, { shallow: true });
-      console.log("User is" + props.getUser());
+    if (props.user != null && props.channels.length > 0) {
+      setLoading(false);
     } else {
-      console.log("Not Exists !");
+      setLoading(true);
     }
-  }, []);
-  // console.log(props.channels);
-  // console.log(props.user);
-  // console.log("USER AWS ", props.userAWS);
+  }, [props.user, props.channels]);
 
   const playerProps = { playing: false, height: "90%" };
 
   return (
     <>
-      {isMobile ? (
-        <MobileLiveTV />
+      {loading ? (
+        <LoadingWrapper>
+          <ReactLoading type='bars' color='white' height={267} width={175} />
+        </LoadingWrapper>
       ) : (
-        <PlayerHeader>
-          <Container>
-            <Sidebar />
-            <ResponsiveStyledPlayer {...playerProps} />
-          </Container>
-        </PlayerHeader>
+        <>
+          {isMobile ? (
+            <MobileLiveTV />
+          ) : (
+            <PlayerHeader>
+              <Container>
+                <Sidebar />
+                <ResponsiveStyledPlayer {...playerProps} />
+              </Container>
+            </PlayerHeader>
+          )}
+        </>
       )}
     </>
   );
@@ -82,6 +89,15 @@ const Container = styled.div`
   height: calc(100vh - 80px);
   width: 100vw;
   margin-top: 80px;
+`;
+const LoadingWrapper = styled.div`
+  margin-top: 80px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 //export default LiveTV;

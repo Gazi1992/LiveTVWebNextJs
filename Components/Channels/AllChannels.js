@@ -11,23 +11,19 @@ import {
   CellMeasurer,
   CellMeasurerCache,
 } from "react-virtualized";
-import {
-  addFavoriteChannel,
-  removeFavoriteChannel,
-  setChannelPlaying,
-  getChannels,
-} from "../../app/store/actions/liveTV";
+
+import { channels_toggleFavorite } from "../../app/store/actions/api";
 
 const mapStatetoProps = (state) => ({
-  favoriteChannels: _.get(state, `favoriteChannels.data`, []),
+  user: _.get(state, `user.data`, null),
   channels: _.get(state, `channels.data`, []),
 });
 
 const mapDispatchtoProps = (dispatch) => {
   return {
-    addFavorite: (channel) => dispatch(addFavoriteChannel(channel)),
-    removeFavorite: (channel) => dispatch(removeFavoriteChannel(channel)),
-    setChannelPlaying: (channel) => dispatch(setChannelPlaying(channel)),
+    getUser: () => dispatch(user_get()),
+    toggleFavoriteChannel: (channelId, onSuccess) =>
+      dispatch(channels_toggleFavorite(channelId, onSuccess)),
   };
 };
 
@@ -43,7 +39,11 @@ function AllChannels({ kanalet, atSidebar, change, ...props }) {
 
   useEffect(() => {
     if (change === true) {
-      setChannels(props.favoriteChannels);
+      setChannels(
+        props.channels.filter((item) =>
+          props.user.favoriteChannels.includes(item.id)
+        )
+      );
     } else {
       setChannels(props.channels);
     }
@@ -64,9 +64,10 @@ function AllChannels({ kanalet, atSidebar, change, ...props }) {
                 rowRenderer={({ key, index, style, parent }) => {
                   const channel = channels[index];
 
-                  const isFavorite = props.favoriteChannels
-                    .map((item) => item.url)
-                    .includes(channels[index].url);
+                  const isFavorite = props.user.favoriteChannels.includes(
+                    channel.id
+                  );
+
                   // {
                   //   console.log({
                   //     change: change,
@@ -93,11 +94,6 @@ function AllChannels({ kanalet, atSidebar, change, ...props }) {
                           logo={channel.logo}
                           starState={isFavorite}
                           description={channel.name}
-                          onStarPress={() => {
-                            console.log("StarPress" + isFavorite);
-                            if (isFavorite) props.removeFavorite(channel);
-                            else props.addFavorite(channel);
-                          }}
                           onChannelPress={() => {
                             props.setChannelPlaying(channel.url);
                           }}
