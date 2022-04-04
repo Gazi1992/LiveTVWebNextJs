@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Image from "next/image";
 
-import Lottie from "lottie-react-web";
+import Lottie from "react-lottie";
 import World from "../channels/world.json";
 import Devices from "../channels/devices.json";
 
@@ -11,9 +11,11 @@ function Subheader() {
   return (
     <Container>
       <DeviceDivider>
-        <Image width='250px' height='250px' src='/images/tv.svg' />
-        <Image width='150px' height='100px' src='/images/smartphone.svg' />
-        <Image width='150px' height='150px' src='/images/laptop.svg' />
+        <ImageContainer>
+          <Image width='250px' height='250px' src='/images/tv.svg' />
+          <Image width='150px' height='100px' src='/images/smartphone.svg' />
+          <Image width='150px' height='150px' src='/images/laptop.svg' />
+        </ImageContainer>
         <Text>
           <h1>5 Paisje njëkohësisht</h1>
         </Text>
@@ -74,21 +76,21 @@ const Container = styled.div`
   width: 100%;
   height: 30vh;
   color: white;
+  resize: both;
   background-image: linear-gradient(180deg, #f1f1f100 0%, #000000 40%);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 00px;
-  @media screen and (max-width: 600px) {
+  z-index: 1;
+  bottom: 0;
+
+  @media screen and (max-width: 800px) {
     width: 100%;
-    height: 30vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 10vh;
   }
+
   h1 {
     box-shadow: 0 0 0 3px #6fa2b5, 0 0 0 2px #6fa2b5;
     border: 4px solid transparent;
@@ -105,6 +107,20 @@ const Container = styled.div`
     width: 255px;
     background-color: black;
     transform: rotate(-15deg);
+
+    @media screen and (min-width: 1201px) and (max-width: 1400px) {
+      font-size: 10px;
+      width: 80%;
+    }
+    @media screen and (max-width: 1200px) {
+      transform: rotate(0deg);
+      font-size: 10px;
+      width: 80%;
+      margin-bottom: 50px;
+      background-color: black;
+      padding: 0;
+      line-height: 18px;
+    }
   }
 `;
 
@@ -115,8 +131,23 @@ const DeviceDivider = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  user-select: none;
 
   position: relative;
+`;
+const ImageContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+
+  position: relative;
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const TextThird = styled.div`
@@ -129,6 +160,9 @@ const TextThird = styled.div`
   align-items: center;
   position: absolute;
   z-index: 3;
+  @media screen and (max-width: 1200px) {
+    display: true;
+  }
   h1 {
     box-shadow: 0 0 0 3px #6fa2b5, 0 0 0 2px #6fa2b5;
     border: 4px solid transparent;
@@ -145,6 +179,20 @@ const TextThird = styled.div`
     width: 255px;
     background-color: black;
     transform: rotate(-15deg);
+
+    @media screen and (min-width: 1201px) and (max-width: 1400px) {
+      font-size: 10px;
+      width: 80%;
+    }
+    @media screen and (max-width: 1200px) {
+      transform: rotate(0deg);
+      font-size: 10px;
+      width: 80%;
+      margin-bottom: 50px;
+      background-color: black;
+      padding: 0;
+      line-height: 18px;
+    }
   }
 `;
 
@@ -176,6 +224,9 @@ const Square = styled.div`
   grid-template-rows: 33.3% 33.3% 33.3%;
   border: 4px solid #6fa2b5;
   position: relative;
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const MiniSquare = styled.div`

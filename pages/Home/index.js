@@ -57,8 +57,8 @@ function Home(props) {
           <Link href='/Payment'>
             <StyledButtonHome>ABONOHU TANI</StyledButtonHome>
           </Link>
+          <Subheader />
         </BannerHome>
-        <Subheader />
         <Kanalet id='Kanalet'>
           <Channels>
             <Logo logosrc='logo/dukagjini.png'></Logo>
@@ -201,7 +201,7 @@ const Container = styled.div`
   align-items: center;
 `;
 const BannerHome = styled.div`
-  height: 85vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -210,7 +210,10 @@ const BannerHome = styled.div`
 
   overflow: hidden;
   position: relative;
-
+  @media screen and (min-width: 800px) and (max-width: 1350px) {
+    height: 75vh;
+    padding-bottom: 100px;
+  }
   @media screen and (max-width: 800px) {
     display: flex;
     flex-direction: column;
@@ -229,7 +232,7 @@ const Kanalet = styled.div`
   flex-direction: column;
   align-items: center;
   background: #f4f4f4;
-  margin-top: 300px;
+
   @media screen and (max-width: 600px) {
     height: fit-content;
   }
@@ -498,7 +501,7 @@ const Intro = styled.div`
     line-height: 1.5;
     letter-spacing: 1.5px;
 
-    @media screen and (max-width: 1250px), screen and (max-height: 600px) {
+    @media screen and (max-width: 1250px), screen and (max-height: 800px) {
       font-size: 30px;
       line-height: 1.5;
       width: 100%;
