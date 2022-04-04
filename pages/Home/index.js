@@ -25,9 +25,7 @@ import Image from "next/image";
 import { connect } from "react-redux";
 import Link from "next/link";
 import _ from "lodash";
-import Lottie from "lottie-react-web";
-import World from "../../channels/world.json";
-import Devices from "../../channels/devices.json";
+import Subheader from "../../Components/Subheader";
 
 function Home(props) {
   const [allChannelsPopup, setAllChannelsPopup] = useState(false);
@@ -36,31 +34,6 @@ function Home(props) {
     <HomeHeader>
       <Container>
         <BannerHome id='Banner'>
-          <AnimationContainer>
-            <Lottie
-              width='450px'
-              height='250px'
-              speed='1'
-              options={{
-                animationData: World,
-                loop: true,
-              }}
-            />
-            <h1> Kudo në botë</h1>
-          </AnimationContainer>
-
-          {/* <DeviceAnimationContainer>
-            <Lottie
-              width='500px'
-              height='300px'
-              speed='1'
-              options={{
-                animationData: Devices,
-                loop: true,
-              }}
-            />
-          </DeviceAnimationContainer> */}
-
           <Intro>
             <a>Platforma më cilësore shqiptare në botë!</a>
 
@@ -85,6 +58,7 @@ function Home(props) {
             <StyledButtonHome>ABONOHU TANI</StyledButtonHome>
           </Link>
         </BannerHome>
+        <Subheader />
         <Kanalet id='Kanalet'>
           <Channels>
             <Logo logosrc='logo/dukagjini.png'></Logo>
@@ -255,6 +229,7 @@ const Kanalet = styled.div`
   flex-direction: column;
   align-items: center;
   background: #f4f4f4;
+  margin-top: 300px;
   @media screen and (max-width: 600px) {
     height: fit-content;
   }

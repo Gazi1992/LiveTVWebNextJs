@@ -55,7 +55,7 @@ function LiveTV(props) {
 
   useEffect(() => {
     if (!isloggedIn) {
-      router.push("/Home", undefined, { shallow: true });
+      // router.push("/Home", undefined, { shallow: true });
       setLoading(false);
     }
   }, [isloggedIn]);
