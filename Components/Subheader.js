@@ -12,21 +12,24 @@ function Subheader() {
     <Container>
       <DeviceDivider>
         <ImageContainer>
-          <Image width='250px' height='250px' src='/images/tv.svg' />
+          <Image width='150px' height='150px' src='/images/tv.svg' />
           <Image width='150px' height='100px' src='/images/smartphone.svg' />
-          <Image width='150px' height='150px' src='/images/laptop.svg' />
+          <Image width='100px' height='100px' src='/images/laptop.svg' />
         </ImageContainer>
-        <Text>
-          <h1>5 Paisje njëkohësisht</h1>
-        </Text>
+        <TextDivider>
+          <Text>
+            <span>5 </span>
+          </Text>
+          <p>Paisje njekohesisht</p>
+        </TextDivider>
       </DeviceDivider>
       <DeviceDivider>
         <TextContainer>
           <h1>Kudo në botë</h1>
         </TextContainer>
         <Lottie
-          width='450px'
-          height='250px'
+          width='550px'
+          height='350px'
           speed='1'
           options={{
             animationData: World,
@@ -35,38 +38,12 @@ function Subheader() {
         />
       </DeviceDivider>
       <DeviceDivider>
-        <TextThird>
-          <h1>Mbi 250 kanale shqiptare dhe shume të huaja</h1>
-        </TextThird>
-        <Square>
-          <MiniSquare>
-            <h2>Top Channel</h2>
-          </MiniSquare>
-          <MiniSquare>
-            <h2>T7</h2>
-          </MiniSquare>
-          <MiniSquare>
-            <h2>Klan Kosova</h2>
-          </MiniSquare>
-          <MiniSquare>
-            <h2>Klan TV</h2>
-          </MiniSquare>
-          <MiniSquare>
-            <h2>ATV</h2>
-          </MiniSquare>
-          <MiniSquare>
-            <h2>RTV21</h2>
-          </MiniSquare>
-          <MiniSquare>
-            <h2>Kanal 10</h2>
-          </MiniSquare>
-          <MiniSquare>
-            <h2>RTV21</h2>
-          </MiniSquare>
-          <MiniSquare>
-            <h2>Alsat M</h2>
-          </MiniSquare>
-        </Square>
+        <TextDivider>
+          <Text>
+            <span>250</span>
+          </Text>
+          <p>Kanale shqiptare</p>
+        </TextDivider>
       </DeviceDivider>
     </Container>
   );
@@ -77,12 +54,12 @@ const Container = styled.div`
   height: 30vh;
   color: white;
   resize: both;
-  background-image: linear-gradient(180deg, #f1f1f100 0%, #000000 40%);
+  background: transparent;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: relative;
   z-index: 1;
   bottom: 0;
 
@@ -125,21 +102,36 @@ const Container = styled.div`
 `;
 
 const DeviceDivider = styled.div`
-  width: 30%;
+  width: 33.33%;
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   user-select: none;
 
   position: relative;
 `;
-const ImageContainer = styled.div`
-  width: 100%;
+const TextDivider = styled.div`
+  width: 30%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  margin-top: 100px;
+  position: relative;
+  p {
+    font-size: 24px;
+  }
+`;
+
+const ImageContainer = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   user-select: none;
@@ -197,11 +189,22 @@ const TextThird = styled.div`
 `;
 
 const Text = styled.div`
-  height: 50px;
-  width: 100%;
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
   display: flex;
+
   justify-content: center;
   align-items: center;
+  background-color: #243a3e;
+  background: #243a3e;
+  border: 5px solid white;
+  position: relative;
+  span {
+    font-size: 64px;
+  }
+  p {
+  }
 `;
 
 const TextContainer = styled.div`

@@ -54,10 +54,10 @@ function Home(props) {
               type='video/mp4'
             />
           </Video>
+          <Subheader />
           <Link href='/Payment'>
             <StyledButtonHome>ABONOHU TANI</StyledButtonHome>
           </Link>
-          <Subheader />
         </BannerHome>
         <Kanalet id='Kanalet'>
           <Channels>
@@ -557,7 +557,7 @@ const Video = styled.div`
 const StyledButtonHome = styled(Button)`
   && {
     margin: 30px;
-    margin-top: 20px;
+    margin-top: 100px;
     background-color: white;
     font-size: 20px;
     font-weight: 500;
