@@ -198,8 +198,15 @@ const Square = styled.div`
 
   position: absolute;
   right: 0;
-  @media screen and (max-width: 1200px) {
-    display: none;
+  @media screen and (max-width: 1900px) {
+    width: 45%;
+  }
+  @media screen and (max-width: 1600px) {
+    width: 35%;
+  }
+  @media screen and (max-width: 1300px) {
+    width: 100%;
+    opacity: 0.4;
   }
 `;
 
