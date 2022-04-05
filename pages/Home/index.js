@@ -367,7 +367,7 @@ const AddOns = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: black;
+  background: transparent;
   position: relative;
 `;
 const ButtonDiv = styled.div`

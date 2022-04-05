@@ -16,20 +16,31 @@ function Multitheme() {
 
   return (
     <Container>
-      <ImgConatiner
-        layout='fill'
-        src={
-          theme === "livesport"
-            ? "/images/livesports-1.jpg"
-            : theme === "breakingnews"
-            ? "/images/o-breakingnews.jpg"
-            : "/images/o-liveevent.jpg"
-        }
-      />
-      <Gradient theme={theme} />
+      <Square>
+        <ImgConatiner>
+          <Image
+            layout='fill'
+            objectFit='cover'
+            src='/images/sport/ronaldo.jpg'
+          />
+        </ImgConatiner>
+        <ImgConatiner>
+          <Image layout='fill' objectFit='cover' src='/images/sport/in.jpg' />
+        </ImgConatiner>
+        <ImgConatiner>
+          <Image
+            layout='fill'
+            objectFit='cover'
+            src='/images/sport/xhaka.jpg'
+          />
+        </ImgConatiner>
+        <ImgConatiner>
+          <Image layout='fill' objectFit='cover' src='/images/sport/rm.jpg' />
+        </ImgConatiner>
+      </Square>
 
       <DescriptionContainer>
-        <MultithemeMenu>
+        {/* <MultithemeMenu>
           <a onClick={() => acitivisation("livesport")}>
             <span>SPORTE LIVE</span>
           </a>
@@ -41,164 +52,59 @@ function Multitheme() {
           <a onClick={() => acitivisation("liveevents")}>
             <span>EVENTE LIVE</span>
           </a>
-        </MultithemeMenu>
+        </MultithemeMenu> */}
         <HeaderDescription>
-          <h1>
-            {theme === "livesport"
-              ? "Sporte Live"
-              : theme === "breakingnews"
-              ? "Lajme"
-              : "Evente Live"}
-          </h1>
+          <h1>Sporte Live</h1>
         </HeaderDescription>
-        <SecondHeaderDescription active={active}>
-          {theme === "livesport" ? (
-            <>
-              <h2>
-                Të gjitha ndeshjet sportive në smartphone, TV apo Website. Ndiq
-                top ligat e futbollit, basktebollit, apo ndeshjet e boksit the
-                te UFC.
-              </h2>
-              <SecondImageContainer>
-                <ImageWrapper>
-                  <Image
-                    src='/images/multitheme/sports/Serie_a_2021.png'
-                    width={33}
-                    height={38}
-                  />
-                </ImageWrapper>
-                <ImageWrapper>
-                  <Image
-                    src='/images/multitheme/sports/icons8-the-premier-league-48.png'
-                    width={48}
-                    height={48}
-                  />{" "}
-                </ImageWrapper>
-                <ImageWrapper>
-                  <Image
-                    src='/images/multitheme/sports/LaLiga_Santander.svg'
-                    width={48}
-                    height={48}
-                  />
-                </ImageWrapper>
-                <ImageWrapper>
-                  <Image
-                    src='/images/multitheme/sports/Bundesliga.svg'
-                    width={38}
-                    height={48}
-                  />
-                </ImageWrapper>
-                <ImageWrapper>
-                  <Image
-                    src='/images/multitheme/sports/NBA.svg'
-                    width={38}
-                    height={48}
-                  />
-                </ImageWrapper>
-                <ImageWrapper>
-                  <Image
-                    src='/images/multitheme/sports/UFC.jpg'
-                    width={118}
-                    height={68}
-                  />
-                </ImageWrapper>
-              </SecondImageContainer>
-            </>
-          ) : theme === "breakingnews" ? (
-            <>
-              <h2>
-                Informohu i pari për ngjarjet lokale dhe botërore. Debatet më të
-                shikuara me analistët më të suksesshem të vendit
-              </h2>
-              <SecondImageContainer>
-                <NewsImageWrapper>
-                  <Image
-                    src='/logo/topchannel.png'
-                    width={40}
-                    height={45}
-                    objectFit='contain'
-                  />
-                </NewsImageWrapper>
-                <NewsImageWrapper>
-                  <Image
-                    src='/logo/klanK.png'
-                    width={38}
-                    height={38}
-                    objectFit='contain'
-                  />
-                </NewsImageWrapper>
-                <NewsImageWrapper>
-                  <Image
-                    src='/logo/klan.png'
-                    width={45}
-                    height={45}
-                    objectFit='contain'
-                  />
-                </NewsImageWrapper>
-                <NewsImageWrapper>
-                  <Image
-                    src='/logo/t7.png'
-                    width={40}
-                    height={40}
-                    objectFit='contain'
-                  />
-                </NewsImageWrapper>
-                <NewsImageWrapper style={{ backgroundColor: "#d8001a" }}>
-                  <Image
-                    src='/logo/atv.jpg'
-                    width={35}
-                    height={35}
-                    objectFit='contain'
-                  />
-                </NewsImageWrapper>
-                <NewsImageWrapper>
-                  <Image
-                    src='/logo/rtv21.png'
-                    width={35}
-                    height={35}
-                    objectFit='contain'
-                  />
-                </NewsImageWrapper>
-                <NewsImageWrapper>
-                  <Image
-                    src='/logo/rtk.jpg'
-                    width={45}
-                    height={45}
-                    objectFit='contain'
-                  />
-                </NewsImageWrapper>
-                <NewsImageWrapper>
-                  <Image
-                    src='/logo/dukagjini.png'
-                    width={45}
-                    height={45}
-                    objectFit='contain'
-                  />
-                </NewsImageWrapper>
-                <NewsImageWrapper>
-                  <Image
-                    src='/logo/kanal10.png'
-                    width={43}
-                    height={45}
-                    objectFit='contain'
-                  />
-                </NewsImageWrapper>
-                <NewsImageWrapper>
-                  <Image
-                    src='/logo/Ktv.png'
-                    width={43}
-                    height={45}
-                    objectFit='contain'
-                  />
-                </NewsImageWrapper>
-              </SecondImageContainer>
-            </>
-          ) : (
-            <h2>
-              Eventet që nuk duhet humbur. Nga koncertet prej artistëve më të
-              njohur deri te spektatlet e filmit dhe modës.
-            </h2>
-          )}
+        <SecondHeaderDescription>
+          <h2>
+            Të gjitha ndeshjet sportive në smartphone, TV apo Website. Ndiq top
+            ligat e futbollit, basktebollit, apo ndeshjet e boksit the te UFC.
+          </h2>
+          <SecondImageContainer>
+            <ImageWrapper>
+              <Image
+                src='/images/multitheme/sports/Serie_a_2021.png'
+                layout='fill'
+                objectFit='contain'
+              />
+            </ImageWrapper>
+            <ImageWrapper>
+              <Image
+                src='/images/multitheme/sports/icons8-the-premier-league-48.png'
+                layout='fill'
+                objectFit='contain'
+              />{" "}
+            </ImageWrapper>
+            <ImageWrapper>
+              <Image
+                src='/images/multitheme/sports/LaLiga_Santander.svg'
+                layout='fill'
+                objectFit='contain'
+              />
+            </ImageWrapper>
+            <ImageWrapper>
+              <Image
+                src='/images/multitheme/sports/Bundesliga.svg'
+                layout='fill'
+                objectFit='contain'
+              />
+            </ImageWrapper>
+            <ImageWrapper>
+              <Image
+                src='/images/multitheme/sports/NBA.svg'
+                layout='fill'
+                objectFit='contain'
+              />
+            </ImageWrapper>
+            <ImageWrapper>
+              <Image
+                src='/images/multitheme/sports/UFC.jpg'
+                layout='fill'
+                objectFit='contain'
+              />
+            </ImageWrapper>
+          </SecondImageContainer>
         </SecondHeaderDescription>
       </DescriptionContainer>
     </Container>
@@ -284,6 +190,19 @@ const MultithemeMenu = styled.div`
   }
 `;
 
+const Square = styled.div`
+  display: grid;
+  width: 55%;
+  height: 100%;
+  grid-template-columns: 25% 25% 25% 25%;
+
+  position: absolute;
+  right: 0;
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
+`;
+
 const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -292,31 +211,52 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(270deg, #000000cf 0%, #000000 83%);
   @media (max-width: 500px) {
     justify-content: flex-start;
   }
 `;
 
-const ImgConatiner = styled(Image)`
-  width: auto;
+const ImgConatiner = styled.div`
   height: 100%;
-  position: absolute;
+  width: 100%;
+  position: relative;
   z-index: 1;
-  background: transparent;
-  opacity: 0.4;
-  @media (min-width: 1000px) {
+  top: 0;
+  right: 0;
+  background: red;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* @media (max-width: 1000px) {
     width: 100%;
     height: 100%;
     top: 0;
-  }
+  } */
 `;
+
+// const ImgConatiner = styled(Image)`
+//   width: 500px;
+//   height: 500px;
+//   position: absolute;
+//   z-index: 1;
+//   background: transparent;
+//   opacity: 0.4;
+//   @media (min-width: 1000px) {
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//   }
+// `;
 
 const Gradient = styled.div`
   position: absolute;
   bottom: 0;
   height: 100%;
   width: 100%;
-  background: transparent;
+  z-index: 2;
+  background: linear-gradient(92deg, #000000 20%, #00000029 100%);
 
   // props.theme === "livesport"
   //   ? "  linear-gradient(180deg, transparent 10%, rgba(114,217,53,1) 100%);"
@@ -336,6 +276,7 @@ const DescriptionContainer = styled.div`
   font-weight: bold;
   text-align: left;
   color: white;
+
   @media screen and (max-width: 1000px) {
     display: flex;
     flex-direction: column;
@@ -347,12 +288,13 @@ const DescriptionContainer = styled.div`
   }
 `;
 const SecondImageContainer = styled.div`
+  margin-top: 100px;
   height: fit-content;
-  width: fit-content;
+  width: 80%;
   display: grid;
-  grid-gap: 10px;
-  gap: 10px;
-  grid-template-columns: repeat(10, minmax(50px, 1fr));
+  grid-gap: 20px;
+  gap: 20px;
+  grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
   @media screen and (max-width: 1400px) {
     grid-gap: 0px;
     gap: 0px;
@@ -366,11 +308,13 @@ const SecondImageContainer = styled.div`
 `;
 const ImageWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 70px;
   margin: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: relative;
 `;
 
 const NewsImageWrapper = styled.div`
@@ -413,7 +357,8 @@ const HeaderDescription = styled.div`
     margin-bottom: 20px;
   }
   h1 {
-    font-size: 50px;
+    font-size: 70px;
+    margin: 0px;
     /* @media screen and (max-width: 1000px) {
       font-size: 25px;
       margin-left: 10px;
@@ -423,7 +368,7 @@ const HeaderDescription = styled.div`
 
 const fadeInFromLib1 = keyframes`${fadeInFromLib}`;
 const SecondHeaderDescription = styled.div`
-  width: 500px;
+  width: 600px;
   height: 300px;
 
   margin-left: 50px;
@@ -443,7 +388,7 @@ const SecondHeaderDescription = styled.div`
   h2 {
     margin: 0px;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 30px;
     @media screen and (max-width: 700px) {
       font-size: 15px;
     }
