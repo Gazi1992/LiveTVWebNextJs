@@ -198,7 +198,7 @@ const Square = styled.div`
 
   position: absolute;
   right: 0;
-  @media screen and (max-width: 1900px) {
+  @media screen and (max-width: 1950px) {
     width: 45%;
   }
   @media screen and (max-width: 1600px) {
