@@ -49,14 +49,15 @@ function LiveTV(props) {
         setIsloggedIn(true);
       })
       .catch((err) => {
+        router.push("/Home", undefined, { shallow: true });
         setIsloggedIn(false);
       });
   }, []);
 
   useEffect(() => {
     if (!isloggedIn) {
-      // router.push("/Home", undefined, { shallow: true });
       setLoading(false);
+    } else {
     }
   }, [isloggedIn]);
 
@@ -108,7 +109,7 @@ const MobileContainer = styled.div`
 const Container = styled.div`
   background-color: black;
   height: calc(100vh - 80px);
-  width: 100vw;
+  width: 100%;
   margin-top: 80px;
 `;
 const LoadingWrapper = styled.div`

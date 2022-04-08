@@ -73,7 +73,7 @@ function Home(props) {
                   fontSize: "12px",
                 }}
               >
-                Offertë
+                Ofertë
               </span>{" "}
               Merr muajin e parë falas, pastaj vetëm{" "}
               <span
