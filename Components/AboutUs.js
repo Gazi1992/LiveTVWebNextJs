@@ -10,8 +10,7 @@ function AboutUs() {
         <Paragraph>
           <p>
             Kudo ne botë jemi shpërndarë. Ne kemi mision të ofrojmë një
-            platformë ku të gjithë Shqiptarët do të jenë të bashkuar. Të
-            bashkuar e të lidhur për atdhe, do ti shërbejmë më tepër Shqipërisë
+            platformë ku të gjithë Shqiptarët do të jenë të bashkuar.
           </p>
         </Paragraph>
       </FadeBackground>

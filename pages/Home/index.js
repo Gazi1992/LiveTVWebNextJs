@@ -61,6 +61,9 @@ function Home(props) {
           <Link href='/Payment'>
             <StyledButtonHome>ABONOHU TANI</StyledButtonHome>
           </Link>
+          <Intro>
+            <p> LIMITED TIME! Get $30 off over your first 3 months*</p>
+          </Intro>
         </BannerHome>
         <Kanalet id='Kanalet'>
           <Channels>
@@ -560,7 +563,7 @@ const Video = styled.div`
 const StyledButtonHome = styled(Button)`
   && {
     margin: 30px;
-
+    z-index: 10;
     background-color: white;
     font-size: 20px;
     font-weight: 500;
