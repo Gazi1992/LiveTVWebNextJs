@@ -72,7 +72,7 @@ const Header = styled.h1`
   font-size: 38px;
   line-height: 1.5;
   background: transparent;
-  color: #273748;
+  color: black;
   width: 80%;
 
   display: flex;
@@ -86,7 +86,7 @@ const Paragraph = styled.div`
   position: relative;
 
   background: transparent;
-  color: #273748;
+  color: black;
   width: 80%;
 
   display: flex;

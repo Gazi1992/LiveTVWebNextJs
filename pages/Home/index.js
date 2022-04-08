@@ -62,7 +62,29 @@ function Home(props) {
             <StyledButtonHome>ABONOHU TANI</StyledButtonHome>
           </Link>
           <Intro>
-            <p> LIMITED TIME! Get $30 off over your first 3 months*</p>
+            <p>
+              <span
+                style={{
+                  borderRadius: "4px",
+                  background: "red",
+                  color: "black",
+                  letterSpacing: "0.5px",
+                  padding: "5px",
+                  fontSize: "12px",
+                }}
+              >
+                Offertë
+              </span>{" "}
+              Merr muajin e parë falas, pastaj vetëm{" "}
+              <span
+                style={{
+                  fontSize: "28px",
+                  fontWeight: "600",
+                }}
+              >
+                8.99€/muaj
+              </span>
+            </p>
           </Intro>
         </BannerHome>
         <Kanalet id='Kanalet'>
@@ -128,8 +150,8 @@ function Home(props) {
             ></Package>
             <Package
               offer='FAMILY+'
-              oldPrice='14.99'
-              price='9.99'
+              oldPrice='13.99'
+              price='8.99'
               nrikanaleve='250'
               kanaleTotal='2000'
               LiveEventscheck={true}
@@ -563,7 +585,7 @@ const Video = styled.div`
 const StyledButtonHome = styled(Button)`
   && {
     margin: 30px;
-    z-index: 10;
+    z-index: 2;
     background-color: white;
     font-size: 20px;
     font-weight: 500;

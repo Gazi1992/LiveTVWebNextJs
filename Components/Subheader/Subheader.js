@@ -9,7 +9,11 @@ function Subheader() {
       <Footer>
         <DeviceDivider style={{ borderRight: "1px solid #9b9a9a" }}>
           <ImageContainer>
-            <Image width='80px' height='80px' src='/images/devices64-1.png' />
+            <Image
+              layout='fill'
+              objectFit='contain'
+              src='/images/devicesnew.png'
+            />
           </ImageContainer>
           <TextDivider>
             <TextBody>
