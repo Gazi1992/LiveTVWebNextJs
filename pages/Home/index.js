@@ -25,7 +25,10 @@ import Image from "next/image";
 import { connect } from "react-redux";
 import Link from "next/link";
 import _ from "lodash";
-import Subheader from "../../Components/Subheader";
+import Subheader from "../../Components/Subheader/Subheader";
+import Subheader1 from "../../Components/Subheader/Subheader1";
+import Subheader2 from "../../Components/Subheader/Subheader2";
+import Subheader3 from "../../Components/Subheader/Subheader3";
 
 function Home(props) {
   const [allChannelsPopup, setAllChannelsPopup] = useState(false);
@@ -37,11 +40,11 @@ function Home(props) {
           <Intro>
             <a>Platforma më cilësore shqiptare në botë!</a>
 
-            {/* <p>
+            <p>
               250+ kanale shqiptare, me përmbajtje të lajmeve, sportit,
               historise dhe shumë të tjera. Mbi 1000 kanale të huaja. Deri në 5
               pajisje njëkohësisht.
-            </p> */}
+            </p>
           </Intro>
           <Video>
             <video
@@ -207,7 +210,6 @@ const BannerHome = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   overflow: hidden;
   position: relative;
   @media screen and (min-width: 800px) and (max-width: 1350px) {
@@ -492,6 +494,7 @@ const Intro = styled.div`
   position: relative;
   background: transparent;
   z-index: 1;
+
   user-select: none;
   a {
     font-weight: bold;
@@ -557,7 +560,7 @@ const Video = styled.div`
 const StyledButtonHome = styled(Button)`
   && {
     margin: 30px;
-    margin-top: 100px;
+
     background-color: white;
     font-size: 20px;
     font-weight: 500;

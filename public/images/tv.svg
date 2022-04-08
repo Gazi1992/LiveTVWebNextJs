@@ -19,17 +19,7 @@
    sodipodi:docname="tv2019.svg">
   <defs
      id="defs3927">
-    <linearGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient1008"
-       id="linearGradient1010"
-       x1="324.22467"
-       y1="232.45441"
-       x2="326.23657"
-       y2="243.29225"
-       gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(6.8968378,0,0,6.8968378,-2261.8119,-1470.6538)" />
-    <linearGradient
+
        inkscape:collect="always"
        id="linearGradient1008">
       <stop
@@ -45,7 +35,7 @@
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
-     bordercolor="#000000"
+     #="#000000"
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"

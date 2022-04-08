@@ -121,6 +121,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  user-select: none;
   background: linear-gradient(270deg, #000000cf 0%, #000000 83%);
   @media (max-width: 500px) {
     justify-content: flex-start;
