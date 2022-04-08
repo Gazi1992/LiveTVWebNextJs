@@ -41,8 +41,8 @@ function MobileLiveTV() {
 }
 const Container = styled.div`
   background-color: black;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

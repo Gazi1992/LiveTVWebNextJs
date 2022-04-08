@@ -99,13 +99,7 @@ function LiveTV(props) {
     </>
   );
 }
-const MobileContainer = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  z-index: 10;
-`;
+
 const Container = styled.div`
   background-color: black;
   height: calc(100vh - 80px);

@@ -25,12 +25,6 @@ function Account(props) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!isloggedIn) {
-      router.push("/Home", undefined, { shallow: true });
-    }
-  }, [isloggedIn]);
-
-  useEffect(() => {
     Auth.currentAuthenticatedUser({
       bypassCache: false,
     })
@@ -39,6 +33,7 @@ function Account(props) {
       })
       .catch((err) => {
         setIsloggedIn(false);
+        router.push("/Home", undefined, { shallow: true });
       });
   }, []);
 

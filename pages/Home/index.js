@@ -24,6 +24,7 @@ import ButtonFooter from "../../Components/VOD/Components/ButtonFooter";
 import Image from "next/image";
 import { connect } from "react-redux";
 import Link from "next/link";
+import Auth from "@aws-amplify/auth";
 import _ from "lodash";
 import Subheader from "../../Components/Subheader/Subheader";
 import Subheader1 from "../../Components/Subheader/Subheader1";
@@ -31,6 +32,17 @@ import Subheader2 from "../../Components/Subheader/Subheader2";
 import Subheader3 from "../../Components/Subheader/Subheader3";
 
 function Home(props) {
+  useEffect(() => {
+    Auth.currentAuthenticatedUser({
+      bypassCache: false,
+    })
+      .then((user) => {
+        router.push("/LiveTV", undefined, { shallow: true });
+      })
+      .catch((err) => {
+        router.push("/Home", undefined, { shallow: true });
+      });
+  }, []);
   const [allChannelsPopup, setAllChannelsPopup] = useState(false);
   const router = useRouter();
   return (
