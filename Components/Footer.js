@@ -28,7 +28,7 @@ function Footer() {
                   }}
                   title='ALB'
                 />
-                <h2>Albania</h2>
+                <h2>Shqipëria</h2>
               </RowContainer>
               <h2>+355123123123</h2>
             </ColumnContainer>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import HomeHeader from "../../Components/Layout/HomeHeader";
 import Logo from "../../Components/Logo";
-
+import Subscription from "../../Components/Subscription";
 import Package from "../../Components/Package";
 import Button from "@material-ui/core/Button";
 import { StylesProvider } from "@material-ui/core";
@@ -22,14 +22,11 @@ import { useEffect, useState } from "react";
 import TemplateofAllDevices from "../../Components/TemplateofAllDevices";
 import ButtonFooter from "../../Components/VOD/Components/ButtonFooter";
 import Image from "next/image";
-import { connect } from "react-redux";
-import Link from "next/link";
+
 import Auth from "@aws-amplify/auth";
+
 import _ from "lodash";
 import Subheader from "../../Components/Subheader/Subheader";
-import Subheader1 from "../../Components/Subheader/Subheader1";
-import Subheader2 from "../../Components/Subheader/Subheader2";
-import Subheader3 from "../../Components/Subheader/Subheader3";
 
 function Home(props) {
   useEffect(() => {
@@ -50,12 +47,12 @@ function Home(props) {
       <Container>
         <BannerHome id='Banner'>
           <Intro>
-            <a>Platforma më cilësore shqiptare në botë!</a>
+            <a>Platforma më cilësore shqiptare në botë është rrugës!</a>
 
             <p>
-              250+ kanale shqiptare, me përmbajtje të lajmeve, sportit,
-              historise dhe shumë të tjera. Mbi 1000 kanale të huaja. Deri në 5
-              pajisje njëkohësisht.
+              Punon kudo në botë. 250+ kanale shqiptare, me përmbajtje të
+              lajmeve, sportit, historise dhe shumë të tjera. Mbi 1000 kanale të
+              huaja. Deri në 5 pajisje njëkohësisht.
             </p>
           </Intro>
           <Video>
@@ -69,11 +66,12 @@ function Home(props) {
               type='video/mp4'
             />
           </Video>
-          <Subheader />
-          <Link href='/Payment'>
+          <Subscription />
+          {/* <Subheader /> */}
+          {/* <Link href='/Payment'>
             <StyledButtonHome>ABONOHU TANI</StyledButtonHome>
-          </Link>
-          <Intro>
+          </Link> */}
+          {/* <Intro>
             <p>
               <span
                 style={{
@@ -97,7 +95,7 @@ function Home(props) {
                 8.99€/muaj
               </span>
             </p>
-          </Intro>
+          </Intro> */}
         </BannerHome>
         <Kanalet id='Kanalet'>
           <Channels>
@@ -566,7 +564,7 @@ const Video = styled.div`
     width: 100%;
     height: auto;
 
-    opacity: 0.6;
+    opacity: 0.3;
     @media screen and (max-width: 1000px) {
       height: 100%;
       width: auto;

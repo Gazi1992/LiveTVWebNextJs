@@ -62,7 +62,7 @@ const Header = (props) => {
             width='20px'
             height='20px'
           />
-          <span>ADD-ONS</span>
+          <span>SPORTE</span>
         </ScrollLink>
         <ScrollLink
           to='Ofertat'
@@ -298,6 +298,7 @@ const Login = styled(Button)`
     border: 1px solid #f9f9f9;
     border-radius: 4px;
     color: white;
+
     transition: all 0.2s ease 0s;
     &:hover {
       background-color: #f9f9f9;
