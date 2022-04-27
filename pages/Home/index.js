@@ -20,7 +20,7 @@ import TemplateofAllChannels from "../../Components/TemplateofAllChannels";
 import AboutUs from "../../Components/AboutUs";
 import { useEffect, useState } from "react";
 import TemplateofAllDevices from "../../Components/TemplateofAllDevices";
-import ButtonFooter from "../../Components/VOD/Components/ButtonFooter";
+// import ButtonFooter from "../../Components/VOD/Components/ButtonFooter";
 import Image from "next/image";
 
 import Auth from "@aws-amplify/auth";
@@ -67,6 +67,7 @@ function Home(props) {
             />
           </Video>
           <Subscription />
+<<<<<<< HEAD
           {/* <Subheader /> */}
           {/* <Link href='/Payment'>
             <StyledButtonHome>ABONOHU TANI</StyledButtonHome>
@@ -96,6 +97,8 @@ function Home(props) {
               </span>
             </p>
           </Intro> */}
+=======
+>>>>>>> 56008fb0074dfb9b9c22cd864ea31ee5c225def5
         </BannerHome>
         <Kanalet id='Kanalet'>
           <Channels>
@@ -152,7 +155,7 @@ function Home(props) {
               kanaletepreferuara='1'
               netflix={true}
               isBlackstate='orange'
-              pajisjet='3 Pajisje'
+              pajisjet='3 Paisje'
               hd={true}
               size='medium'
               VOD='100'
@@ -168,7 +171,7 @@ function Home(props) {
               isBlackstate='purple'
               netflix={true}
               size='big'
-              pajisjet='5 Pajisje'
+              pajisjet='5 Paisje'
               hd={true}
               VOD='100'
             ></Package>
@@ -206,7 +209,7 @@ function Home(props) {
           <WorksOn icon={Xbox} title='Xbox'></WorksOn>
         </Works>
         <AboutUs />
-        <ButtonFooter />
+        {/* <ButtonFooter /> */}
         <Footer id='Footer' />
       </Container>
     </HomeHeader>

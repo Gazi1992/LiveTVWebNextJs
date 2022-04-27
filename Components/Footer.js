@@ -147,6 +147,7 @@ function Footer() {
 const Footercontainer = styled.div`
   background-color: #1a1a1a;
   width: 100%;
+  height: 100%;
   height: fit-content;
 `;
 
@@ -156,93 +157,24 @@ const FooterWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  height: 100%;
   margin: 0 auto;
-`;
-
-const ColumnContainer = styled.div`
-  height: auto;
-  width: auto;
-  display: flex;
-  margin: 10px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  h2 {
-    margin: 0px;
-    font-size: 15px;
-  }
-`;
-const RowContainer = styled.div`
-  width: fit-content;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  @media screen and (max-width: 820px) {
-    flex-direction: column;
-  }
-
-  h2 {
-    margin: 0px;
-    margin-left: 5px;
-    font-size: 15px;
-    @media screen and (max-width: 820px) {
-      font-size: 10px;
-    }
-  }
-`;
-
-const FooterLinksContainer = styled.div`
-  display: flex just;
-  justify-content: center;
-  @media screen and (max-width: 820px) {
-    padding-top: 32px;
-  }
-`;
-
-const FooterLinkWrapper = styled.div`
-  display: flex;
-  @media screen and (max-width: 820px) {
-    flex-direction: column;
-    display: none;
-  }
-`;
-
-const FooterLinkItems = styled.div`
-  display: flex;
-  height: fit-content;
-  flex-direction: column;
-  align-items: center;
-
-  width: 100%;
-  box-sizing: border-box;
-  color: #fff;
-
-  @media screen and (max-width: 420px) {
-    margin: 0;
-    padding: 10px;
-    width: 100%;
-  }
-`;
-
-const FooterLinkTitle = styled.h1`
-  font-size: 20px;
-  margin-bottom: 16px;
 `;
 
 const SocialMedia = styled.section`
   max-width: 1000px;
   width: 100%;
+  height: 100%;
 `;
 
 const SocialMediaWrap = styled.div`
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   max-width: 1100px;
-  margin: 40px auto 0 auto;
+  margin: 40px auto 20px auto;
   @media screen and (max-width: 820px) {
     flex-direction: column;
   }

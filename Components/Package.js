@@ -53,7 +53,7 @@ function Package({
           <Features feature='Evente Live' check={LiveEventscheck}></Features>
           {/* <Features feature='Netflix' check={netflix}></Features> */}
           <Features feature='Kualitet HD' check={hd}></Features>
-          <Features feature='Pajisje ' extra={pajisjet}></Features>
+          <Features feature='Paisje ' extra={pajisjet}></Features>
           <Features feature='VOD' extra={VOD}></Features>
         </FeaturesContainer>
       </Wrap>

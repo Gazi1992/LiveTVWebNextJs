@@ -6,7 +6,7 @@ import Button from "@material-ui/core/Button";
 import { BiDevices } from "react-icons/bi";
 import { useRouter } from "next/router";
 import { FiAlignJustify } from "react-icons/fi";
-import Link from "next/link";
+
 import { Link as ScrollLink } from "react-scroll";
 
 const Header = (props) => {
@@ -105,15 +105,7 @@ const Header = (props) => {
           <span>PËR NE</span>
         </ScrollLink>
       </NavMenu>
-      <ButtonContainer hasScrolled={hasScrolled}>
-        <Link href='/Payment'>
-          <StyledButton>Abonohu Tani</StyledButton>
-        </Link>
-      </ButtonContainer>
 
-      <Link href='/SignIn'>
-        <Login>Kyçu</Login>
-      </Link>
       <PersonalContent>
         <ImageContainer onClick={toggle}>
           <FiAlignJustify
@@ -298,7 +290,6 @@ const Login = styled(Button)`
     border: 1px solid #f9f9f9;
     border-radius: 4px;
     color: white;
-
     transition: all 0.2s ease 0s;
     &:hover {
       background-color: #f9f9f9;
